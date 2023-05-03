@@ -2,23 +2,30 @@
 
 Proyecto de ejemplo de Key Vault.
 
-en CMD
-	az login
-	az group create --name "luiscasalas16-resource-group" --location "eastus2"
-	az keyvault create --name "luiscasalas16-key-vault" --resource-group "luiscasalas16-resource-group" --location "eastus2"
-	az keyvault secret set --vault-name "luiscasalas16-key-vault" --name "MySecretName" --value "MySecretValue"
+```
+az login
 
-en VS
-	Connected Services -> Add -> Azure Key Vault
+//eliminar recursos
+az group delete --name "luiscasalas16-resource-group"
 
-	
-    <UserSecretsId>test-user-secrets</UserSecretsId>
-    <!--<UserSecretsId>6b3f8603-e958-4a71-a99f-ceca7301871b</UserSecretsId>-->
+//crear recursos
+az group create --name "luiscasalas16-resource-group" --location "eastus2"
+az keyvault create --name "luiscasalas16-key-vault" --resource-group "luiscasalas16-resource-group" --location "eastus2"
 
+//crear parámetro en keyvault
+az keyvault secret set --vault-name "luiscasalas16-key-vault" --name "SecretNameKeyVault" --value "secret_value_in_key_vault"
 
-Los pasos para habilitar son:
--   Configurar application service.
--   Configurar storage account.
--   Obtener el access key del storage account.
--   Registrar en la configuración del application service un connection string con la llave AzureWebJobsDashboard y el valor del access key del storage account.
--   Publicar y registrar los web jobs.
+//crear parámetro en user secrets
+dotnet user-secrets set "SecretNameUserSecrets" "secret_value_in_user_secrets"
+
+//crear aplicación en azure ad
+az ad sp create-for-rbac --name "luiscasalas16-application-developer-1"
+
+/*
+"appId": "c13ff45e-b0aa-495e-865d-87714cea7d39",
+"displayName": "luiscasalas16-application-developer-1",
+"password": "3ef8Q~2ILBT-Hn~6h-L3c01XwM85cDE~6c9-Pbyc",
+"tenant": "c3db3a9b-847b-4bbe-b592-62ad5d4f6918"
+*/
+
+```

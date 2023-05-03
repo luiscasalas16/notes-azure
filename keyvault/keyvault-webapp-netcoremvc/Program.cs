@@ -1,3 +1,5 @@
+using Azure.Identity;
+
 namespace keyvault_webapp
 {
     public class Program
@@ -6,16 +8,12 @@ namespace keyvault_webapp
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Configuration.AddAzureKeyVault(new Uri("https://luiscasalas16-key-vault.vault.azure.net/"), new DefaultAzureCredential());            
 
             var app = builder.Build();
 
-            // Configure the HTTP request pipeline.
-            if (!app.Environment.IsDevelopment())
-            {
-                app.UseExceptionHandler("/Home/Error");
-            }
             app.UseStaticFiles();
 
             app.UseRouting();

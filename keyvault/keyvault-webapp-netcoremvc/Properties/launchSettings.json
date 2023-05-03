@@ -1,11 +1,7 @@
-﻿{
+{
   "iisSettings": {
     "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:5000",
-      "sslPort": 0
-    }
+    "anonymousAuthentication": true
   },
   "profiles": {
     "http": {
@@ -14,14 +10,9 @@
       "launchBrowser": true,
       "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "VaultUri": "https://luiscasalas16-key-vault.vault.azure.net/",
+        "AZURE_USERNAME": "lusalas16@hotmail.com"
       }
     }
   }
