@@ -33,3 +33,13 @@ Proyectos de ejemplo de Azure.
         az group list
         az group create --name MyResourceGroup --location eastus2
         az group delete --name MyResourceGroup
+
+# azure-sdk
+
+    [Resumen](https://learn.microsoft.com/en-us/dotnet/azure/sdk/azure-sdk-for-dotnet)
+    [Autenticación](https://learn.microsoft.com/en-us/dotnet/azure/sdk/azure-sdk-for-dotnet)
+
+# azure-identity
+
+    [Resumen](https://learn.microsoft.com/en-us/dotnet/api/overview/azure/identity-readme)
+    [Documentación](https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Identity/1.8.0/index.html

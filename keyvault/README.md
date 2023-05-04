@@ -3,6 +3,7 @@
 Proyecto de ejemplo de Key Vault.
 
 ```
+
 az login
 
 //eliminar recursos
@@ -21,11 +22,13 @@ dotnet user-secrets set "SecretNameUserSecrets" "secret_value_in_user_secrets"
 //crear aplicación en azure ad
 az ad sp create-for-rbac --name "luiscasalas16-application-developer-1"
 
-/*
-"appId": "c13ff45e-b0aa-495e-865d-87714cea7d39",
-"displayName": "luiscasalas16-application-developer-1",
-"password": "3ef8Q~2ILBT-Hn~6h-L3c01XwM85cDE~6c9-Pbyc",
-"tenant": "c3db3a9b-847b-4bbe-b592-62ad5d4f6918"
-*/
+//crear grupo en azure ad
+az ad group create --display-name "luiscasalas16-group-developers" --mail-nickname "luiscasalas16-group-developers" --description "developers groups"
+
+//incluir aplicación en grupo
+Azure Active Directory -> Groups -> Members -> New
+
+//establecer permiso en grupo
+luiscasalas16-key-vault -> Access policies -> New -> Permissions (Secret (Get,List)) -> Principal (luiscasalas16-group-developers)
 
 ```

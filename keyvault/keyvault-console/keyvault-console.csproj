@@ -6,6 +6,7 @@
     <RootNamespace>keyvault_console</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <UserSecretsId>test-user-secrets</UserSecretsId>
   </PropertyGroup>
 
