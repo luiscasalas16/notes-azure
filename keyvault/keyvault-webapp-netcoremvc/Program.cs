@@ -1,6 +1,6 @@
 using Azure.Core;
 using Azure.Identity;
-using Microsoft.Extensions.Configuration;
+using System.Diagnostics;
 
 namespace keyvault_webapp
 {
@@ -8,52 +8,38 @@ namespace keyvault_webapp
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
-
-            builder.Services.AddControllersWithViews();
-
-            /*
-            "AZURE_TENANT_ID": "c3db3a9b-847b-4bbe-b592-62ad5d4f6918",
-            "AZURE_CLIENT_ID": "c13ff45e-b0aa-495e-865d-87714cea7d39",
-            "AZURE_CLIENT_SECRET": "3ef8Q~2ILBT-Hn~6h-L3c01XwM85cDE~6c9-Pbyc"
-            */
-
-            /*
-            //service principal in multiple locations
-
-            TokenCredential credential = new DefaultAzureCredential(new DefaultAzureCredentialOptions()
+            try
             {
-                ExcludeVisualStudioCredential = true,
-                ExcludeVisualStudioCodeCredential = true,
-                ExcludeAzureCliCredential = true,
-                ExcludeAzurePowerShellCredential = true
-            });
-            */
+                var builder = WebApplication.CreateBuilder(args);
 
-            //service principal in appsettings.json
+                Console.WriteLine(builder.Configuration.GetValue<string>("SecretNameAppSettings"));
 
-            TokenCredential credential = new ClientSecretCredential
-            (
-                builder.Configuration.GetValue<string>("AZURE_TENANT_ID"),
-                builder.Configuration.GetValue<string>("AZURE_CLIENT_ID"),
-                builder.Configuration.GetValue<string>("AZURE_CLIENT_SECRET")
-            );
+                TokenCredential credential = new DefaultAzureCredential();
 
-            builder.Configuration.AddAzureKeyVault(new Uri("https://luiscasalas16-key-vault.vault.azure.net/"), credential);            
+                builder.Configuration.AddAzureKeyVault(new Uri("https://luiscasalas16-key-vault.vault.azure.net/"), credential);
 
-            var app = builder.Build();
+                builder.Services.AddControllersWithViews();
 
-            app.UseStaticFiles();
+                var app = builder.Build();
 
-            app.UseRouting();
+                app.UseStaticFiles();
 
-            app.UseAuthorization();
+                app.UseRouting();
 
-            app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                app.UseAuthorization();
 
-            app.Run();
+                app.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                app.Run();
+            }
+            catch (Exception ex)
+            {
+                Trace.WriteLine(ex.ToString());
+
+                Console.WriteLine(ex.ToString());
+            }
         }
     }
 }
