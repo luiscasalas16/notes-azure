@@ -1,11 +1,8 @@
-# webjobs
+# keyvault
 
 Proyecto de ejemplo de Key Vault.
 
 Script General:
-
-https://thecodeblogger.com/2020/06/13/user-assigned-managed-identity-with-azure-key-vault/
-https://learn.microsoft.com/en-us/answers/questions/202561/azure-web-app-net-core-start-up-error-how-to-find
 
 ```cmd
 ::az login
