@@ -37,9 +37,10 @@ Proyectos de ejemplo de Azure.
 # azure-sdk
 
     [Resumen](https://learn.microsoft.com/en-us/dotnet/azure/sdk/azure-sdk-for-dotnet)
-    [Autenticación](https://learn.microsoft.com/en-us/dotnet/azure/sdk/azure-sdk-for-dotnet)
+    [Autenticación](https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication)
+    [Identidades](https://learn.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)
 
 # azure-identity
 
     [Resumen](https://learn.microsoft.com/en-us/dotnet/api/overview/azure/identity-readme)
-    [Documentación](https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Identity/1.8.0/index.html
+    [Documentación](https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Identity/1.8.0/index.html)
