@@ -7,26 +7,26 @@ Script General:
 https://thecodeblogger.com/2020/06/13/user-assigned-managed-identity-with-azure-key-vault/
 https://learn.microsoft.com/en-us/answers/questions/202561/azure-web-app-net-core-start-up-error-how-to-find
 
-```
-az login
+```cmd
+::az login
 
-//eliminar grupo de recursos
+::eliminar grupo de recursos
 az group delete --name "luiscasalas16-resource-group"
 
-//crear grupo de recursos
+::crear grupo de recursos
 az group create --name "luiscasalas16-resource-group" --location "eastus2"
 
-//crear keyvault
+::crear keyvault
 az keyvault create --name "luiscasalas16-key-vault" --resource-group "luiscasalas16-resource-group" --location "eastus2"
 
-//crear secret en keyvault
+::crear secret en keyvault
 az keyvault secret set --vault-name "luiscasalas16-key-vault" --name "SecretNameKeyVault" --value "secret_value_in_key_vault"
 
-//crear grupo en azure ad
+::crear grupo en azure ad
 az ad group create --display-name "luiscasalas16-group" --mail-nickname "luiscasalas16-group" --description "luiscasalas16-group"
 
-//establecer permiso de grupo en keyvault
-luiscasalas16-key-vault -> Access policies -> New -> Permissions (Secret (Get,List)) -> luiscasalas16-group
+::establecer permiso de grupo en keyvault
+::luiscasalas16-key-vault -> Access policies -> New -> Permissions (Secret (Get,List)) -> luiscasalas16-group
 ```
 
 ## 1. Autenticación para desarrollo.
@@ -36,10 +36,12 @@ luiscasalas16-key-vault -> Access policies -> New -> Permissions (Secret (Get,Li
 - Se utiliza la misma cuenta de usuario del desarrollador en azure.
 - Se tienen más permisos de los requeridos para el desarrollo, por lo que es un potencial problema en producción.
 - Se utiliza DefaultAzureCredential. 
-- `TokenCredential credential = new DefaultAzureCredential();`
+	-	```csharp
+		TokenCredential credential = new DefaultAzureCredential();
+		```
 
-```
-//no requiere configuración, ya que se utilizan los mismos permisos de la cuenta de usuario de azure.
+```cmd
+::no requiere configuración, ya que se utilizan los mismos permisos de la cuenta de usuario de azure.
 ```
 
 ### 1.2 Por service principal de azure.
@@ -49,15 +51,28 @@ luiscasalas16-key-vault -> Access policies -> New -> Permissions (Secret (Get,Li
 - Se recomienda utilizar un service principal diferente para cada desarrollador y aplicación.
 - Se utiliza:
 	- DefaultAzureCredential con variables de ambiente (AZURE_TENANT_ID, AZURE_CLIENT_ID y AZURE_CLIENT_SECRET) establecidas en "launch settings.json -> environmentVariables".
-	- `TokenCredential credential = new DefaultAzureCredential(new DefaultAzureCredentialOptions() { ExcludeVisualStudioCredential = true, ExcludeVisualStudioCodeCredential = true, ExcludeAzureCliCredential = true, ExcludeAzurePowerShellCredential = true });`
-	- ClientSecretCredential con parámetros por programación. 
-	- `TokenCredential credential = new ClientSecretCredential ("AZURE_TENANT_ID", "AZURE_CLIENT_ID", "AZURE_CLIENT_SECRET");`
+		-	```csharp
+			TokenCredential credential = new DefaultAzureCredential
+			(
+				new DefaultAzureCredentialOptions() 
+				{
+					ExcludeVisualStudioCredential = true, 
+					ExcludeVisualStudioCodeCredential = true, 
+					ExcludeAzureCliCredential = true, 
+					ExcludeAzurePowerShellCredential = true 
+				}
+			);
+			```
+	- ClientSecretCredential con parámetros por programación.
+		-	```csharp
+			TokenCredential credential = new ClientSecretCredential ("AZURE_TENANT_ID", "AZURE_CLIENT_ID", "AZURE_CLIENT_SECRET");
+			```
 
-```
-//crear service principal para desarrollador y aplicación en azure ad
+```cmd
+::crear service principal para desarrollador y aplicación en azure ad
 az ad sp create-for-rbac --name "luiscasalas16-application-developer"
 
-//incluir service principal del desarrollador y aplicación en grupo en azure ad
+::incluir service principal del desarrollador y aplicación en grupo en azure ad
 Azure Active Directory -> Groups -> Members -> Add
 ```
 
@@ -69,25 +84,29 @@ Azure Active Directory -> Groups -> Members -> Add
 - Se recomienda utilizar un service principal diferente para cada ambiente.
 - Se utiliza:
 	- DefaultAzureCredential con variables de ambiente (AZURE_TENANT_ID, AZURE_CLIENT_ID y AZURE_CLIENT_SECRET) establecidas en "web.config" -> "system.webServer" -> "aspNetCore" -> "environmentVariables"
-	- `TokenCredential credential  = new DefaultAzureCredential();`
-	- ClientSecretCredential con parámetros por programación. 
-	- `TokenCredential credential = new ClientSecretCredential ("AZURE_TENANT_ID", "AZURE_CLIENT_ID", "AZURE_CLIENT_SECRET");`
+		-	```csharp
+			TokenCredential credential = new DefaultAzureCredential();
+			```
+	- ClientSecretCredential con parámetros por programación.
+		-	```csharp
+			TokenCredential credential = new ClientSecretCredential ("AZURE_TENANT_ID", "AZURE_CLIENT_ID", "AZURE_CLIENT_SECRET");
+			```
 
-```
-//crear service principal para desarrollador y aplicación en azure ad
+```cmd
+::crear service principal para desarrollador y aplicación en azure ad
 az ad sp create-for-rbac --name "luiscasalas16-application-production"
 
-//incluir service principal del desarrollador y aplicación en grupo en azure ad
+::incluir service principal del desarrollador y aplicación en grupo en azure ad
 Azure Active Directory -> Groups -> Members -> Add
 ```
 
 ### 2.2. En nube por managed identity de azure.
 
-```
-//crear app service plan
+```cmd
+::crear app service plan
 az appservice plan create --name "luiscasalas16-app-service-plan" --resource-group "luiscasalas16-resource-group" --location "eastus2" --sku "F1"
 
-//crear app service
+::crear app service
 az webapp create --name "luiscasalas16-app-service-web" --resource-group "luiscasalas16-resource-group" --plan "luiscasalas16-app-service-plan" --runtime "dotnet:7"
 ```
 
@@ -96,13 +115,15 @@ az webapp create --name "luiscasalas16-app-service-web" --resource-group "luisca
 - Comparte el cliclo de vida del recurso.
 - No se puede compartir.
 - Se utiliza DefaultAzureCredential. 
-- `TokenCredential credential = new DefaultAzureCredential();`
+	-	```csharp
+		TokenCredential credential = new DefaultAzureCredential();
+		```
 
-```
-//habilitar la system managed identity
+```cmd
+::habilitar la system managed identity
 az webapp identity assign --name "luiscasalas16-app-service-web" --resource-group "luiscasalas16-resource-group" 
 
-//incluir system managed principal en grupo en azure ad
+::incluir system managed principal en grupo en azure ad
 Azure Active Directory -> Groups -> Members -> Add
 ```
 
@@ -112,31 +133,21 @@ Azure Active Directory -> Groups -> Members -> Add
 - Se puede compartir, la misma identidad puede ser utilizada en múltiples recursos.
 - Se utiliza:
 	- DefaultAzureCredential con variables de ambiente (AZURE_CLIENT_ID) establecidas en "Configuration" -> "Application Settings".
-	- `TokenCredential credential = new DefaultAzureCredential();`
-	- ManagedIdentityCredential con parámetros por programación. 
-	- `TokenCredential credential = new ManagedIdentityCredential("AZURE_CLIENT_ID");`
+		-	```csharp
+			TokenCredential credential = new DefaultAzureCredential();
+			```
+	- ManagedIdentityCredential con parámetros por programación.
+		-	```csharp
+			TokenCredential credential = new ManagedIdentityCredential("AZURE_CLIENT_ID");
+			```
 
-```
-//crear la user managed identity
+```cmd
+::crear la user managed identity
 az identity create --name "luiscasalas16-user-identity" --resource-group "luiscasalas16-resource-group" 
 
-//incluir user managed principal en grupo en azure ad
+::incluir user managed principal en grupo en azure ad
 Azure Active Directory -> Groups -> Members -> Add
 
-//asociar la user managed identity
+::asociar la user managed identity
 luiscasalas16-app-service-web -> Identity -> User assigned -> Add -> luiscasalas16-user-identity
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-//crear parámetro en user secrets
-dotnet user-secrets set "SecretNameUserSecrets" "secret_value_in_user_secrets"
