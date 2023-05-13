@@ -44,3 +44,9 @@ Proyectos de ejemplo de Azure.
 
 - [Resumen](https://learn.microsoft.com/en-us/dotnet/api/overview/azure/identity-readme)
 - [Documentación](https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Identity/1.8.0/index.html)
+
+## prácticas
+
+- [Application Architecture Fundamentals](https://learn.microsoft.com/en-us/azure/architecture/guide)
+- [Application Architecture Guide](http://bit.ly/2BppIFo)
+- [Application Architecture Maps Overview](https://medium.com/@kanchan.tewary/microsoft-azure-mind-maps-86bd6e442988)
