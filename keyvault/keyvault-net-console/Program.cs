@@ -55,6 +55,7 @@ namespace keyvault_net_console
                 Console.WriteLine($"SecretNameKeyVault {_configuration["SecretNameKeyVault"]}");
                 Console.WriteLine($"SecretNameUserSecrets {_configuration["SecretNameUserSecrets"]}");
                 Console.WriteLine($"SecretNameAppSettings {_configuration["SecretNameAppSettings"]}");
+                Console.ReadLine();
             }
 
             private void Stop()

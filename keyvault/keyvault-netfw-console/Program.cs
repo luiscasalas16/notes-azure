@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Configuration;
 
 namespace keyvault_netfw_console
 {
@@ -10,6 +7,10 @@ namespace keyvault_netfw_console
     {
         static void Main(string[] args)
         {
+            Console.WriteLine($"SecretNameKeyVault {ConfigurationManager.AppSettings["SecretNameKeyVault"]}");
+            Console.WriteLine($"SecretNameUserSecrets {ConfigurationManager.AppSettings["SecretNameUserSecrets"]}");
+            Console.WriteLine($"SecretNameAppSettings {ConfigurationManager.AppSettings["SecretNameAppSettings"]}");
+            Console.ReadLine();
         }
     }
 }
