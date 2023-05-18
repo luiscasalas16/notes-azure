@@ -12,8 +12,6 @@ namespace keyvault_net_web_mvc
             {
                 var builder = WebApplication.CreateBuilder(args);
 
-                Console.WriteLine(builder.Configuration.GetValue<string>("SecretNameAppSettings"));
-
                 TokenCredential credential = new DefaultAzureCredential();
 
                 builder.Configuration.AddAzureKeyVault(new Uri("https://luiscasalas16-key-vault.vault.azure.net/"), credential);

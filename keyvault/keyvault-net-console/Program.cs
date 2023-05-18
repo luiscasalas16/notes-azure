@@ -23,8 +23,6 @@ namespace keyvault_net_console
                     {
                         var settings = configuration.Build();
 
-                        Console.WriteLine(settings["SecretNameAppSettings"]);
-
                         TokenCredential credential = new DefaultAzureCredential();
 
                         configuration.AddAzureKeyVault(new Uri("https://luiscasalas16-key-vault.vault.azure.net/"), credential);
