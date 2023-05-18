@@ -7,7 +7,7 @@
     <ProjectGuid>{382BDAF6-10BC-4374-ADBD-2ACC7CFDBF88}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>keyvault_netfw_console</RootNamespace>
-    <AssemblyName>keyvault_netfw_console</AssemblyName>
+    <AssemblyName>keyvault-netfw-console</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -48,6 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
