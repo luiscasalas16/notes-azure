@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace keyvault_webapp.Controllers
+namespace keyvault_net_web_mvc.Controllers
 {
     public class HomeController : Controller
     {

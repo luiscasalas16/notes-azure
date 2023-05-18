@@ -2,7 +2,7 @@ using Azure.Core;
 using Azure.Identity;
 using System.Diagnostics;
 
-namespace keyvault_webapp
+namespace keyvault_net_web_mvc
 {
     public class Program
     {

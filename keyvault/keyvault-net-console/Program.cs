@@ -6,7 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
-namespace keyvault_console
+namespace keyvault_net_console
 {
     internal class Program
     {

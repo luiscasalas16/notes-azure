@@ -8,9 +8,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "keyvault-webapp-netcoremvc", "keyvault-webapp-netcoremvc\keyvault-webapp-netcoremvc.csproj", "{4D6301B2-D47B-413A-BE8B-8FA22FFFD970}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "keyvault-net-console", "keyvault-net-console\keyvault-net-console.csproj", "{892027B3-4E81-415D-8231-A82CAA590CC3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keyvault-console", "keyvault-console\keyvault-console.csproj", "{C2EB24F9-C78E-4B62-BE78-2B1040317C85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "keyvault-net-web-mvc", "keyvault-net-web-mvc\keyvault-net-web-mvc.csproj", "{0045EA0B-016F-4CA6-8422-7C33842F8EDA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -18,14 +18,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4D6301B2-D47B-413A-BE8B-8FA22FFFD970}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4D6301B2-D47B-413A-BE8B-8FA22FFFD970}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4D6301B2-D47B-413A-BE8B-8FA22FFFD970}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4D6301B2-D47B-413A-BE8B-8FA22FFFD970}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C2EB24F9-C78E-4B62-BE78-2B1040317C85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C2EB24F9-C78E-4B62-BE78-2B1040317C85}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C2EB24F9-C78E-4B62-BE78-2B1040317C85}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C2EB24F9-C78E-4B62-BE78-2B1040317C85}.Release|Any CPU.Build.0 = Release|Any CPU
+		{892027B3-4E81-415D-8231-A82CAA590CC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{892027B3-4E81-415D-8231-A82CAA590CC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{892027B3-4E81-415D-8231-A82CAA590CC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{892027B3-4E81-415D-8231-A82CAA590CC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0045EA0B-016F-4CA6-8422-7C33842F8EDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0045EA0B-016F-4CA6-8422-7C33842F8EDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0045EA0B-016F-4CA6-8422-7C33842F8EDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0045EA0B-016F-4CA6-8422-7C33842F8EDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
