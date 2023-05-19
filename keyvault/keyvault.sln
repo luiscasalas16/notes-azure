@@ -6,6 +6,7 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7DE27412-FC8C-4D94-BC33-60EC6A4370A3}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+		Desarrollo.md = Desarrollo.md
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "keyvault-net-web-mvc", "keyvault-net-web-mvc\keyvault-net-web-mvc.csproj", "{0045EA0B-016F-4CA6-8422-7C33842F8EDA}"
