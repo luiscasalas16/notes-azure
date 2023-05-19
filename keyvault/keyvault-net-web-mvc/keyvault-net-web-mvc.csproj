@@ -6,7 +6,7 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <RootNamespace>keyvault_net_web_mvc</RootNamespace>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <UserSecretsId>test-user-secrets</UserSecretsId>
+    <UserSecretsId>test-user-secrets-net</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
