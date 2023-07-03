@@ -6,7 +6,7 @@ Proyectos de ejemplo de Azure.
 
 - [Resumen](https://learn.microsoft.com/en-us/cli/azure/what-is-azure-cli)
 - [Servicios](https://learn.microsoft.com/en-us/cli/azure/azure-services-the-azure-cli-can-manage)
-- [Instalación](https://learn.microsoft.com/en-us/cli/azure/azure-services-the-azure-cli-can-manage)
+- [Instalación](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
 
 ```cmd
 ::actualización
