@@ -14,16 +14,17 @@ az group delete --name "luiscasalas16-resource-group"
 az group create --name "luiscasalas16-resource-group" --location "eastus2"
 
 ::crear keyvault
-az keyvault create --name "luiscasalas16-key-vault" --resource-group "luiscasalas16-resource-group" --location "eastus2"
+az keyvault create --name "luiscasalas16-key-vault" --resource-group "luiscasalas16-resource-group" --location "eastus2" --enable-rbac-authorization "true"
 
 ::crear secret en keyvault
 az keyvault secret set --vault-name "luiscasalas16-key-vault" --name "SecretNameKeyVault" --value "secret_value_in_key_vault"
 
+::establecer permiso "Key Vault Administrator" de keyvault a administrador
+
 ::crear grupo en azure ad
 az ad group create --display-name "luiscasalas16-group" --mail-nickname "luiscasalas16-group" --description "luiscasalas16-group"
 
-::establecer permiso de grupo en keyvault
-::luiscasalas16-key-vault -> Access policies -> New -> Permissions (Secret (Get,List)) -> luiscasalas16-group
+::establecer permiso "Key Vault Secrets User" de keyvault a grupo
 ```
 
 ## 1. Autenticación para desarrollo.
