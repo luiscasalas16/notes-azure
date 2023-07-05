@@ -125,7 +125,7 @@ az webapp identity assign --name "luiscasalas16-app-service-web" --resource-grou
 Azure Active Directory -> Groups -> Members -> Add
 ```
 
-#### 2.2.1 User-assigned managed identity
+#### 2.2.2 User-assigned managed identity
 - Se crea como un recurso independiente.
 - Tiene un cliclo de vida independiente.
 - Se puede compartir, la misma identidad puede ser utilizada en múltiples recursos.
