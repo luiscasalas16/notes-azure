@@ -12,6 +12,10 @@ namespace keyvault_net_web_mvc
             {
                 var builder = WebApplication.CreateBuilder(args);
 
+                //Secrets
+                builder.Configuration.AddUserSecrets<Program>();
+
+                //KeyVault
                 TokenCredential credential = new DefaultAzureCredential();
 
                 builder.Configuration.AddAzureKeyVault(new Uri("https://luiscasalas16-key-vault.vault.azure.net/"), credential);

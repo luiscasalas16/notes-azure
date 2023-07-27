@@ -1,27 +1,35 @@
 # Secretos
 
 ## 1. Net
-- Secretos
-	- Habilitar por Visual Studio en Manage User Secrets.
-	- Ajustar el UserSecretsId en el proyecto. Se almacena en la ruta de datos del usuario.
-	- Se referencia automáticamente Microsoft.Extensions.Configuration.UserSecrets 7.0.0.
-	- Las propiedades se combinan con la siguiente prioridad: keyvault - user secret - app settings.
-- Key Vault
-	- Referenciar Azure.Extensions.AspNetCore.Configuration.Secrets 1.2.2.
-	- Referenciar Azure.Identity 1.8.2.
-	- Incluir en configuración con método AddAzureKeyVault.
-	- Las propiedades se combinan con la siguiente prioridad: keyvault - user secret - app settings.
+- User Secrets
+	- Referenciar el paquete "Microsoft.Extensions.Configuration.UserSecrets".
+	- Ajustar el UserSecretsId en el archivo del proyecto si se desea utilizar un ID personalizado y no un GUID.
+	- Los secretos se almacena en formato JSON en la ruta "%APPDATA%\Microsoft\UserSecrets\<ID>\secrets.json".
+	- Ejecutar el método "AddUserSecrets" para incluir en el "ConfigurationBuilder" los secretos.
+- Key Vault Secrets
+	- Referenciar los paquetes
+		- "Azure.Extensions.AspNetCore.Configuration.Secrets"
+		- "Azure.Identity"
+	- Ejecutar el método "AddAzureKeyVault" para incluir en el "ConfigurationBuilder" los secretos.
+	- Para la autenticación en Azure se utiliza un "DefaultAzureCredential" de "Azure.Identity". https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Identity/1.9.0/api/index.html
+	- Para la autorización la identidad requere el rol "Key Vault Secrets User" en el Key Vault.
+- Las propiedades se combinan con la siguiente prioridad: 1. keyvault, 2. user secret, 3. app settings.
 
-## 2. Net Fw
-- Requiere .Net Framework 4.7.1.
+## 2. Net Framework 4.8 
 - Se utiliza https://github.com/aspnet/MicrosoftConfigurationBuilders.
-- Secretos
-	- Referenciar Microsoft.Configuration.ConfigurationBuilders.UserSecrets 3.0.0.
-	- Incluir configSections y configBuilders (se puede hacer por userSecretsId en la ruta de datos del usuario o por userSecretsFile en una ruta específica).
-	- Ajustar el appSettings con el configBuilders="Secrets"
-	- Las propiedades deben estar establecidas en el appSettings para que sean reemplazadas.
-- Key Vault
-	- Referenciar Microsoft.Configuration.ConfigurationBuilders.Azure 3.0.0.
-	- Incluir configSections y configBuilders.
-	- Ajustar el appSettings con el configBuilders="AzureKeyVault"
-	- Las propiedades deben estar establecidas en el appSettings para que sean reemplazadas.
+- User Secrets
+	- Referenciar el paquete "Microsoft.Configuration.ConfigurationBuilders.UserSecrets".
+	- Verificar la inclusión en el archivo de configuración de la sección "configBuilders" y del builder "Secrets".
+	- Utilizar la propiedad userSecretsId en el archivo de configuración si se desea utilizar un ID personalizado o un GUID. En este caso los secretos se almacena en formato XML en la ruta "%APPDATA%\Microsoft\UserSecrets\<ID>\secrets.json".
+	- Utilizar la propiedad userSecretsFile en el archivo de configuración si se desea utilizar una ruta personalizada. En este caso los secretos se almacena en formato XML en la ruta personalizada.
+	- Ajustar el elemento appSettings con el atributo configBuilders="Secrets".
+	- Las propiedades que van a estar en los secretos deben ser establecidas en el appSettings vacias.
+- Key Vault Secrets
+	- Referenciar "Microsoft.Configuration.ConfigurationBuilders.Azure".
+	- Verificar la inclusión en el archivo de configuración de la sección "configBuilders" y del builder "AzureKeyVault".
+	- Ajustar el atributo vaultName con el nomnre del Key Vault.
+	- Ajustar el elemento appSettings con el atributo configBuilders="AzureKeyVault".
+	- Las propiedades que van a estar en los secretos deben ser establecidas en el appSettings vacias.
+	- Para la autenticación en Azure se utiliza un "DefaultAzureCredential" de "Azure.Identity". https://azuresdkdocs.blob.core.windows.net/$web/dotnet/Azure.Identity/1.9.0/api/index.html
+	- Para la autorización la identidad requere el rol "Key Vault Secrets User" en el Key Vault.
+- Las propiedades se combinan con la siguiente prioridad: 1. keyvault, 2. user secret, 3. app settings.
