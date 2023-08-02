@@ -1,6 +1,8 @@
-# virtualmachine
+# Virtual Machine
 
-Comandos para la administración de "Azure Virtual Machine".
+## Comandos
+
+Comandos generales para la administración de una Virtual Machine.
 
 ```powershell
 #listar tamaños de vms
