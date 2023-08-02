@@ -10,13 +10,20 @@ az vm list-sizes --location "eastus2" --output table
 ```
 
 ```powershell
-# listar imagenes de vms
+# listar imágenes de vms
 az vm image list --output table
+# buscar imágenes de vms
+az vm image list --offer WindowsServer --sku 2022-datacenter --all
+# imágenes Windows Server 2022:
+#  MicrosoftWindowsServer:WindowsServer:2022-datacenter-g2:latest
+#  MicrosoftWindowsServer:WindowsServer:2022-datacenter-smalldisk-g2:latest
+#  MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition:latest
+#  MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-smalldisk:latest
 ```
 
 ```powershell
 # crear virtual machine
-az vm create --name "luiscasalas16vm" --resource-group "luiscasalas16-resource-group" --location "eastus2" --image "Win2019Datacenter" --size "Standard_B1ms" --admin-username "abc" --admin-password "123" --public-ip-sku "Standard" --public-ip-address-dns-name "luiscasalas16vm"
+az vm create --name "luiscasalas16vm" --resource-group "luiscasalas16-resource-group" --location "eastus2" --image "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-smalldisk:latest" --size "Standard_B1ms" --admin-username "azureadministrator" --admin-password "azureprueba123*" --public-ip-sku "Standard" --public-ip-address-dns-name "luiscasalas16vm" --os-disk-size-gb 64
 
 # habilitar auto-shutdown
 az vm auto-shutdown --name "luiscasalas16vm" --resource-group "luiscasalas16-resource-group" --name "luiscasalas16vm" --time 0000
