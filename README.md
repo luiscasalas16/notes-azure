@@ -10,23 +10,31 @@ Este repositorio contiene ejemplos y documentación relacionada con Azure.
   - [Azure SDK](#azure-sdk)
   - [Azure Identity](#azure-identity)
 
+---
+
 ## Ejemplos
 
 Proyectos de ejemplo de Azure.
 
 - [Resource Group](/resource-group/README.md)
-- [Appliction Service](/application-service/README.md)
+- [Application Service](/application-service/README.md)
 - [Virtual Machine](/virtual-machine/README.md)
 - [Key Vault](/key-vault/README.md)
+
+---
 
 ## Documentación
 
 - [Application Architecture Fundamentals](https://learn.microsoft.com/en-us/azure/architecture/guide)
 
+---
+
 ## Artículos
 
 - [Application Architecture Guide](http://bit.ly/2BppIFo)
 - [Application Architecture Maps Overview](https://medium.com/@kanchan.tewary/microsoft-azure-mind-maps-86bd6e442988)
+
+---
 
 ## Herramientas
 
