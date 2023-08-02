@@ -9,5 +9,14 @@ namespace NetFwApplicationServiceMvc.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Tests()
+        {
+            return Json(new
+            {
+                result = "ok"
+            });
+        }
     }
 }

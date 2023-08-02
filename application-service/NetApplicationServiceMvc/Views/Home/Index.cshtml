@@ -6,7 +6,35 @@
     <h1 class="display-4">Hello World</h1>
     <div class="row">
         <div class="col">
-            <p>Hello World</p>
+            <button id="tests" type="button" class="btn btn-primary">tests</button>
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function () {
+        var baseUrl = "@Url.Content("~/")";
+
+        function error() {
+            console.error(response);
+            alert("error");
+        }
+
+        $("#tests").click(function () {
+            console.log("tests");
+
+            $.ajax(
+            {
+                type: 'POST',
+                dataType: 'json',
+                url: baseUrl + 'Home/tests',
+                success:
+                    function (response) {
+                        console.log(response);
+                        alert(response.result);
+                    },
+                error: error
+            });
+        });
+    });
+</script>

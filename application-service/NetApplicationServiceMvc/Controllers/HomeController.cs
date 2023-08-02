@@ -17,5 +17,14 @@ namespace NetApplicationServiceMvc.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public IActionResult Tests()
+        {
+            return Json(new
+            {
+                result = "ok"
+            });
+        }
     }
 }
