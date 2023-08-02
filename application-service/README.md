@@ -27,5 +27,3 @@ az webapp delete --name "luiscasalas16-app-service-net" --resource-group "luisca
 #eliminar application service .Net Framework
 az webapp delete --name "luiscasalas16-app-service-netfw" --resource-group "luiscasalas16-resource-group" --keep-empty-plan
 ```
-
-az webapp delete --name MyWebapp --resource-group MyResourceGroup
