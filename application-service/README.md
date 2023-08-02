@@ -1,6 +1,11 @@
-# Application Service Plan
+# example-azure / application-service
 
-## Comandos
+- [Comandos Application Service Plan](#comandos-application-service-plan)
+- [Comandos Application Service](#comandos-application-service)
+
+---
+
+## Comandos Application Service Plan
 
 Comandos generales para la administración de un Application Service Plan.
 
@@ -14,9 +19,7 @@ az appservice plan create --name "luiscasalas16-app-service-plan" --resource-gro
 az appservice plan delete --name "luiscasalas16-app-service-plan" --resource-group "luiscasalas16-resource-group"
 ```
 
-# Application Service
-
-## Comandos
+## Comandos Application Service
 
 Comandos generales para la administración de un Application Service.
 
