@@ -18,7 +18,7 @@ az ad group create --display-name "luiscasalas16-group" --mail-nickname "luiscas
 
 ## Comandos para Roles
 
-(link)[https://learn.microsoft.com/en-us/azure/role-based-access-control/]
+[link](https://learn.microsoft.com/en-us/azure/role-based-access-control/)
 
 Comandos para obtener identificadores de objetos.
 
