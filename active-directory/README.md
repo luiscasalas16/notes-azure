@@ -1,6 +1,7 @@
 # example-azure / active-directory
 
 - [Comandos para Grupos](#comandos-para-grupos)
+- [Comandos para Identidades](#comandos-para-identidades)
 - [Comandos para Roles](#comandos-para-roles)
 
 ---
@@ -16,9 +17,28 @@ az ad group create --display-name "luiscasalas16-group" --mail-nickname "luiscas
 
 ---
 
+## Comandos para Identidades
+
+[Application service principal](https://learn.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals)
+[Managed identity service principal](https://learn.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)
+[Best Practices](https://learn.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/managed-identity-best-practice-recommendations)
+
+---
+
+```powershell
+#crear application identity
+az ad sp create-for-rbac --name "luiscasalas16-application"
+```
+
+```powershell
+#crear managed identity
+az identity create --name "luiscasalas16-managed-identity" --resource-group "luiscasalas16-resource-group"
+```
+
 ## Comandos para Roles
 
-[link](https://learn.microsoft.com/en-us/azure/role-based-access-control/)
+[Role based Access Control](https://learn.microsoft.com/en-us/azure/role-based-access-control/)
+[Best Practices](https://learn.microsoft.com/en-us/azure/role-based-access-control/best-practices)
 
 Comandos para obtener identificadores de objetos.
 
@@ -33,8 +53,8 @@ az ad sp list --all --query "[?contains(displayName,'<name>')].{Id:id, DisplayNa
 # rol Name, <name> = nombre del rol
 az role definition list --query "[?contains(roleName,'<name>')].{Name:name, RoleName:roleName}" --out table
 
-#  resource ID
-az resource list --name 'luiscasalas16-key-vault' --query "[].{Id:id}" --out tsv
+#  resource ID, <name> = nombre del resource
+az resource list --name '<name>' --query "[].{Id:id}" --out tsv
 #  resource group Name
 az group list --query "[].{Name:name}" --out table
 #  subscription ID
@@ -47,13 +67,13 @@ Comandos para revisar roles.
 
 ```powershell
 #  users or groups or service principals
-az role assignment list --assignee "(<user | group | service principal) ID>"
+az role assignment list --all --assignee "(<user | group | service principal) ID>"
 #  resource group
-az role assignment list --resource-group "<resource group Name>"
+az role assignment list --all --resource-group "<resource group Name>"
 #  subscription
-az role assignment list --subscription "<subscription ID>"
+az role assignment list --all --subscription "<subscription ID>"
 #  management group scope
-az role assignment list --scope "/providers/Microsoft.Management/managementGroups/<management group name>"
+az role assignment list --all --scope "/providers/Microsoft.Management/managementGroups/<management group name>"
 ```
 
 Comandos para otorgar roles.

@@ -15,6 +15,12 @@ Script General:
 ```powershell
 #crear keyvault
 az keyvault create --name "luiscasalas16-key-vault" --resource-group "luiscasalas16-resource-group" --location "eastus2" --enable-rbac-authorization "true"
+
+#establecer a administrador rol "Key Vault Administrator" de keyvault en keyvault
+az role assignment create --assignee "10c7f93b-8116-426f-a052-af5d7411e7e0" --role "00482a5a-887f-4fb3-b363-3b7fe8e74483" --scope "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourceGroups/luiscasalas16-resource-group/providers/Microsoft.KeyVault/vaults/luiscasalas16-key-vault"
+
+#establecer permiso "Key Vault Secrets User" de keyvault a grupo
+
 ```
 
 ```powershell
@@ -22,10 +28,15 @@ az keyvault create --name "luiscasalas16-key-vault" --resource-group "luiscasala
 az keyvault secret set --vault-name "luiscasalas16-key-vault" --name "SecretNameKeyVault" --value "secret value in key vault"
 ```
 
-```powershell
-#establecer permiso "Key Vault Administrator" de keyvault a administrador
-#establecer permiso "Key Vault Secrets User" de keyvault a grupo
-```
+---
+
+---
+
+---
+
+---
+
+---
 
 ## 1. Autenticación para desarrollo.
 
