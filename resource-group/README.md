@@ -2,19 +2,17 @@
 
 ## Comandos
 
-1. crear grupo de recursos
-
 ```powershell
+# crear grupo de recursos
 az group create --name "luiscasalas16-resource-group" --location "eastus2"
 ```
 
-1. eliminar grupo de recursos
-
 ```powershell
+# eliminar grupo de recursos
 az group delete --name "luiscasalas16-resource-group"
 ```
 
 ```powershell
-#listar grupo de recursos
+# listar grupo de recursos
 az group list
 ```
