@@ -10,16 +10,22 @@ az appservice plan create --name "luiscasalas16-app-service-plan" --resource-gro
 ```
 
 ```powershell
-#crear application service plan
+#eliminar application service plan
 az appservice plan delete --name "luiscasalas16-app-service-plan" --resource-group "luiscasalas16-resource-group"
 ```
 
 ```powershell
 #crear application service .Net
 az webapp create --name "luiscasalas16-app-service-net" --resource-group "luiscasalas16-resource-group" --plan "luiscasalas16-app-service-plan" --runtime "dotnet:7"
-```
-
-```powershell
 #crear application service .Net Framework
 az webapp create --name "luiscasalas16-app-service-netfw" --resource-group "luiscasalas16-resource-group" --plan "luiscasalas16-app-service-plan" --runtime "ASPNET:V4.8"
 ```
+
+```powershell
+#eliminar application service .Net
+az webapp delete --name "luiscasalas16-app-service-net" --resource-group "luiscasalas16-resource-group" --keep-empty-plan
+#eliminar application service .Net Framework
+az webapp delete --name "luiscasalas16-app-service-netfw" --resource-group "luiscasalas16-resource-group" --keep-empty-plan
+```
+
+az webapp delete --name MyWebapp --resource-group MyResourceGroup
