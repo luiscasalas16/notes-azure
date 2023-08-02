@@ -1,8 +1,8 @@
-# Application Service
+# Application Service Plan
 
 ## Comandos
 
-Comandos generales para la administración de un Application Service.
+Comandos generales para la administración de un Application Service Plan.
 
 ```powershell
 #crear application service plan
@@ -13,6 +13,12 @@ az appservice plan create --name "luiscasalas16-app-service-plan" --resource-gro
 #eliminar application service plan
 az appservice plan delete --name "luiscasalas16-app-service-plan" --resource-group "luiscasalas16-resource-group"
 ```
+
+# Application Service
+
+## Comandos
+
+Comandos generales para la administración de un Application Service.
 
 ```powershell
 #crear application service .Net

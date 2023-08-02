@@ -5,6 +5,10 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "appservice-webapp-netcoremvc", "appservice-webapp-netcoremvc\appservice-webapp-netcoremvc.csproj", "{DC6A675D-9793-403F-BB28-3D4BA96C24CC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetApplicationServiceMvc", "NetApplicationServiceMvc\NetApplicationServiceMvc.csproj", "{F9DCFFD5-DC34-447A-924B-8C1089C6FE7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetFwApplicationServiceMvc", "NetFwApplicationServiceMvc\NetFwApplicationServiceMvc.csproj", "{2A31956B-3C0A-4FFD-8319-46D4C0638BE8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{DC6A675D-9793-403F-BB28-3D4BA96C24CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC6A675D-9793-403F-BB28-3D4BA96C24CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC6A675D-9793-403F-BB28-3D4BA96C24CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9DCFFD5-DC34-447A-924B-8C1089C6FE7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9DCFFD5-DC34-447A-924B-8C1089C6FE7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9DCFFD5-DC34-447A-924B-8C1089C6FE7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9DCFFD5-DC34-447A-924B-8C1089C6FE7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A31956B-3C0A-4FFD-8319-46D4C0638BE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A31956B-3C0A-4FFD-8319-46D4C0638BE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A31956B-3C0A-4FFD-8319-46D4C0638BE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A31956B-3C0A-4FFD-8319-46D4C0638BE8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
