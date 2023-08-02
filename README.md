@@ -2,36 +2,33 @@
 
 Proyectos de ejemplo de Azure.
 
-## azure-cli
+## Azure CLI
+
+Es un conjunto de comandos que se utilizan para la administración de recursos de Azure. Está diseñada para trabajar rápidamente con Azure, con énfasis en la automatización.
 
 - [Resumen](https://learn.microsoft.com/en-us/cli/azure/what-is-azure-cli)
-- [Servicios](https://learn.microsoft.com/en-us/cli/azure/azure-services-the-azure-cli-can-manage)
 - [Instalación](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
+- [Referencia](https://learn.microsoft.com/en-us/cli/azure/reference-index)
 
-```cmd
-::actualización
+```powershell
+#actualización
     az upgrade
 
-::configuración
+#configuración
     az config get
-::actaulización automática
+#actaulización automática
     az config set auto-upgrade.enable=yes
     az config set auto-upgrade.prompt=no
-::instalación automática
+#instalación automática
     az config set extension.use_dynamic_install=yes_without_prompt
-::formato de salida por defecto
+#formato de salida por defecto
     az config set core.output=jsonc
 
-::autenticación
+#autenticación
     az login
 
-::suscripción
+#suscripción
     az account show
-
-::resource groups
-    az group list
-    az group create --name MyResourceGroup --location eastus2
-    az group delete --name MyResourceGroup
 ```
 
 ## azure-sdk
