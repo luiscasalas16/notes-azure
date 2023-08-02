@@ -4,12 +4,13 @@
 
 Script General:
 
-```cmd
-::crear grupo de recursos
+```powershell
+#crear grupo de recursos
 az group create --name "luiscasalas16-resource-group" --location "eastus2"
 ```
 
-```cmd
-::eliminar grupo de recursos
+eliminar grupo de recursos
+
+```powershell
 az group delete --name "luiscasalas16-resource-group"
 ```
