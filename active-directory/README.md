@@ -8,8 +8,6 @@
 
 ## Comandos para Grupos
 
-Comandos generales para la administración de un Active Directory.
-
 ```powershell
 # crear grupo
 az ad group create --display-name "luiscasalas16-group" --mail-nickname "luiscasalas16-group" --description "luiscasalas16-group"
