@@ -19,9 +19,9 @@ az ad group create --display-name "luiscasalas16-group" --mail-nickname "luiscas
 
 ## Comandos para Identidades
 
-[Application service principal](https://learn.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals)
-[Managed identity service principal](https://learn.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)
-[Best Practices](https://learn.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/managed-identity-best-practice-recommendations)
+- [Application service principal](https://learn.microsoft.com/en-us/azure/active-directory/develop/app-objects-and-service-principals)
+- [Managed identity service principal](https://learn.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)
+- [Best Practices](https://learn.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/managed-identity-best-practice-recommendations)
 
 ---
 
@@ -37,8 +37,8 @@ az identity create --name "luiscasalas16-managed-identity" --resource-group "lui
 
 ## Comandos para Roles
 
-[Role based Access Control](https://learn.microsoft.com/en-us/azure/role-based-access-control/)
-[Best Practices](https://learn.microsoft.com/en-us/azure/role-based-access-control/best-practices)
+- [Role based Access Control](https://learn.microsoft.com/en-us/azure/role-based-access-control/)
+- [Best Practices](https://learn.microsoft.com/en-us/azure/role-based-access-control/best-practices)
 
 Comandos para obtener identificadores de objetos.
 
