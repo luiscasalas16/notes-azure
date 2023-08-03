@@ -25,12 +25,9 @@ Referencias:
 - Se utiliza la misma cuenta de usuario del desarrollador en azure.
 - Se tienen más permisos de los requeridos para el desarrollo, por lo que es un potencial problema en producción.
 - Se utiliza DefaultAzureCredential.
-  - ```csharp
-    TokenCredential credential = new DefaultAzureCredential();
-    ```
 
-```powershell
-#no requiere configuración, ya que se utilizan los mismos permisos de la cuenta de usuario de azure.
+```csharp
+TokenCredential credential = new DefaultAzureCredential();
 ```
 
 ### 1.2 Por service principal de azure
@@ -39,32 +36,40 @@ Referencias:
 - Se requiere la configuración del service principal en azure.
 - Se tienen los mismos permisos para desarrollo y para producción.
 - Se recomienda utilizar un service principal diferente para cada desarrollador y aplicación.
-- Se utiliza:
-  - DefaultAzureCredential con variables de ambiente (AZURE_TENANT_ID, AZURE_CLIENT_ID y AZURE_CLIENT_SECRET) establecidas en "launch settings.json -> environmentVariables".
-    - ```csharp
-      TokenCredential credential = new DefaultAzureCredential
-      (
-      	new DefaultAzureCredentialOptions()
-      	{
-      		ExcludeVisualStudioCredential = true,
-      		ExcludeVisualStudioCodeCredential = true,
-      		ExcludeAzureCliCredential = true,
-      		ExcludeAzurePowerShellCredential = true
-      	}
-      );
-      ```
-  - ClientSecretCredential con parámetros por programación.
-    - ```csharp
-      TokenCredential credential = new ClientSecretCredential ("AZURE_TENANT_ID", "AZURE_CLIENT_ID", "AZURE_CLIENT_SECRET");
-      ```
+- Se puede utilizar la siguiente configuración del DefaultAzureCredential para evitar el uso de la identidad del desarrollador y forzar la lectura del service principal.
 
-```powershell
-#crear service principal para desarrollador y aplicación en azure ad
-az ad sp create-for-rbac --name "luiscasalas16-application-developer"
-
-#incluir service principal del desarrollador y aplicación en grupo en azure ad
-Azure Active Directory -> Groups -> Members -> Add
+```csharp
+TokenCredential credential = new DefaultAzureCredential
+(
+  new DefaultAzureCredentialOptions()
+  {
+    ExcludeVisualStudioCredential = true,
+    ExcludeVisualStudioCodeCredential = true,
+    ExcludeAzureCliCredential = true,
+    ExcludeAzurePowerShellCredential = true
+  }
+);
 ```
+
+- En .Net se utiliza DefaultAzureCredential con variables de ambiente (AZURE_TENANT_ID, AZURE_CLIENT_ID y AZURE_CLIENT_SECRET) establecidas en "launch settings.json -> environmentVariables".
+
+```json
+{
+  "profiles": {
+    "console": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development",
+        "AZURE_TENANT_ID": "",
+        "AZURE_CLIENT_ID": "",
+        "AZURE_CLIENT_SECRET": ""
+      }
+    }
+  }
+}
+```
+
+- En .Net Framework se utiliza DefaultAzureCredential con variables de ambiente (AZURE_TENANT_ID, AZURE_CLIENT_ID y AZURE_CLIENT_SECRET) establecidas en "launch settings.json -> environmentVariables".
 
 ## 2. Autenticación para producción
 

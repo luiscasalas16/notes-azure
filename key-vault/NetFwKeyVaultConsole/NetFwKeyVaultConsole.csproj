@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{382BDAF6-10BC-4374-ADBD-2ACC7CFDBF88}</ProjectGuid>
+    <ProjectGuid>{2F3115F7-C700-4E7E-852B-A73C54CCC86F}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>keyvault_netfw_console</RootNamespace>
-    <AssemblyName>keyvault-netfw-console</AssemblyName>
+    <RootNamespace>NetFwKeyVaultConsole</RootNamespace>
+    <AssemblyName>NetFwKeyVaultConsole</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

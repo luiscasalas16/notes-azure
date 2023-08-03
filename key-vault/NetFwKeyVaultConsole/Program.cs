@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Diagnostics;
 
 namespace NetFwKeyVaultConsole
@@ -10,7 +11,9 @@ namespace NetFwKeyVaultConsole
             try
             {
                 Console.WriteLine(".Net Framework Console");
-                Console.WriteLine("Hello World");
+                Console.WriteLine($"SecretNameKeyVault: {ConfigurationManager.AppSettings["SecretNameKeyVault"]}");
+                Console.WriteLine($"SecretNameUserSecrets: {ConfigurationManager.AppSettings["SecretNameUserSecrets"]}");
+                Console.WriteLine($"SecretNameAppSettings: {ConfigurationManager.AppSettings["SecretNameAppSettings"]}");
             }
             catch (Exception ex)
             {
