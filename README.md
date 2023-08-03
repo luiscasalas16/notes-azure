@@ -2,7 +2,7 @@
 
 Este repositorio contiene ejemplos y documentación relacionada con Azure.
 
-- [Ejemplos](#ejemplos)
+- [Ejemplos y Guías](#ejemplos-y-guías)
 - [Documentación](#documentación)
 - [Artículos](#artículos)
 - [Herramientas](#herramientas)
@@ -12,14 +12,20 @@ Este repositorio contiene ejemplos y documentación relacionada con Azure.
 
 ---
 
-## Ejemplos
+## Ejemplos y Guías
 
-Proyectos de ejemplo de Azure.
+Proyectos de ejemplo de servicios de Azure.
 
+- [Active Directory](/active-directory/README.md)
 - [Resource Group](/resource-group/README.md)
 - [Application Service](/application-service/README.md)
 - [Virtual Machine](/virtual-machine/README.md)
 - [Key Vault](/key-vault/README.md)
+
+Guías prácticas.
+
+- [Secretos](/how-to/secrets.md)
+- [Autenticación](/how-to/authentication.md)
 
 ---
 

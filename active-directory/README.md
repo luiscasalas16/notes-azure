@@ -11,7 +11,7 @@
 Comandos generales para la administración de un Active Directory.
 
 ```powershell
-#crear grupo
+# crear grupo
 az ad group create --display-name "luiscasalas16-group" --mail-nickname "luiscasalas16-group" --description "luiscasalas16-group"
 ```
 
@@ -26,12 +26,12 @@ az ad group create --display-name "luiscasalas16-group" --mail-nickname "luiscas
 ---
 
 ```powershell
-#crear application identity
+# crear application identity
 az ad sp create-for-rbac --name "luiscasalas16-application"
 ```
 
 ```powershell
-#crear managed identity
+# crear managed identity
 az identity create --name "luiscasalas16-managed-identity" --resource-group "luiscasalas16-resource-group"
 ```
 
@@ -53,51 +53,51 @@ az ad sp list --all --query "[?contains(displayName,'<name>')].{Id:id, DisplayNa
 # rol Name, <name> = nombre del rol
 az role definition list --query "[?contains(roleName,'<name>')].{Name:name, RoleName:roleName}" --out table
 
-#  resource ID, <name> = nombre del resource
+# resource ID, <name> = nombre del resource
 az resource list --name '<name>' --query "[].{Id:id}" --out tsv
-#  resource group Name
+# resource group Name
 az group list --query "[].{Name:name}" --out table
-#  subscription ID
+# subscription ID
 az account list --query "[].{Id:id, Name:name}" --out table
-#  management groups Name
+# management groups Name
 az account management-group list --query "[].{Name:name}" --out table
 ```
 
 Comandos para revisar roles.
 
 ```powershell
-#  users or groups or service principals
+# users or groups or service principals
 az role assignment list --all --assignee "(<user | group | service principal) ID>"
-#  resource group
+# resource group
 az role assignment list --all --resource-group "<resource group Name>"
-#  subscription
+# subscription
 az role assignment list --all --subscription "<subscription ID>"
-#  management group scope
+# management group scope
 az role assignment list --all --scope "/providers/Microsoft.Management/managementGroups/<management group name>"
 ```
 
 Comandos para otorgar roles.
 
 ```powershell
-#  resource scope
+# resource scope
 az role assignment create --assignee "(<user | group | service principal) ID>" --role "<role Name>" --scope "<resource ID>"
-#  resource group scope
+# resource group scope
 az role assignment create --assignee "(<user | group | service principal) ID>" --role "<role Name>" --resource-group "<resource group Name>"
-#  subscription scope
+# subscription scope
 az role assignment create --assignee "(<user | group | service principal) ID>" --role "<role Name>" --subscription "<subscription ID>"
-#  management group scope
+# management group scope
 az role assignment create --assignee "(<user | group | service principal) ID>" --role "<role Name>" --scope "/providers/Microsoft.Management/managementGroups/<management group Name>"
 ```
 
 Comandos para revocar roles.
 
 ```powershell
-#  resource scope
+# resource scope
 az role assignment delete --assignee "(<user | group | service principal) ID>" --role "<role Name>" --scope "<resource ID>"
-#  resource group scope
+# resource group scope
 az role assignment delete --assignee "(<user | group | service principal) ID>" --role "<role Name>" --resource-group "<resource group Name>"
-#  subscription scope
+# subscription scope
 az role assignment delete --assignee "(<user | group | service principal) ID>" --role "<role Name>" --subscription "<subscription ID>"
-#  management group scope
+# management group scope
 az role assignment delete --assignee "(<user | group | service principal) ID>" --role "<role Name>" --scope "/providers/Microsoft.Management/managementGroups/<management group Name>"
 ```
