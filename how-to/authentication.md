@@ -51,7 +51,7 @@ TokenCredential credential = new DefaultAzureCredential
 );
 ```
 
-- En .Net se utiliza DefaultAzureCredential con variables de ambiente (AZURE_TENANT_ID, AZURE_CLIENT_ID y AZURE_CLIENT_SECRET) establecidas en "launch settings.json -> environmentVariables".
+- Sólo en .Net se pueden establecen las variables de ambiente en "launch settings.json -> environmentVariables".
 
 ```json
 {
@@ -60,16 +60,28 @@ TokenCredential credential = new DefaultAzureCredential
       "commandName": "Project",
       "environmentVariables": {
         "DOTNET_ENVIRONMENT": "Development",
-        "AZURE_TENANT_ID": "",
-        "AZURE_CLIENT_ID": "",
-        "AZURE_CLIENT_SECRET": ""
+        "AZURE_TENANT_ID": "00000000-0000-0000-0000-000000000000",
+        "AZURE_CLIENT_ID": "00000000-0000-0000-0000-000000000000",
+        "AZURE_CLIENT_SECRET": "abcdefghijklmnopqrstuvwxyz"
       }
     }
   }
 }
 ```
 
-- En .Net Framework se utiliza DefaultAzureCredential con variables de ambiente (AZURE_TENANT_ID, AZURE_CLIENT_ID y AZURE_CLIENT_SECRET) establecidas en "launch settings.json -> environmentVariables".
+- En .Net y .Net Framework se pueden establecen las variables de ambiente a nivel del usuario por PowerShell. Si hay un cambio en las variables de ambiente se debe reiniciar el Visual Studio para que el cambio se aplique.
+
+```powershell
+# registrar las variables de ambiente
+[Environment]::SetEnvironmentVariable("AZURE_TENANT_ID", "00000000-0000-0000-0000-000000000000", "User")
+[Environment]::SetEnvironmentVariable("AZURE_CLIENT_ID", "00000000-0000-0000-0000-000000000000", "User")
+[Environment]::SetEnvironmentVariable("AZURE_CLIENT_SECRET", "abcdefghijklmnopqrstuvwxyz", "User")
+
+# eliminar las variables de ambiente
+[Environment]::SetEnvironmentVariable("AZURE_TENANT_ID", $null, "User")
+[Environment]::SetEnvironmentVariable("AZURE_CLIENT_ID", $null, "User")
+[Environment]::SetEnvironmentVariable("AZURE_CLIENT_SECRET", $null, "User")
+```
 
 ## 2. Autenticación para producción
 
