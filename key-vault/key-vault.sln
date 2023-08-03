@@ -8,10 +8,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "keyvault-net-web-mvc", "keyvault-net-web-mvc\keyvault-net-web-mvc.csproj", "{0045EA0B-016F-4CA6-8422-7C33842F8EDA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "keyvault-netfw-web-mvc", "keyvault-netfw-web-mvc\keyvault-netfw-web-mvc.csproj", "{2A31956B-3C0A-4FFD-8319-46D4C0638BE8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetFwKeyVaultWebMvc", "NetFwKeyVaultWebMvc\NetFwKeyVaultWebMvc.csproj", "{33D0D8D6-030A-4611-B361-1AA78BAD7B78}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetKeyVaultConsole", "NetKeyVaultConsole\NetKeyVaultConsole.csproj", "{3B7127BA-B432-493C-9CB3-34918CC0DCF7}"
@@ -26,14 +22,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0045EA0B-016F-4CA6-8422-7C33842F8EDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0045EA0B-016F-4CA6-8422-7C33842F8EDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0045EA0B-016F-4CA6-8422-7C33842F8EDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0045EA0B-016F-4CA6-8422-7C33842F8EDA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2A31956B-3C0A-4FFD-8319-46D4C0638BE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2A31956B-3C0A-4FFD-8319-46D4C0638BE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2A31956B-3C0A-4FFD-8319-46D4C0638BE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2A31956B-3C0A-4FFD-8319-46D4C0638BE8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{33D0D8D6-030A-4611-B361-1AA78BAD7B78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{33D0D8D6-030A-4611-B361-1AA78BAD7B78}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33D0D8D6-030A-4611-B361-1AA78BAD7B78}.Release|Any CPU.ActiveCfg = Release|Any CPU

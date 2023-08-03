@@ -1,3 +1,4 @@
+using Azure.Identity;
 using System.Diagnostics;
 
 namespace NetKeyVaultWebMvc
@@ -9,6 +10,12 @@ namespace NetKeyVaultWebMvc
             try
             {
                 var builder = WebApplication.CreateBuilder(args);
+
+                //Secrets
+                builder.Configuration.AddUserSecrets<Program>();
+
+                //KeyVault
+                builder.Configuration.AddAzureKeyVault(new Uri("https://luiscasalas16-key-vault.vault.azure.net/"), new DefaultAzureCredential());
 
                 builder.Services.AddControllersWithViews();
 
