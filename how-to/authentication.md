@@ -5,7 +5,7 @@ Cómo realizar la autenticación de aplicaciones .Net en Azure.
 - [1. Autenticación para desarrollo](#1-autenticación-para-desarrollo)
   - [1.1 Por cuenta de usuario de azure](#11-por-cuenta-de-usuario-de-azure)
   - [1.2 Por service principal de azure](#12-por-service-principal-de-azure)
-- [## 2. Autenticación para producción](#2-autenticación-para-producción)
+- [2. Autenticación para producción](#2-autenticación-para-producción)
   - [2.1. En tierra por service principals de azure](#21-en-tierra-por-service-principals-de-azure)
   - [2.2. En nube por managed identity de azure](#22-en-nube-por-managed-identity-de-azure)
     - [2.2.1 System-assigned managed identity](#221-system-assigned-managed-identity)
