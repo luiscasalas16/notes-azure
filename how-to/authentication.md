@@ -11,7 +11,9 @@ Cómo realizar la autenticación de aplicaciones .Net en Azure.
     - [2.2.1 System-assigned managed identity](#221-system-assigned-managed-identity)
     - [2.2.2 User-assigned managed identity](#222-user-assigned-managed-identity)
 
-[How to authenticate .NET applications using Azure SDK](https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication)
+Referencias:
+
+- [How to authenticate .NET applications using Azure SDK](https://learn.microsoft.com/en-us/dotnet/azure/sdk/authentication)
 
 ---
 
