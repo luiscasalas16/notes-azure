@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Azure.Core;
+using Azure.Identity;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -16,6 +18,16 @@ namespace NetKeyVaultConsole
                     .ConfigureServices((services) =>
                     {
                         services.AddHostedService<Application>();
+                    })
+                    .ConfigureAppConfiguration((configuration) =>
+                    {
+                        //Secrets
+                        configuration.AddUserSecrets<Program>();
+
+                        //KeyVault
+                        TokenCredential credential = new DefaultAzureCredential();
+
+                        configuration.AddAzureKeyVault(new Uri("https://luiscasalas16-key-vault.vault.azure.net/"), credential);
                     })
                     .Build();
 
@@ -43,7 +55,9 @@ namespace NetKeyVaultConsole
             private void Start()
             {
                 Console.WriteLine(".Net Console");
-                Console.WriteLine("Hello World");
+                Console.WriteLine($"SecretNameKeyVault {_configuration["SecretNameKeyVault"]}");
+                Console.WriteLine($"SecretNameUserSecrets {_configuration["SecretNameUserSecrets"]}");
+                Console.WriteLine($"SecretNameAppSettings {_configuration["SecretNameAppSettings"]}");
             }
 
             private void Stop()
