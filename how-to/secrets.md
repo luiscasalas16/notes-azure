@@ -7,18 +7,18 @@ Cómo realizar el manejo de secretos en aplicaciones .Net, utilizando User Secre
 
 ---
 
-## 1. .Net
+## 1 .Net
 
 - Las propiedades se combinan con la siguiente prioridad: 1. keyvault, 2. user secret, 3. app settings.
 
-### User Secrets
+### 1.1 User Secrets
 
 - Referenciar el paquete "Microsoft.Extensions.Configuration.UserSecrets".
 - Ajustar el UserSecretsId en el archivo del proyecto si se desea utilizar un ID personalizado y no un GUID.
 - Los secretos se almacena en formato JSON en la ruta "%APPDATA%\Microsoft\UserSecrets\<ID>\secrets.json".
 - Ejecutar el método "AddUserSecrets" para incluir en el "ConfigurationBuilder" los secretos.
 
-### Key Vault Secrets
+### 1.2 Key Vault Secrets
 
 - Referenciar los paquetes
   - "Azure.Extensions.AspNetCore.Configuration.Secrets"
@@ -29,12 +29,12 @@ Cómo realizar el manejo de secretos en aplicaciones .Net, utilizando User Secre
 
 ---
 
-## 2. .Net Framework
+## 2 .Net Framework
 
 - Se utiliza https://github.com/aspnet/MicrosoftConfigurationBuilders.
 - Las propiedades se combinan con la siguiente prioridad: 1. keyvault, 2. user secret, 3. app settings.
 
-### User Secrets
+### 2.1 User Secrets
 
 - Referenciar el paquete "Microsoft.Configuration.ConfigurationBuilders.UserSecrets".
 - Verificar la inclusión en el archivo de configuración de la sección "configBuilders" y del builder "Secrets".
@@ -43,7 +43,7 @@ Cómo realizar el manejo de secretos en aplicaciones .Net, utilizando User Secre
 - Ajustar el elemento appSettings con el atributo configBuilders="Secrets".
 - Las propiedades que van a estar en los secretos deben ser establecidas en el appSettings vacias.
 
-### Key Vault Secrets
+### 2.2 Key Vault Secrets
 
 - Referenciar "Microsoft.Configuration.ConfigurationBuilders.Azure".
 - Verificar la inclusión en el archivo de configuración de la sección "configBuilders" y del builder "AzureKeyVault".

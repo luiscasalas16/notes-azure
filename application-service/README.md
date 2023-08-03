@@ -19,6 +19,8 @@ az appservice plan create --name "luiscasalas16-app-service-plan" --resource-gro
 az appservice plan delete --name "luiscasalas16-app-service-plan" --resource-group "luiscasalas16-resource-group"
 ```
 
+---
+
 ## Comandos Application Service
 
 Comandos generales para la administración de un Application Service.
