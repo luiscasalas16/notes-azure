@@ -1,0 +1,4 @@
+{
+  //default schedule on publish
+  "schedule": "0 * * * * *"
+}
