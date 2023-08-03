@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{382BDAF6-10BC-4374-ADBD-2ACC7CFDBF88}</ProjectGuid>
+    <ProjectGuid>{2F3115F7-C700-4E7E-852B-A73C54CCC86F}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>NetFwKeyVaultConsole</RootNamespace>
     <AssemblyName>NetFwKeyVaultConsole</AssemblyName>
