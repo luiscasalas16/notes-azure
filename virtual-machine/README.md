@@ -56,3 +56,17 @@ Set-TimeZone -Id "Central America Standard Time"
 # obtener zona horaria
 Get-TimeZone
 ```
+
+```powershell
+# asignar system-assigned identity a virtual machine
+az vm identity assign --name "luiscasalas16vm" --resource-group "luiscasalas16-resource-group"
+# eliminar system-assigned identity a virtual machine
+az vm identity remove --name "luiscasalas16vm" --resource-group "luiscasalas16-resource-group"
+```
+
+```powershell
+# asignar user-assigned identity a virtual machine
+az vm identity assign --name "luiscasalas16vm" --resource-group "luiscasalas16-resource-group" --identities "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourcegroups/luiscasalas16-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/luiscasalas16-managed-identity"
+# eliminar user-assigned identity a virtual machine
+az vm identity remove --name "luiscasalas16vm" --resource-group "luiscasalas16-resource-group" --identities "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourcegroups/luiscasalas16-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/luiscasalas16-managed-identity"
+```

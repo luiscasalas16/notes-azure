@@ -46,23 +46,26 @@ Comandos para obtener identificadores de objetos.
 
 ```powershell
 # user ID
-az ad user list --query '[].{Id:id, DisplayName:displayName}' --out table
+az ad user list --query '[].{ Id:id, DisplayName:displayName }' --out table
 # group ID
-az ad group list --query '[].{Id:id, DisplayName:displayName}' --out table
+az ad group list --query '[].{ Id:id, DisplayName:displayName }' --out table
 # service principal ID, <name> = nombre del service principal
-az ad sp list --all --query "[?contains(displayName,'<name>')].{Id:id, DisplayName:displayName}" --out table
+az ad sp list --all --query "[?contains(displayName,'luiscasalas16-managed-identity')].{ Id:id, DisplayName:displayName }" --out table
+
+# managed identity ID, <name> = nombre del managed identity
+az identity list --query "[?contains(name,'luiscasalas16-managed-identity')].{ Id:id }" --out tsv
 
 # rol Name, <name> = nombre del rol
-az role definition list --query "[?contains(roleName,'<name>')].{Name:name, RoleName:roleName}" --out table
+az role definition list --query "[?contains(roleName,'<name>')].{ Name:name, RoleName:roleName }" --out table
 
 # resource ID, <name> = nombre del resource
-az resource list --name '<name>' --query "[].{Id:id}" --out tsv
+az resource list --name '<name>' --query "[].{ Id:id }" --out tsv
 # resource group Name
-az group list --query "[].{Name:name}" --out table
+az group list --query "[].{ Name:name }" --out table
 # subscription ID
-az account list --query "[].{Id:id, Name:name}" --out table
+az account list --query "[].{ Id:id, Name:name }" --out table
 # management groups Name
-az account management-group list --query "[].{Name:name}" --out table
+az account management-group list --query "[].{ Name:name }" --out table
 ```
 
 Comandos para revisar roles.

@@ -129,17 +129,29 @@ TokenCredential credential = new DefaultAzureCredential
 - No se puede compartir.
 - No es necesario registrar el AZURE_CLIENT_ID en "Configuration" -> "Application Settings".
 
+A nivel de un application services:
+
+- Asignar system-assigned identity al application service, que retornar un principalId.
+- Otorgar permisos correspondientes al principalId.
+
+A nivel de una virtual machine:
+
+- Asignar system-assigned identity a la virtual machine, que retornar un systemAssignedIdentity.
+- Otorgar permisos correspondientes al systemAssignedIdentity.
+
 #### 2.2.2 User-assigned managed identity
 
 - Se crea como un recurso independiente.
 - Tiene un cliclo de vida independiente.
 - Se puede compartir, la misma identidad puede ser utilizada en múltiples recursos.
-- Se utiliza:
-  - DefaultAzureCredential con variables de ambiente (AZURE_CLIENT_ID) establecidas en "Configuration" -> "Application Settings".
-    - ```csharp
-      TokenCredential credential = new DefaultAzureCredential();
-      ```
-  - ManagedIdentityCredential con parámetros por programación.
-    - ```csharp
-      TokenCredential credential = new ManagedIdentityCredential("AZURE_CLIENT_ID");
-      ```
+
+A nivel de un application services:
+
+- Es necesario registrar el AZURE_CLIENT_ID en "Configuration" -> "Application Settings" con el "Client ID" del managed identity.
+- Asignar user-assigned identity al application service.
+- Otorgar permisos correspondientes al user-assigned identity.
+
+A nivel de una virtual machine:
+
+- Asignar user-assigned identity a la virtual machine.
+- Otorgar permisos correspondientes al user-assigned identity.

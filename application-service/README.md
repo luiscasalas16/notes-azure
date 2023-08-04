@@ -40,10 +40,19 @@ az webapp delete --name "luiscasalas16-app-service-netfw" --resource-group "luis
 ```
 
 ```powershell
-# create a system-assigned identity
+# asignar system-assigned identity a application service
 az webapp identity assign --name "luiscasalas16-app-service-net" --resource-group "luiscasalas16-resource-group"
 az webapp identity assign --name "luiscasalas16-app-service-netfw" --resource-group "luiscasalas16-resource-group"
-# remove the system-assigned identity
+# eliminar system-assigned identity a application service
 az webapp identity remove --name "luiscasalas16-app-service-net" --resource-group "luiscasalas16-resource-group"
 az webapp identity remove --name "luiscasalas16-app-service-netfw" --resource-group "luiscasalas16-resource-group"
+```
+
+```powershell
+# asignar user-assigned identity a application service
+az webapp identity assign --name "luiscasalas16-app-service-net" --resource-group "luiscasalas16-resource-group" --identities "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourcegroups/luiscasalas16-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/luiscasalas16-managed-identity"
+az webapp identity assign --name "luiscasalas16-app-service-netfw" --resource-group "luiscasalas16-resource-group" --identities "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourcegroups/luiscasalas16-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/luiscasalas16-managed-identity"
+# eliminar user-assigned identity a application service
+az webapp identity remove --name "luiscasalas16-app-service-net" --resource-group "luiscasalas16-resource-group" --identities "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourcegroups/luiscasalas16-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/luiscasalas16-managed-identity"
+az webapp identity remove --name "luiscasalas16-app-service-netfw" --resource-group "luiscasalas16-resource-group" --identities "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourcegroups/luiscasalas16-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/luiscasalas16-managed-identity"
 ```
