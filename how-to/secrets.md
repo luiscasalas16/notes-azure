@@ -3,7 +3,11 @@
 Cómo realizar el manejo de secretos en aplicaciones .Net, utilizando User Secrets en desarrollo y Key Vault Secrets en Azure.
 
 - [.Net](#1-net)
+  - [1.1 User Secrets](#11-user-secrets)
+  - [1.2 Key Vault Secrets](#12-key-vault-secrets)
 - [.Net Framework](#2-net-framework)
+  - [2.1 User Secrets](#21-user-secrets)
+  - [2.2 Key Vault Secrets](#22-key-vault-secrets)
 
 ---
 

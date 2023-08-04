@@ -35,6 +35,8 @@ az ad sp create-for-rbac --name "luiscasalas16-application"
 az identity create --name "luiscasalas16-managed-identity" --resource-group "luiscasalas16-resource-group"
 ```
 
+---
+
 ## Comandos para Roles
 
 Referencias:
