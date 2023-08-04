@@ -88,7 +88,7 @@ TokenCredential credential = new DefaultAzureCredential
 - Se requiere la configuración de la aplicación en azure.
 - Se recomienda utilizar un service principal diferente para cada ambiente.
 
-- En .Net y .Net Framework se pueden establecer las variables de ambiente a nivel a nivel de sistema por PowerShell. Si hay un cambio en las variables de ambiente se deben reiniciar las aplicaciones para que el cambio se aplique.
+- En .Net y .Net Framework se pueden establecer las variables de ambiente a nivel de sistema por PowerShell. Si hay un cambio en las variables de ambiente se deben reiniciar las aplicaciones para que el cambio se aplique.
 
 ```powershell
 # registrar las variables de ambiente
