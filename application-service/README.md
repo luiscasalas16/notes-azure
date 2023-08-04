@@ -38,3 +38,12 @@ az webapp delete --name "luiscasalas16-app-service-net" --resource-group "luisca
 # eliminar application service .Net Framework
 az webapp delete --name "luiscasalas16-app-service-netfw" --resource-group "luiscasalas16-resource-group" --keep-empty-plan
 ```
+
+```powershell
+# create a system-assigned identity
+az webapp identity assign --name "luiscasalas16-app-service-net" --resource-group "luiscasalas16-resource-group"
+az webapp identity assign --name "luiscasalas16-app-service-netfw" --resource-group "luiscasalas16-resource-group"
+# remove the system-assigned identity
+az webapp identity remove --name "luiscasalas16-app-service-net" --resource-group "luiscasalas16-resource-group"
+az webapp identity remove --name "luiscasalas16-app-service-netfw" --resource-group "luiscasalas16-resource-group"
+```

@@ -3,7 +3,7 @@
 Cómo realizar la autenticación de aplicaciones .Net en Azure.
 
 - [1. Autenticación para desarrollo](#1-autenticación-para-desarrollo)
-  - [1.1 Por cuenta de usuario de azure](#11-por-cuenta-de-usuario-de-azure)
+  - [1.1 Por cuenta de azure](#11-por-cuenta-de-azure)
   - [1.2 Por service principal de azure](#12-por-service-principal-de-azure)
 - [2. Autenticación para producción](#2-autenticación-para-producción)
   - [2.1. En tierra por service principals de azure](#21-en-tierra-por-service-principals-de-azure)
@@ -19,24 +19,21 @@ Referencias:
 
 ## 1. Autenticación para desarrollo
 
-### 1.1 Por cuenta de usuario de azure
+### 1.1 Por cuenta de azure
 
-- La identidad se obtiene de la herramienta de desarrollo o de la linea de comandos.
-- Se utiliza la misma cuenta de usuario del desarrollador en azure.
+- La identidad se obtiene de la herramienta de desarrollo (VS o VSCODE) o de la linea de comandos (Azure CLI o Azure PowerShell).
+- Se utiliza la misma cuenta del desarrollador en azure.
 - Se tienen más permisos de los requeridos para el desarrollo, por lo que es un potencial problema en producción.
-- Se utiliza DefaultAzureCredential.
-
-```csharp
-TokenCredential credential = new DefaultAzureCredential();
-```
+- Se recomienta utilizar un grupo y otorgarle a este los permisos. Luego incluir en el grupo las cuentas de cada desarrollador.
 
 ### 1.2 Por service principal de azure
 
 - La identidad se obtiene por el registro de un service principal y el uso del TENANT_ID, CLIENT_ID, CLIENT_SECRET.
 - Se requiere la configuración del service principal en azure.
 - Se tienen los mismos permisos para desarrollo y para producción.
-- Se recomienda utilizar un service principal diferente para cada desarrollador y aplicación.
-- Se puede utilizar la siguiente configuración del DefaultAzureCredential para evitar el uso de la identidad del desarrollador y forzar la lectura del service principal.
+- Se recomienda utilizar un service principal diferente para cada desarrollador y para cada aplicación.
+- Se recomienta utilizar un grupo para cada aplicación y otorgarle a este los permisos. Luego incluir en el grupo los service principal de cada desarrollador.
+- Se puede utilizar la siguiente configuración del DefaultAzureCredential para evitar el uso de la cuenta del desarrollador y obligar la lectura del service principal.
 
 ```csharp
 TokenCredential credential = new DefaultAzureCredential
@@ -90,51 +87,47 @@ TokenCredential credential = new DefaultAzureCredential
 - La identidad se obtiene por el registro de una aplicación y el uso del TENANT_ID, CLIENT_ID, CLIENT_SECRET.
 - Se requiere la configuración de la aplicación en azure.
 - Se recomienda utilizar un service principal diferente para cada ambiente.
-- Se utiliza:
-  - DefaultAzureCredential con variables de ambiente (AZURE_TENANT_ID, AZURE_CLIENT_ID y AZURE_CLIENT_SECRET) establecidas en "web.config" -> "system.webServer" -> "aspNetCore" -> "environmentVariables"
-    - ```csharp
-      TokenCredential credential = new DefaultAzureCredential();
-      ```
-  - ClientSecretCredential con parámetros por programación.
-    - ```csharp
-      TokenCredential credential = new ClientSecretCredential ("AZURE_TENANT_ID", "AZURE_CLIENT_ID", "AZURE_CLIENT_SECRET");
-      ```
+
+- En .Net y .Net Framework se pueden establecer las variables de ambiente a nivel a nivel de sistema por PowerShell. Si hay un cambio en las variables de ambiente se deben reiniciar las aplicaciones para que el cambio se aplique.
 
 ```powershell
-#crear service principal para desarrollador y aplicación en azure ad
-az ad sp create-for-rbac --name "luiscasalas16-application-production"
+# registrar las variables de ambiente
+[Environment]::SetEnvironmentVariable("AZURE_TENANT_ID", "00000000-0000-0000-0000-000000000000", "Machine")
+[Environment]::SetEnvironmentVariable("AZURE_CLIENT_ID", "00000000-0000-0000-0000-000000000000", "Machine")
+[Environment]::SetEnvironmentVariable("AZURE_CLIENT_SECRET", "abcdefghijklmnopqrstuvwxyz", "Machine")
 
-#incluir service principal del desarrollador y aplicación en grupo en azure ad
-Azure Active Directory -> Groups -> Members -> Add
+# eliminar las variables de ambiente
+[Environment]::SetEnvironmentVariable("AZURE_TENANT_ID", $null, "Machine")
+[Environment]::SetEnvironmentVariable("AZURE_CLIENT_ID", $null, "Machine")
+[Environment]::SetEnvironmentVariable("AZURE_CLIENT_SECRET", $null, "Machine")
+```
+
+- En .Net y .Net Framework se pueden establecer las variables de ambiente a nivel del application pool en el IIS en el archivo C:\Windows\System32\inetsrv\config\applicationHost.config.
+
+```xml
+<add name=".NET v4.5" managedRuntimeVersion="v4.0">
+  <environmentVariables>
+    <add name="AZURE_TENANT_ID" value="00000000-0000-0000-0000-000000000000" />
+    <add name="AZURE_CLIENT_ID" value="00000000-0000-0000-0000-000000000000" />
+    <add name="AZURE_CLIENT_SECRET" value="abcdefghijklmnopqrstuvwxyz" />
+  </environmentVariables>
+</add>
+```
+
+```bash
+"%systemroot%\system32\inetsrv\appcmd.exe" set config -section:system.applicationHost/applicationPools /+"[name='.NET v4.5'].environmentVariables.[name='AZURE_TENANT_ID',value='00000000-0000-0000-0000-000000000000']" /commit:apphost
+"%systemroot%\system32\inetsrv\appcmd.exe" set config -section:system.applicationHost/applicationPools /+"[name='.NET v4.5'].environmentVariables.[name='AZURE_CLIENT_ID',value='00000000-0000-0000-0000-000000000000']" /commit:apphost
+"%systemroot%\system32\inetsrv\appcmd.exe" set config -section:system.applicationHost/applicationPools /+"[name='.NET v4.5'].environmentVariables.[name='AZURE_CLIENT_SECRET',value='abcdefghijklmnopqrstuvwxyz']" /commit:apphost
 ```
 
 ### 2.2. En nube por managed identity de azure
-
-```powershell
-#crear app service plan
-az appservice plan create --name "luiscasalas16-app-service-plan" --resource-group "luiscasalas16-resource-group" --location "eastus2" --sku "F1"
-
-#crear app service
-az webapp create --name "luiscasalas16-app-service-web" --resource-group "luiscasalas16-resource-group" --plan "luiscasalas16-app-service-plan" --runtime "dotnet:7"
-```
 
 #### 2.2.1 System-assigned managed identity
 
 - Se crea como parte de un recurso.
 - Comparte el cliclo de vida del recurso.
 - No se puede compartir.
-- Se utiliza DefaultAzureCredential.
-  - ```csharp
-    TokenCredential credential = new DefaultAzureCredential();
-    ```
-
-```powershell
-#habilitar la system managed identity
-az webapp identity assign --name "luiscasalas16-app-service-web" --resource-group "luiscasalas16-resource-group"
-
-#incluir system managed principal en grupo en azure ad
-Azure Active Directory -> Groups -> Members -> Add
-```
+- No es necesario registrar el AZURE_CLIENT_ID en "Configuration" -> "Application Settings".
 
 #### 2.2.2 User-assigned managed identity
 
@@ -150,14 +143,3 @@ Azure Active Directory -> Groups -> Members -> Add
     - ```csharp
       TokenCredential credential = new ManagedIdentityCredential("AZURE_CLIENT_ID");
       ```
-
-```powershell
-#crear la user managed identity
-az identity create --name "luiscasalas16-user-identity" --resource-group "luiscasalas16-resource-group"
-
-#incluir user managed principal en grupo en azure ad
-Azure Active Directory -> Groups -> Members -> Add
-
-#asociar la user managed identity
-luiscasalas16-app-service-web -> Identity -> User assigned -> Add -> luiscasalas16-user-identity
-```
