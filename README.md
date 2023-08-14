@@ -53,8 +53,6 @@ Es un conjunto de comandos que se utilizan para la administración de recursos d
 - [Instalación](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
 - [Referencia](https://learn.microsoft.com/en-us/cli/azure/reference-index)
 
-[Latest Release of the Azure CLI](https://aka.ms/installazurecliwindowsx64)
-
 ```powershell
 #instalación (run as administrator)
     Invoke-WebRequest -Uri 'https://aka.ms/installazurecliwindowsx64' -OutFile '.\AzureClix64.msi';
