@@ -6,7 +6,7 @@
 
 ## Comandos
 
-Comandos generales para la administración de una Virtual Machine.
+Comandos generales para la administración de una Virtual Network.
 
 ```powershell
 # listar ips publicas de vms

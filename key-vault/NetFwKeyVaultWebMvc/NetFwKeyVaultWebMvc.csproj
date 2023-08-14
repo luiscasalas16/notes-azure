@@ -191,6 +191,8 @@
     <Content Include="Global.asax" />
     <Content Include="Content\site.css" />
     <Content Include="Scripts\site.js" />
+    <None Include="Properties\PublishProfiles\lcs16-as-netfw - Web Deploy.pubxml" />
+    <Content Include="Properties\ServiceDependencies\lcs16-as-netfw - Web Deploy\profile.arm.json" />
     <None Include="secrets.xml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
