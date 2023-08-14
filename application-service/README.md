@@ -56,3 +56,9 @@ az webapp identity assign --name "lcs16-as-netfw" --resource-group "lcs16-rg" --
 az webapp identity remove --name "lcs16-as-net" --resource-group "lcs16-rg" --identities "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourcegroups/lcs16-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/lcs16-managed-identity"
 az webapp identity remove --name "lcs16-as-netfw" --resource-group "lcs16-rg" --identities "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourcegroups/lcs16-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/lcs16-managed-identity"
 ```
+
+```powershell
+# establecer appsettings a application service
+az webapp config appsettings set --name "lcs16-as-net" --resource-group "lcs16-rg" --settings 'AZURE_CLIENT_ID=bd8b9733-8e70-499c-9357-8e8bdc2fe22c'
+az webapp config appsettings set --name "lcs16-as-netfw" --resource-group "lcs16-rg" --settings 'AZURE_CLIENT_ID=bd8b9733-8e70-499c-9357-8e8bdc2fe22c'
+```
