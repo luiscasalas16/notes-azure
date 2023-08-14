@@ -32,6 +32,7 @@ Guías prácticas.
 ## Documentación
 
 - [Application Architecture Fundamentals](https://learn.microsoft.com/en-us/azure/architecture/guide)
+- [Azure Roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles)
 
 ---
 
@@ -52,9 +53,21 @@ Es un conjunto de comandos que se utilizan para la administración de recursos d
 - [Instalación](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
 - [Referencia](https://learn.microsoft.com/en-us/cli/azure/reference-index)
 
+[Latest Release of the Azure CLI](https://aka.ms/installazurecliwindowsx64)
+
+```powershell
+#instalación (run as administrator)
+    Invoke-WebRequest -Uri 'https://aka.ms/installazurecliwindowsx64' -OutFile '.\AzureClix64.msi'; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureClix64.msi /quiet'; Remove-Item .\AzureClix64.msi
+```
+
 ```powershell
 #autenticación
     az login
+```
+
+```powershell
+#versión
+    az version
 ```
 
 ```powershell
