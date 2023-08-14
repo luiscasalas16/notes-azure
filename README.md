@@ -57,7 +57,9 @@ Es un conjunto de comandos que se utilizan para la administración de recursos d
 
 ```powershell
 #instalación (run as administrator)
-    Invoke-WebRequest -Uri 'https://aka.ms/installazurecliwindowsx64' -OutFile '.\AzureClix64.msi'; Start-Process msiexec.exe -Wait -ArgumentList '/I AzureClix64.msi /quiet'; Remove-Item .\AzureClix64.msi
+    Invoke-WebRequest -Uri 'https://aka.ms/installazurecliwindowsx64' -OutFile '.\AzureClix64.msi';
+    Start-Process msiexec.exe -Wait -ArgumentList '/I AzureClix64.msi /quiet';
+    Remove-Item .\AzureClix64.msi;
 ```
 
 ```powershell
