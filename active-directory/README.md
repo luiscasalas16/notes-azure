@@ -10,7 +10,7 @@
 
 ```powershell
 # crear grupo
-az ad group create --display-name "luiscasalas16-group" --mail-nickname "luiscasalas16-group" --description "luiscasalas16-group"
+az ad group create --display-name "lcs16-group" --mail-nickname "lcs16-group" --description "lcs16-group"
 ```
 
 ---
@@ -27,12 +27,12 @@ Referencias:
 
 ```powershell
 # crear application identity
-az ad sp create-for-rbac --name "luiscasalas16-application"
+az ad sp create-for-rbac --name "lcs16-application-identity"
 ```
 
 ```powershell
 # crear managed identity
-az identity create --name "luiscasalas16-managed-identity" --resource-group "luiscasalas16-resource-group"
+az identity create --name "lcs16-managed-identity" --resource-group "lcs16-rg"
 ```
 
 ---
@@ -52,10 +52,10 @@ az ad user list --query '[].{ Id:id, DisplayName:displayName }' --out table
 # group ID
 az ad group list --query '[].{ Id:id, DisplayName:displayName }' --out table
 # service principal ID, <name> = nombre del service principal
-az ad sp list --all --query "[?contains(displayName,'luiscasalas16-managed-identity')].{ Id:id, DisplayName:displayName }" --out table
+az ad sp list --all --query "[?contains(displayName,'<name>')].{ Id:id, DisplayName:displayName }" --out table
 
 # managed identity ID, <name> = nombre del managed identity
-az identity list --query "[?contains(name,'luiscasalas16-managed-identity')].{ Id:id }" --out tsv
+az identity list --query "[?contains(name,'<name>')].{ Id:id }" --out tsv
 
 # rol Name, <name> = nombre del rol
 az role definition list --query "[?contains(roleName,'<name>')].{ Name:name, RoleName:roleName }" --out table

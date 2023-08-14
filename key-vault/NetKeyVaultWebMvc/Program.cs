@@ -15,7 +15,7 @@ namespace NetKeyVaultWebMvc
                 builder.Configuration.AddUserSecrets<Program>();
 
                 //KeyVault
-                builder.Configuration.AddAzureKeyVault(new Uri("https://luiscasalas16-key-vault.vault.azure.net/"), new DefaultAzureCredential());
+                builder.Configuration.AddAzureKeyVault(new Uri("https://lcs16-kv.vault.azure.net/"), new DefaultAzureCredential());
 
                 builder.Services.AddControllersWithViews();
 
