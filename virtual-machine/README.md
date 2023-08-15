@@ -10,12 +10,12 @@ Comandos generales para la administración de una Virtual Machine.
 
 ```powershell
 # listar tamaños de vms
-az vm list-sizes --location "eastus2" --output table
+az vm list-sizes --location "eastus2" --outtable
 ```
 
 ```powershell
 # listar imágenes de vms
-az vm image list --output table
+az vm image list --out table
 # buscar imágenes de vms
 az vm image list --offer WindowsServer --sku 2022-datacenter --all
 # imágenes Windows Server 2022:

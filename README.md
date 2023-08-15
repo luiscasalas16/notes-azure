@@ -21,6 +21,7 @@ Proyectos de ejemplo de servicios de Azure.
 - [Application Service](/application-service/README.md)
 - [Virtual Machine](/virtual-machine/README.md)
 - [Key Vault](/key-vault/README.md)
+- [Container Instances](/container-instances/README.md)
 
 Guías prácticas.
 

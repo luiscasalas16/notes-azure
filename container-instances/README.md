@@ -10,33 +10,18 @@ Comandos generales para la administración de un Container Instances.
 
 ```powershell
 # listar contenedores
-az container list --resource-group "lcs16-rg" --output table
+az container list --resource-group "lcs16-rg" --out table
 ```
 
 ```powershell
 # crear contenedor
-az container create --name "lcs16-container-helloworld" --resource-group "lcs16-rg" --image "mcr.microsoft.com/azuredocs/aci-helloworld" --dns-name-label "lcs16-container-helloworld" --ports 80
+az container create --name "lcs16-container-welcome-to-docker" --resource-group "lcs16-rg" --image "lusalas16/welcome-to-docker:latest" --dns-name-label "lcs16-container-welcome-to-docker" --ports 3000
+# reiniciar contenedor
+az container restart --name "lcs16-container-welcome-to-docker" --resource-group "lcs16-rg"
+# ver events y logs
+az container attach --name "lcs16-container-welcome-to-docker" --resource-group "lcs16-rg"
 ```
 
 ```powershell
-# status ProvisioningState
-az container show --name "lcs16-container-helloworld" --resource-group "lcs16-rg" --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
-
-# logs
-az container logs --name "lcs16-container-helloworld" --resource-group "lcs16-rg"
-```
-
-```powershell
-#
-
-```
-
-```powershell
-#
-
-```
-
-```powershell
-#
-
+az container delete --name "lcs16-container-welcome-to-docker" --resource-group "lcs16-rg" --yes
 ```

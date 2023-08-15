@@ -14,7 +14,7 @@ az vm list-ip-addresses \
   --resource-group learn-559c1539-4ded-4e33-90c5-f354b40f38eb \
   --name my-vm \
   --query "[].virtualMachine.network.publicIpAddresses[*].ipAddress" \
-  --output tsv
+  --out tsv
 ```
 
 ```powershell
@@ -22,7 +22,7 @@ az vm list-ip-addresses \
 az network nsg list \
   --resource-group learn-559c1539-4ded-4e33-90c5-f354b40f38eb \
   --query '[].name' \
-  --output tsv
+  --out tsv
 ```
 
 ```powershell
@@ -31,7 +31,7 @@ az network nsg rule list \
   --resource-group learn-559c1539-4ded-4e33-90c5-f354b40f38eb \
   --nsg-name my-vmNSG \
   --query '[].{Name:name, Priority:priority, Port:destinationPortRange, Access:access}' \
-  --output table
+  --out table
 ```
 
 ```powershell
