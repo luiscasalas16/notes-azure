@@ -11,7 +11,7 @@
 Comandos generales para la administración de un Key Vault.
 
 ```powershell
-# crear key vault rbac
+# crear key vault
 az keyvault create --name "lcs16-kv" --resource-group "lcs16-rg" --location "eastus2" --enable-rbac-authorization "true"
 
 # establecer a administrador rol "Key Vault Administrator" en key vault
