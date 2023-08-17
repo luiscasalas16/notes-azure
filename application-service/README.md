@@ -1,5 +1,7 @@
 # example-azure / application-service
 
+[Azure App Service Documentation](https://learn.microsoft.com/en-us/azure/app-service)
+
 - [Comandos Application Service Plan](#comandos-application-service-plan)
 - [Comandos Application Service](#comandos-application-service)
 

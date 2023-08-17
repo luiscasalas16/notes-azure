@@ -1,5 +1,7 @@
 # example-azure / active-directory
 
+[Azure Active Directory Documentation](https://learn.microsoft.com/en-us/azure/active-directory)
+
 - [Comandos para Grupos](#comandos-para-grupos)
 - [Comandos para Identidades](#comandos-para-identidades)
 - [Comandos para Roles](#comandos-para-roles)

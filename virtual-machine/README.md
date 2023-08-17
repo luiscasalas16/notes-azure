@@ -1,5 +1,7 @@
 # example-azure / virtual-machine
 
+[Azure Virtual Machine Documentation](https://learn.microsoft.com/en-us/azure/virtual-machines)
+
 - [Comandos](#comandos)
 
 ---

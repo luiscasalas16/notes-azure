@@ -1,5 +1,7 @@
 # example-azure / virtual-network
 
+[Azure Virtual Network Documentation](https://learn.microsoft.com/en-us/azure/virtual-network)
+
 - [Comandos](#comandos)
 
 ---

@@ -17,11 +17,15 @@ Este repositorio contiene ejemplos y documentación relacionada con Azure.
 Proyectos de ejemplo de servicios de Azure.
 
 - [Active Directory](/active-directory/README.md)
+- [Subscription](/subscription/README.md)
 - [Resource Group](/resource-group/README.md)
+- [Virtual Network](/virtual-network/README.md)
 - [Application Service](/application-service/README.md)
 - [Virtual Machine](/virtual-machine/README.md)
 - [Key Vault](/key-vault/README.md)
+- [Static Web App](/static-web-app/README.md)
 - [Container Instances](/container-instances/README.md)
+- [Web Application Firewall](/web-application-firewall/README.md)
 
 Guías prácticas.
 

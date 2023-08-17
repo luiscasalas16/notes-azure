@@ -1,5 +1,7 @@
 # example-azure / key-vault
 
+[Azure Key Vault Documentation](https://learn.microsoft.com/en-us/azure/key-vault)
+
 - [Comandos](#comandos)
 
 ---
