@@ -25,6 +25,7 @@ Proyectos de ejemplo de servicios de Azure.
 - [Key Vault](/key-vault/README.md)
 - [Static Web App](/static-web-app/README.md)
 - [Container Instances](/container-instances/README.md)
+- [Container Registry](/container-registry/README.md)
 - [Web Application Firewall](/web-application-firewall/README.md)
 
 Guías prácticas.
@@ -38,6 +39,8 @@ Guías prácticas.
 
 - [Application Architecture Fundamentals](https://learn.microsoft.com/en-us/azure/architecture/guide)
 - [Azure Roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles)
+- [Azure Resources Providers] (https://learn.microsoft.com/en-us/azure/role-based-access-control/resource-provider-operations)
+- [AzAdvertizer](https://www.azadvertizer.net/index.html)
 
 ---
 
