@@ -11,6 +11,11 @@
 Comandos generales para la administración de una Virtual Network.
 
 ```powershell
+# crear virtual network
+az network vnet create --name "lcs16-vn" --resource-group "lcs16-rg" --address-prefix 10.0.0.0/16 --subnet-name "default" --subnet-prefixes 10.0.1.0/24
+```
+
+```powershell
 # listar ips publicas de vms
 az vm list-ip-addresses \
   --resource-group learn-559c1539-4ded-4e33-90c5-f354b40f38eb \
