@@ -41,7 +41,7 @@ az vm auto-shutdown --name "lcs16-vm-ubuntu" --resource-group "lcs16-rg" --time 
 
 ```powershell
 # eliminar virtual machine
-az vm delete --name "lcs16-vm-win" --resource-group "lcs16-rg" --yes
+az vm delete --name "lcs16-vm-win" --resource-group "lcs16-rg"
 ```
 
 ```powershell

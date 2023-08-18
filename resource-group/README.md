@@ -15,5 +15,5 @@ az group create --name "lcs16-rg" --location "eastus2"
 
 ```powershell
 # eliminar grupo de recursos
-az group delete --name "lcs16-rg" --yes
+az group delete --name "lcs16-rg"
 ```

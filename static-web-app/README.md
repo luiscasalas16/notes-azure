@@ -32,6 +32,6 @@ az staticwebapp show --name "lcs16-swa-angular" --query "defaultHostname"
 
 ```powershell
 # eliminar static web app
-az staticwebapp delete --name "lcs16-swa-react" --resource-group "lcs16-rg" --yes
-az staticwebapp delete --name "lcs16-swa-angular" --resource-group "lcs16-rg" --yes
+az staticwebapp delete --name "lcs16-swa-react" --resource-group "lcs16-rg"
+az staticwebapp delete --name "lcs16-swa-angular" --resource-group "lcs16-rg"
 ```

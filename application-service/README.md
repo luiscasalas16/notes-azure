@@ -34,7 +34,7 @@ az appservice plan delete --name "lcs16-asp" --resource-group "lcs16-rg"
 Comandos generales para la administración de un Application Service.
 
 ```powershell
-# crear application service .Net
+# crear application service .Net (dotnet:7 para windows o DOTNETCORE:7.0 para linux)
 az webapp create --name "lcs16-as-net" --resource-group "lcs16-rg" --plan "lcs16-asp" --runtime "dotnet:7"
 # crear application service .Net Framework
 az webapp create --name "lcs16-as-netfw" --resource-group "lcs16-rg" --plan "lcs16-asp" --runtime "ASPNET:V4.8"

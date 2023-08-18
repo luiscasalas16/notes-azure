@@ -32,5 +32,5 @@ docker tag mcr.microsoft.com/hello-world lcs16containerregistry.azurecr.io/hello
 docker push lcs16containerregistry.azurecr.io/hello-world:v1
 docker rmi lcs16containerregistry.azurecr.io/hello-world:v1
 # eliminar imagen
-az acr repository delete --name "lcs16containerregistry" --image "hello-world:v1" --yes
+az acr repository delete --name "lcs16containerregistry" --image "hello-world:v1"
 ```

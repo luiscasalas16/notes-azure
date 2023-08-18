@@ -25,5 +25,5 @@ az container attach --name "lcs16-ci-netdockerconsole" --resource-group "lcs16-r
 ```
 
 ```powershell
-az container delete --name "lcs16-ci-netdockerconsole" --resource-group "lcs16-rg" --yes
+az container delete --name "lcs16-ci-netdockerconsole" --resource-group "lcs16-rg"
 ```
