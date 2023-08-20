@@ -39,7 +39,7 @@ Guías prácticas.
 
 - [Application Architecture Fundamentals](https://learn.microsoft.com/en-us/azure/architecture/guide)
 - [Azure Roles](https://learn.microsoft.com/en-us/azure/role-based-access-control/built-in-roles)
-- [Azure Resources Providers] (https://learn.microsoft.com/en-us/azure/role-based-access-control/resource-provider-operations)
+- [Azure Resources Providers](https://learn.microsoft.com/en-us/azure/role-based-access-control/resource-provider-operations)
 - [AzAdvertizer](https://www.azadvertizer.net/index.html)
 
 ---
@@ -95,7 +95,7 @@ Es un conjunto de comandos que se utilizan para la administración de recursos d
     az config set auto-upgrade.prompt=no
 #configuración instalación automática dependencias
     az config set extension.use_dynamic_install=yes_without_prompt
-#configuración formato de salida pordefecto
+#configuración formato de salida por defecto
     az config set core.output=jsonc
 ```
 

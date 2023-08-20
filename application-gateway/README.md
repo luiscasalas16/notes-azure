@@ -8,9 +8,6 @@
 - [](https://azure.github.io/Azure-Proactive-Resiliency-Library/services/networking/web-application-firewall)
 - [](https://tutorialsdojo.com/azure-application-gateway)
 
-Transport Layer Security (TLS),
-cookie-based session affinity,
-round-robin load distribution,
 content-based routing,
 ability to host multiple websites,
 security enhancements.
