@@ -27,11 +27,17 @@ Comandos generales para la administración de un Web Application Gateway.
 ```powershell
 # crear waf-policy
 az network application-gateway waf-policy create --name "lcs16-wp" --resource-group "lcs16-rg" --location "eastus2" --type "OWASP" --version "3.2"
+# configurar waf policy
 az network application-gateway waf-policy policy-setting update --policy-name "lcs16-wp" --resource-group "lcs16-rg" --state "Enabled" --mode "Prevention" --request-body-check true
+```
 
-# crear ip waf
-az network public-ip create --name "lcs16-ip-waf" --resource-group "lcs16-rg" --location "eastus2" --version "IPv4" --sku "Standard" --allocation-method "Static" --zone 1 2 3 --tier "Regional" --dns-name "lcs16-ag-waf"
+```powershell
+# crear ip
+az network public-ip create --name "lcs16-ip-ag" --resource-group "lcs16-rg" --location "eastus2" --version "IPv4" --sku "Standard" --allocation-method "Static" --zone 1 2 3 --tier "Regional" --dns-name "lcs16-ag"
 
 # crear waf
-az network application-gateway create --name "lcs16-ag-waf" --resource-group "lcs16-rg" --location "eastus2" --sku "WAF_v2" --waf-policy "lcs16-wp" --capacity 1 --http2 "Enabled" --vnet-name "lcs16-vn" --subnet "WafSubnet" --public-ip-address "lcs16-ip-waf" --servers lcs16-as-net-1.azurewebsites.net lcs16-as-net-2.azurewebsites.net --priority 1000 --http-settings-port 80 --http-settings-protocol "Http"
+az network application-gateway create --name "lcs16-ag" --resource-group "lcs16-rg" --location "eastus2" --sku "WAF_v2" --waf-policy "lcs16-wp" --capacity 1 --http2 "Enabled" --vnet-name "lcs16-vn" --subnet "WafSubnet" --public-ip-address "lcs16-ip-ag" --servers lcs16-as-net-1.azurewebsites.net lcs16-as-net-2.azurewebsites.net --priority 1000 --http-settings-port 80 --http-settings-protocol "Http"
+
+# eliminar waf
+az network application-gateway delete --name "lcs16-ag" --resource-group "lcs16-rg"
 ```
