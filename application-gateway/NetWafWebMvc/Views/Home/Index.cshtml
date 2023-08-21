@@ -6,28 +6,49 @@
     <h3 class="display-4">Net Waf Web Mvc</h3>
     <div class="row">
         <div class="col">
-            <span>Get Methods</span>
+            <span>Common Parameters Get Methods</span>
         </div>
     </div>
     <div class="row mb-2">
         <div class="col">
-            <button id="NoParametersGet" type="button" class="btn btn-primary">No Parameters Get</button>
-            <button id="ParametersGet" type="button" class="btn btn-primary">Parameters Get</button>
-            <button id="ParametersJsonGet" type="button" class="btn btn-primary">Parameters Json Get</button>
+            <button id="NoParametersGet" type="button" class="btn btn-primary">No Parameters</button>
+            <button id="ParametersGet" type="button" class="btn btn-primary">Get Object</button>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <span>Post Methods</span>
+            <span>Json Parameters Get Methods</span>
         </div>
     </div>
     <div class="row mb-2">
         <div class="col">
-            <button id="NoParametersPost" type="button" class="btn btn-primary">No Parameters Post</button>
-            <button id="ParametersPost" type="button" class="btn btn-primary">Parameters Post</button>
-            <button id="ParametersPostFormData" type="button" class="btn btn-primary">Parameters Post FormData</button>
-            <button id="ParametersJsonPost" type="button" class="btn btn-primary">Parameters Json Post</button>
-            <button id="ParametersJsonPostFormData" type="button" class="btn btn-primary">Parameters Json Post FormData</button>
+            <button id="ParametersJsonGetSuccess" type="button" class="btn btn-success">Get Json in Object</button>
+            <button id="ParametersJsonGetError" type="button" class="btn btn-danger">Get Json in Object</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <span>Common Parameters Post Methods</span>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col">
+            <button id="NoParametersPost" type="button" class="btn btn-primary">No Parameters </button>
+            <button id="ParametersPost" type="button" class="btn btn-primary">Post Object</button>
+            <button id="ParametersPostFormData" type="button" class="btn btn-primary">Post FormData</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <span>Json Parameters Post Methods</span>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col">
+            <button id="ParametersJsonPostSuccess" type="button" class="btn btn-success">Post Json in Object</button>
+            <button id="ParametersJsonPostError" type="button" class="btn btn-danger">Post Json in Object</button>
+            <button id="ParametersJsonPostFormDataSuccess" type="button" class="btn btn-success">Post Json in FormData</button>
+            <button id="ParametersJsonPostFormDataError" type="button" class="btn btn-danger">Post Json in FormData</button>
         </div>
     </div>
 </div>
@@ -71,14 +92,32 @@
                 });
         });
 
-        $("#ParametersJsonGet").click(function () {
-            console.log("ParametersJsonGet");
+        $("#ParametersJsonGetSuccess").click(function () {
+            console.log("ParametersJsonGetSuccess");
 
             $.ajax(
                 {
                     type: 'GET',
                     dataType: 'json',
-                    data: { parameters: encode({ id: "123", name: "abc" }) },
+                    data: { parameters: "base64|" + btoa(JSON.stringify({ id: "123", name: "abc" })) },
+                    url: baseUrl + 'TestMvc/ParametersJsonGet',
+                    success:
+                        function (response) {
+                            console.log(response);
+                            Swal.fire({ icon: 'success', text: response.result });
+                        },
+                    error: error
+                });
+        });
+
+        $("#ParametersJsonGetError").click(function () {
+            console.log("ParametersJsonGetError");
+
+            $.ajax(
+                {
+                    type: 'GET',
+                    dataType: 'json',
+                    data: { parameters: JSON.stringify({ id: "123", name: "abc" }) },
                     url: baseUrl + 'TestMvc/ParametersJsonGet',
                     success:
                         function (response) {
@@ -148,15 +187,15 @@
                     error: error
                 });
         });
-
-        $("#ParametersJsonPost").click(function () {
-            console.log("ParametersJsonPost");
+        
+        $("#ParametersJsonPostSuccess").click(function () {
+            console.log("ParametersJsonPostSuccess");
 
             $.ajax(
                 {
                     type: 'POST',
                     dataType: 'json',
-                    data: { parameters: encode({ id: "123", name: "abc" }) },
+                    data: { parameters: "base64|" + btoa(JSON.stringify({ id: "123", name: "abc" })) },
                     url: baseUrl + 'TestMvc/ParametersJsonPost',
                     success:
                         function (response) {
@@ -167,12 +206,54 @@
                 });
         });
 
-        $("#ParametersJsonPostFormData").click(function () {
-            console.log("ParametersJsonPostFormData");
+        $("#ParametersJsonPostError").click(function () {
+            console.log("ParametersJsonPostError");
+
+            $.ajax(
+                {
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { parameters: JSON.stringify({ id: "123", name: "abc" }) },
+                    url: baseUrl + 'TestMvc/ParametersJsonPost',
+                    success:
+                        function (response) {
+                            console.log(response);
+                            Swal.fire({ icon: 'success', text: response.result });
+                        },
+                    error: error
+                });
+        });
+
+        $("#ParametersJsonPostFormDataSuccess").click(function () {
+            console.log("ParametersJsonPostFormDataSuccess");
 
             var data = new FormData();
 
-            data.append("parameters", encode({ id: "123", name: "abc" }));
+            data.append("parameters", "base64|" + btoa(JSON.stringify({ id: "123", name: "abc" })));
+
+            $.ajax(
+                {
+                    type: 'POST',
+                    dataType: 'json',
+                    data: data,
+                    contentType: false,
+                    processData: false,
+                    url: baseUrl + 'TestMvc/ParametersJsonPostFormData',
+                    success:
+                        function (response) {
+                            console.log(response);
+                            Swal.fire({ icon: 'success', text: response.result });
+                        },
+                    error: error
+                });
+        });
+
+        $("#ParametersJsonPostFormDataError").click(function () {
+            console.log("ParametersJsonPostFormDataError");
+
+            var data = new FormData();
+
+            data.append("parameters", JSON.stringify({ id: "123", name: "abc" }));
 
             $.ajax(
                 {
@@ -191,11 +272,6 @@
                 });
         });
     });
-
-    function encode(obj) {
-        //return "base64|" + btoa(JSON.stringify(obj));
-        return JSON.stringify(obj);
-    }
 
     function error(response) {
         console.error(response);
