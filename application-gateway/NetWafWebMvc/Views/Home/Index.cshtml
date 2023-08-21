@@ -1,0 +1,204 @@
+﻿@{
+    ViewData["Title"] = "TestMvc Page";
+}
+
+<div class="text-center">
+    <h3 class="display-4">Net Waf Web Mvc</h3>
+    <div class="row">
+        <div class="col">
+            <span>Get Methods</span>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col">
+            <button id="NoParametersGet" type="button" class="btn btn-primary">No Parameters Get</button>
+            <button id="ParametersGet" type="button" class="btn btn-primary">Parameters Get</button>
+            <button id="ParametersJsonGet" type="button" class="btn btn-primary">Parameters Json Get</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <span>Post Methods</span>
+        </div>
+    </div>
+    <div class="row mb-2">
+        <div class="col">
+            <button id="NoParametersPost" type="button" class="btn btn-primary">No Parameters Post</button>
+            <button id="ParametersPost" type="button" class="btn btn-primary">Parameters Post</button>
+            <button id="ParametersPostFormData" type="button" class="btn btn-primary">Parameters Post FormData</button>
+            <button id="ParametersJsonPost" type="button" class="btn btn-primary">Parameters Json Post</button>
+            <button id="ParametersJsonPostFormData" type="button" class="btn btn-primary">Parameters Json Post FormData</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var baseUrl = "@Url.Content("~/")";
+
+        $("#NoParametersGet").click(function () {
+            console.log("NoParametersGet");
+
+            $.ajax(
+                {
+                    type: 'GET',
+                    dataType: 'json',
+                    url: baseUrl + 'TestMvc/NoParametersGet',
+                    success:
+                        function (response) {
+                            console.log(response);
+                            Swal.fire({ icon: 'success', text: response.result });
+                        },
+                    error: error
+                });
+        });
+
+        $("#ParametersGet").click(function () {
+            console.log("ParametersGet");
+
+            $.ajax(
+                {
+                    type: 'GET',
+                    dataType: 'json',
+                    data: { id: "123", name: "abc" },
+                    url: baseUrl + 'TestMvc/ParametersGet',
+                    success:
+                        function (response) {
+                            console.log(response);
+                            Swal.fire({ icon: 'success', text: response.result });
+                        },
+                    error: error
+                });
+        });
+
+        $("#ParametersJsonGet").click(function () {
+            console.log("ParametersJsonGet");
+
+            $.ajax(
+                {
+                    type: 'GET',
+                    dataType: 'json',
+                    data: { parameters: encode({ id: "123", name: "abc" }) },
+                    url: baseUrl + 'TestMvc/ParametersJsonGet',
+                    success:
+                        function (response) {
+                            console.log(response);
+                            Swal.fire({ icon: 'success', text: response.result });
+                        },
+                    error: error
+                });
+        });
+
+        $("#NoParametersPost").click(function () {
+            console.log("NoParametersPost");
+
+            $.ajax(
+                {
+                    type: 'POST',
+                    dataType: 'json',
+                    url: baseUrl + 'TestMvc/NoParametersPost',
+                    success:
+                        function (response) {
+                            console.log(response);
+                            Swal.fire({ icon: 'success', text: response.result });
+                        },
+                    error: error
+                });
+        });
+
+        $("#ParametersPost").click(function () {
+            console.log("ParametersPost");
+
+            $.ajax(
+                {
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { id: "123", name: "abc" },
+                    url: baseUrl + 'TestMvc/ParametersPost',
+                    success:
+                        function (response) {
+                            console.log(response);
+                            Swal.fire({ icon: 'success', text: response.result });
+                        },
+                    error: error
+                });
+        });
+
+        $("#ParametersPostFormData").click(function () {
+            console.log("ParametersPostFormData");
+
+            var data = new FormData();
+
+            data.append("id", "123");
+            data.append("name", "abc");
+
+            $.ajax(
+                {
+                    type: 'POST',
+                    dataType: 'json',
+                    data: data,
+                    contentType: false,
+                    processData: false,
+                    url: baseUrl + 'TestMvc/ParametersPostFormData',
+                    success:
+                        function (response) {
+                            console.log(response);
+                            Swal.fire({ icon: 'success', text: response.result });
+                        },
+                    error: error
+                });
+        });
+
+        $("#ParametersJsonPost").click(function () {
+            console.log("ParametersJsonPost");
+
+            $.ajax(
+                {
+                    type: 'POST',
+                    dataType: 'json',
+                    data: { parameters: encode({ id: "123", name: "abc" }) },
+                    url: baseUrl + 'TestMvc/ParametersJsonPost',
+                    success:
+                        function (response) {
+                            console.log(response);
+                            Swal.fire({ icon: 'success', text: response.result });
+                        },
+                    error: error
+                });
+        });
+
+        $("#ParametersJsonPostFormData").click(function () {
+            console.log("ParametersJsonPostFormData");
+
+            var data = new FormData();
+
+            data.append("parameters", encode({ id: "123", name: "abc" }));
+
+            $.ajax(
+                {
+                    type: 'POST',
+                    dataType: 'json',
+                    data: data,
+                    contentType: false,
+                    processData: false,
+                    url: baseUrl + 'TestMvc/ParametersJsonPostFormData',
+                    success:
+                        function (response) {
+                            console.log(response);
+                            Swal.fire({ icon: 'success', text: response.result });
+                        },
+                    error: error
+                });
+        });
+    });
+
+    function encode(obj) {
+        //return "base64|" + btoa(JSON.stringify(obj));
+        return JSON.stringify(obj);
+    }
+
+    function error(response) {
+        console.error(response);
+        Swal.fire({ icon: 'error', text: response });
+    }
+</script>
