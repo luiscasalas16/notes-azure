@@ -22,7 +22,7 @@ Comandos generales para la administración de un Application Service Plan.
     # --is-linux = linux operating system
     # --number-of-workers = number of workers instances
     # --zone-redundant = high availability zone
-az appservice plan create --name "lcs16-asp" --resource-group "lcs16-rg" --location "eastus2" --sku "P1V2"
+az appservice plan create --name "lcs16-asp" --resource-group "lcs16-rg" --location "eastus2" --sku "F1"
 ```
 
 ```powershell
