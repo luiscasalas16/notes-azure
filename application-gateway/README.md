@@ -5,17 +5,17 @@
 
 - [Comandos](#comandos)
 
-- [](https://azure.github.io/Azure-Proactive-Resiliency-Library/services/networking/web-application-firewall)
-- [](https://tutorialsdojo.com/azure-application-gateway)
-
-content-based routing,
-ability to host multiple websites,
-security enhancements.
-Geo-filtering
-IP restriction
-Rate limiting
-
 ---
+
+## TODO
+
+https://learn.microsoft.com/en-us/azure/application-gateway/tutorial-multiple-sites-cli
+https://learn.microsoft.com/en-us/azure/application-gateway/tutorial-url-route-cli
+https://learn.microsoft.com/en-us/azure/web-application-firewall/ag/tutorial-restrict-web-traffic-cli
+https://learn.microsoft.com/en-us/azure/web-application-firewall/ag/configure-waf-custom-rules
+https://learn.microsoft.com/en-us/azure/web-application-firewall/afds/waf-front-door-policy-configure-bot-protection?pivots=cli
+https://learn.microsoft.com/en-us/azure/web-application-firewall/afds/waf-front-door-configure-ip-restriction#configure-a-waf-policy-with-the-azure-cli
+https://learn.microsoft.com/en-us/azure/web-application-firewall/afds/waf-front-door-tutorial-geo-filtering
 
 ## Comandos
 

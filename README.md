@@ -26,7 +26,7 @@ Proyectos de ejemplo de servicios de Azure.
 - [Static Web App](/static-web-app/README.md)
 - [Container Instances](/container-instances/README.md)
 - [Container Registry](/container-registry/README.md)
-- [Web Application Firewall](/web-application-firewall/README.md)
+- [Application Gateway](/application-gateway/README.md)
 
 Guías prácticas.
 
@@ -48,6 +48,7 @@ Guías prácticas.
 
 - [Application Architecture Guide](http://bit.ly/2BppIFo)
 - [Application Architecture Maps Overview](https://medium.com/@kanchan.tewary/microsoft-azure-mind-maps-86bd6e442988)
+- [Azure Proactive Resiliency Library](https://azure.github.io/Azure-Proactive-Resiliency-Library/services/)
 
 ---
 
