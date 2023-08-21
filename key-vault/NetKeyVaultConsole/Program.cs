@@ -4,7 +4,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace NetKeyVaultConsole
 {
@@ -39,7 +42,7 @@ namespace NetKeyVaultConsole
             }
         }
 
-        class Application : IHostedService
+        public class Application : BackgroundService
         {
             private readonly ILogger<Application> _logger;
             private readonly IConfiguration _configuration;
@@ -50,28 +53,12 @@ namespace NetKeyVaultConsole
                 _configuration = configuration;
             }
 
-            private void Start()
+            protected override async Task ExecuteAsync(CancellationToken stoppingToken)
             {
                 Console.WriteLine(".Net Console");
                 Console.WriteLine($"SecretNameKeyVault: {_configuration["SecretNameKeyVault"]}");
                 Console.WriteLine($"SecretNameUserSecrets: {_configuration["SecretNameUserSecrets"]}");
                 Console.WriteLine($"SecretNameAppSettings: {_configuration["SecretNameAppSettings"]}");
-            }
-
-            private void Stop()
-            {
-            }
-
-            public Task StartAsync(CancellationToken cancellationToken)
-            {
-                Start();
-                return Task.CompletedTask;
-            }
-
-            public Task StopAsync(CancellationToken cancellationToken)
-            {
-                Stop();
-                return Task.CompletedTask;
             }
         }
     }
