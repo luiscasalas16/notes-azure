@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetFwApplicationServiceWebM
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetWebJobConsole", "NetWebJobConsole\NetWebJobConsole.csproj", "{69BAC749-4026-452F-A05F-DB8B7CAD59BD}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetWebConfigurationConsole", "NetWebConfigurationConsole\NetWebConfigurationConsole.csproj", "{690040E9-00D6-425F-872E-4C564C34A4DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{69BAC749-4026-452F-A05F-DB8B7CAD59BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{69BAC749-4026-452F-A05F-DB8B7CAD59BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{69BAC749-4026-452F-A05F-DB8B7CAD59BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{690040E9-00D6-425F-872E-4C564C34A4DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{690040E9-00D6-425F-872E-4C564C34A4DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{690040E9-00D6-425F-872E-4C564C34A4DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{690040E9-00D6-425F-872E-4C564C34A4DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
