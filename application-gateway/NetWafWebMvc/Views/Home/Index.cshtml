@@ -61,11 +61,7 @@
                     type: 'GET',
                     dataType: 'json',
                     url: baseUrl + 'TestMvc/NoParametersGet',
-                    success:
-                        function (response) {
-                            console.log(response);
-                            Swal.fire({ icon: 'success', text: response.result });
-                        },
+                    success: success,
                     error: error
                 });
         });
@@ -79,11 +75,7 @@
                     dataType: 'json',
                     data: { id: "123", name: "abc" },
                     url: baseUrl + 'TestMvc/ParametersGet',
-                    success:
-                        function (response) {
-                            console.log(response);
-                            Swal.fire({ icon: 'success', text: response.result });
-                        },
+                    success: success,
                     error: error
                 });
         });
@@ -97,11 +89,7 @@
                     dataType: 'json',
                     data: { parameters: "base64|" + btoa(JSON.stringify({ id: "123", name: "abc" })) },
                     url: baseUrl + 'TestMvc/ParametersJsonGet',
-                    success:
-                        function (response) {
-                            console.log(response);
-                            Swal.fire({ icon: 'success', text: response.result });
-                        },
+                    success: success,
                     error: error
                 });
         });
@@ -115,11 +103,7 @@
                     dataType: 'json',
                     data: { parameters: JSON.stringify({ id: "123", name: "abc" }) },
                     url: baseUrl + 'TestMvc/ParametersJsonGet',
-                    success:
-                        function (response) {
-                            console.log(response);
-                            Swal.fire({ icon: 'success', text: response.result });
-                        },
+                    success: success,
                     error: error
                 });
         });
@@ -132,11 +116,7 @@
                     type: 'POST',
                     dataType: 'json',
                     url: baseUrl + 'TestMvc/NoParametersPost',
-                    success:
-                        function (response) {
-                            console.log(response);
-                            Swal.fire({ icon: 'success', text: response.result });
-                        },
+                    success: success,
                     error: error
                 });
         });
@@ -150,11 +130,7 @@
                     dataType: 'json',
                     data: { id: "123", name: "abc" },
                     url: baseUrl + 'TestMvc/ParametersPost',
-                    success:
-                        function (response) {
-                            console.log(response);
-                            Swal.fire({ icon: 'success', text: response.result });
-                        },
+                    success: success,
                     error: error
                 });
         });
@@ -175,11 +151,7 @@
                     contentType: false,
                     processData: false,
                     url: baseUrl + 'TestMvc/ParametersPostFormData',
-                    success:
-                        function (response) {
-                            console.log(response);
-                            Swal.fire({ icon: 'success', text: response.result });
-                        },
+                    success: success,
                     error: error
                 });
         });
@@ -193,11 +165,7 @@
                     dataType: 'json',
                     data: { parameters: "base64|" + btoa(JSON.stringify({ id: "123", name: "abc" })) },
                     url: baseUrl + 'TestMvc/ParametersJsonPost',
-                    success:
-                        function (response) {
-                            console.log(response);
-                            Swal.fire({ icon: 'success', text: response.result });
-                        },
+                    success: success,
                     error: error
                 });
         });
@@ -211,11 +179,7 @@
                     dataType: 'json',
                     data: { parameters: JSON.stringify({ id: "123", name: "abc" }) },
                     url: baseUrl + 'TestMvc/ParametersJsonPost',
-                    success:
-                        function (response) {
-                            console.log(response);
-                            Swal.fire({ icon: 'success', text: response.result });
-                        },
+                    success: success,
                     error: error
                 });
         });
@@ -235,11 +199,7 @@
                     contentType: false,
                     processData: false,
                     url: baseUrl + 'TestMvc/ParametersJsonPostFormData',
-                    success:
-                        function (response) {
-                            console.log(response);
-                            Swal.fire({ icon: 'success', text: response.result });
-                        },
+                    success: success,
                     error: error
                 });
         });
@@ -259,18 +219,19 @@
                     contentType: false,
                     processData: false,
                     url: baseUrl + 'TestMvc/ParametersJsonPostFormData',
-                    success:
-                        function (response) {
-                            console.log(response);
-                            Swal.fire({ icon: 'success', text: response.result });
-                        },
+                    success: success,
                     error: error
                 });
         });
     });
 
+    function success(response) {
+        console.log(response);
+        Swal.fire({ icon: 'success', text: JSON.stringify(response) });
+    }
+
     function error(response) {
         console.error(response);
-        Swal.fire({ icon: 'error', text: response });
+        Swal.fire({ icon: 'error', text: response.responseText });
     }
 </script>
