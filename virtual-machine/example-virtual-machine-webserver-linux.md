@@ -13,6 +13,7 @@ az vm auto-shutdown --name "lcs16-vm-ubuntu" --resource-group "lcs16-rg" --time 
 # habilitar puerto 80
 az vm open-port --port 80 --name "lcs16-vm-ubuntu" --resource-group "lcs16-rg"
 
+# ejecutar script 1
 Invoke-AzVMRunCommand -ResourceGroupName 'lcs16-rg' -Name 'lcs16-vm-ubuntu' -CommandId 'RunShellScript' -ScriptPath '.\virtual-machine\example-virtual-machine-webserver-linux-script-1.sh'
 
 # compilar aplicación demo
@@ -33,15 +34,13 @@ dotnet publish -c Release -o publish
     "exit"
 cd ..\..\
 
+# ejecutar script 2
 Invoke-AzVMRunCommand -ResourceGroupName 'lcs16-rg' -Name 'lcs16-vm-ubuntu' -CommandId 'RunShellScript' -ScriptPath '.\virtual-machine\example-virtual-machine-webserver-linux-script-2.sh'
 
 # conectar virtual machine por ssh
 ssh -i ~/.ssh/lcs16-vm-ubuntu "azureadministrator@lcs16-vm-ubuntu.eastus2.cloudapp.azure.com"
 
-# eliminar virtual machine
-az vm delete --name "lcs16-vm-ubuntu" --resource-group "lcs16-rg"
+#https://code-maze.com/deploy-aspnetcore-linux-nginx
+#https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx
+#https://winscp.net/eng/docs/commandline
 ```
-
-https://code-maze.com/deploy-aspnetcore-linux-nginx
-https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx
-https://winscp.net/eng/docs/commandline

@@ -63,41 +63,73 @@ Es un conjunto de comandos que se utilizan para la administración de recursos d
 - [Referencia](https://learn.microsoft.com/en-us/cli/azure/reference-index)
 
 ```powershell
-#instalación (run as administrator)
-    Invoke-WebRequest -Uri 'https://aka.ms/installazurecliwindowsx64' -OutFile '.\AzureClix64.msi';
-    Start-Process msiexec.exe -Wait -ArgumentList '/I AzureClix64.msi /quiet';
-    Remove-Item .\AzureClix64.msi;
+#instalación
+Invoke-WebRequest -Uri 'https://aka.ms/installazurecliwindowsx64' -OutFile '.\AzureClix64.msi';
+Start-Process msiexec.exe -Wait -ArgumentList '/I AzureClix64.msi /quiet';
+Remove-Item .\AzureClix64.msi;
 ```
 
 ```powershell
 #autenticación
-    az login
+az login
 ```
 
 ```powershell
 #versión
-    az version
+az version
 ```
 
 ```powershell
 #actualización
-    az upgrade
+az upgrade
 ```
 
 ```powershell
 #obtener configuración
-    az config get
+az config get
 ```
 
 ```powershell
-#establecer configuración
 #configuración actualización automática
-    az config set auto-upgrade.enable=yes
-    az config set auto-upgrade.prompt=no
+az config set auto-upgrade.enable=yes
+az config set auto-upgrade.prompt=no
 #configuración instalación automática dependencias
-    az config set extension.use_dynamic_install=yes_without_prompt
+az config set extension.use_dynamic_install=yes_without_prompt
 #configuración formato de salida por defecto
-    az config set core.output=jsonc
+az config set core.output=jsonc
+```
+
+### Azure PowerShell
+
+Es un conjunto de comandos nativos de PowerShell que se utilizan para la administración de recursos de Azure. Están diseñados para trabajar rápidamente con Azure, con énfasis en la automatización.
+
+- [Resumen](https://learn.microsoft.com/en-us/powershell/azure/what-is-azure-powershell)
+- [Instalación](https://learn.microsoft.com/en-us/powershell/azure/install-azps-windows)
+- [Referencia](https://learn.microsoft.com/en-us/powershell/module/?view=azps-10.2.0)
+
+```powershell
+#instalación
+cmd (administrator)
+powershell.exe -NoProfile
+cd $env:temp
+Invoke-WebRequest -Uri 'https://gist.githubusercontent.com/luiscasalas16/aaf1edbeb8d331384ad503c454a2e8e4/raw' -OutFile '.\CleanAzPs.ps1'
+powershell.exe -ExecutionPolicy bypass -File '.\CleanAzPs.ps1'
+exit
+
+pwsh.exe
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Install-Module -Name Az -Repository PSGallery -Force
+exit
+```
+
+```powershell
+#versión
+Get-Module -ListAvailable -Name Az -Refresh
+```
+
+```powershell
+#actualización
+Update-Module -Name Az -Force
 ```
 
 ### Azure SDK
