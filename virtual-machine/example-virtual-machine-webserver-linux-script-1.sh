@@ -5,6 +5,6 @@ sudo apt-get update
 sudo apt-get install -y nginx
 sudo apt-get install -y aspnetcore-runtime-7.0
 
-# carpeta para aplicación
+# carpeta aplicación
 sudo mkdir /var/www/app
 sudo chmod 777 /var/www/app
