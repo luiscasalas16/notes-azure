@@ -1,6 +1,6 @@
 ```powershell
 # conectar virtual machine por ssh
-ssh -i ~/.ssh/lcs16-vm-ubuntu "azureadministrator@lcs16-vm-ubuntu.eastus2.cloudapp.azure.com"
+ssh -i ~/.ssh/lcs16-vm-ubuntu "azureadministrator@lcs16-vm-ubuntu.eastus.cloudapp.azure.com"
 ```
 
 ```powershell
@@ -16,7 +16,7 @@ dotnet publish -c Release -o publish
 & 'C:\Program Files (x86)\WinSCP\WinSCP.com' `
     /ini=nul `
     /command `
-    "open sftp://azureadministrator@lcs16-vm-ubuntu.eastus2.cloudapp.azure.com/ -hostkey=* -privatekey=C:\Users\lsalas\.ssh\lcs16-vm-ubuntu.ppk -passphrase=azureprueba123*" `
+    "open sftp://azureadministrator@lcs16-vm-ubuntu.eastus.cloudapp.azure.com/ -hostkey=* -privatekey=C:\Users\lsalas\.ssh\lcs16-vm-ubuntu.ppk -passphrase=azureprueba123*" `
     "lcd .\publish" `
     "cd /var/www/app" `
     "put *" `

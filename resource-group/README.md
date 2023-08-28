@@ -10,7 +10,7 @@ Comandos generales para la administración de un Resource Group.
 
 ```powershell
 # crear grupo de recursos
-az group create --name "lcs16-rg" --location "eastus2"
+az group create --name "lcs16-rg" --location "eastus"
 ```
 
 ```powershell
