@@ -1,3 +1,4 @@
 @echo on
-pwsh ".\-Application-Service.ps1"
+pwsh.exe -File .\BuildNet.ps1 "application-service" "NetApplicationServiceWebMvc"
+pwsh.exe -File .\BuildNetFw.ps1 "application-service" "NetFwApplicationServiceWebMvc"
 pause
