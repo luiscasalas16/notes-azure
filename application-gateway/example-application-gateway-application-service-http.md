@@ -1,10 +1,10 @@
-# example-application-service-http
+# example-application-gateway-application-service-http
 
-Ejemplo de configuración de un application gateway con waf cómo puerta de entrada para un app service con 2 instancias.
+Ejemplo de configuración de un application gateway con waf cómo puerta de entrada para un application service con 2 instancias.
 
 - Se publica el application gateway por HTTP.
-- Se distribuye el tráfico entre las instancias del app service.
-- Se permite sólo el tráfico desde el application gateway en el app service.
+- Se distribuye el tráfico entre las instancias del application service.
+- Se permite sólo el tráfico desde el application gateway en el application service.
 
 ```powershell
 # crear resource group
@@ -14,12 +14,12 @@ az group create --name "lcs16-rg" --location "eastus"
 az appservice plan create --name "lcs16-asp" --resource-group "lcs16-rg" --location "eastus" `
     --is-linux --sku "P1V2" --number-of-workers 2
 
-# crear app service
-az webapp create --name "lcs16-as-net" --resource-group "lcs16-rg" `
-    --plan "lcs16-asp" --runtime "DOTNETCORE:7.0"
+# crear application service
+az webapp create --name "lcs16-as" --resource-group "lcs16-rg" `
+    --plan "lcs16-asp" --runtime "lcs16-vmss:7.0"
 
-# publicar aplicación en app service
-az webapp deployment source config-zip --name "lcs16-as-net" --resource-group "lcs16-rg"
+# publicar aplicación en application service
+az webapp deployment source config-zip --name "lcs16-as" --resource-group "lcs16-rg"
     --src ".\_dist\NetApplicationServiceWebMvc.zip"
 
 # crear virtual network
@@ -44,24 +44,20 @@ az network public-ip create --name "lcs16-ip-ag" --resource-group "lcs16-rg" --l
 az network application-gateway create --name "lcs16-ag" --resource-group "lcs16-rg" --location "eastus" `
     --sku "WAF_v2" --waf-policy "lcs16-wp" --capacity 1 --http2 "Enabled" `
     --vnet-name "lcs16-vn" --subnet "agSubnet" --public-ip-address "lcs16-ip-ag" `
-    --servers "lcs16-as-net.azurewebsites.net" --priority 1000 --http-settings-port 80 --http-settings-protocol "Http" `
+    --servers "lcs16-as.azurewebsites.net" --priority 1000 --http-settings-port 80 --http-settings-protocol "Http" `
     --frontend-port 80
 
 # configurar backend setting application gateway
 az network application-gateway http-settings update --gateway-name "lcs16-ag" --resource-group "lcs16-rg" `
     --name "appGatewayBackendHttpSettings" --port 443 --protocol "Https" --host-name-from-backend-pool true
 
-# restringir tráfico de app service
-az webapp config access-restriction add --name "lcs16-as-net" --resource-group "lcs16-rg" `
+# restringir tráfico de application service
+az webapp config access-restriction add --name "lcs16-as" --resource-group "lcs16-rg" `
     --rule-name "gateway-access" --priority 1000 --subnet "agSubnet" --vnet-name "lcs16-vn"
 
-# liberar tráfico de app service
-az webapp config access-restriction remove --name "lcs16-as-net" --resource-group "lcs16-rg" --rule-name "gateway-access"
+# liberar tráfico de application service
+az webapp config access-restriction remove --name "lcs16-as" --resource-group "lcs16-rg" --rule-name "gateway-access"
 
 #limpiar recursos
 az group delete --name "lcs16-rg"
-
-#https://learn.microsoft.com/en-us/azure/application-gateway/quick-create-portal
-#https://learn.microsoft.com/en-us/azure/application-gateway/configure-web-app
-#https://learn.microsoft.com/en-us/azure/app-service/networking/app-gateway-with-service-endpoints
 ```

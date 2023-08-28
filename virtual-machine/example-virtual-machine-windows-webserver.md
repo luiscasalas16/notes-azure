@@ -1,3 +1,5 @@
+# example-virtual-machine-windows-webserver
+
 ```powershell
 # crear virtual machine windows
 az vm create --name "lcs16-vm-win" --resource-group "lcs16-rg" --location "eastus" --image "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-smalldisk:latest" --size "Standard_B2ms" --admin-username "azureadministrator" --admin-password "azureprueba123*" --os-disk-size-gb 32 --public-ip-sku "Standard" --public-ip-address-dns-name "lcs16-vm-win"
