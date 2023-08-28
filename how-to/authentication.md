@@ -24,7 +24,7 @@ Referencias:
 - La identidad se obtiene de la herramienta de desarrollo (VS o VSCODE) o de la linea de comandos (Azure CLI o Azure PowerShell).
 - Se utiliza la misma cuenta del desarrollador en azure.
 - Se tienen más permisos de los requeridos para el desarrollo, por lo que es un potencial problema en producción.
-- Se recomienta utilizar un grupo y otorgarle a este los permisos. Luego incluir en el grupo las cuentas de cada desarrollador.
+- Se recomienda utilizar un grupo y otorgarle a este los permisos. Luego incluir en el grupo las cuentas de cada desarrollador.
 
 ### 1.2 Por service principal de azure
 
@@ -32,7 +32,7 @@ Referencias:
 - Se requiere la configuración del service principal en azure.
 - Se tienen los mismos permisos para desarrollo y para producción.
 - Se recomienda utilizar un service principal diferente para cada desarrollador y para cada aplicación.
-- Se recomienta utilizar un grupo para cada aplicación y otorgarle a este los permisos. Luego incluir en el grupo los service principal de cada desarrollador.
+- Se recomienda utilizar un grupo para cada aplicación y otorgarle a este los permisos. Luego incluir en el grupo los service principal de cada desarrollador.
 - Se puede utilizar la siguiente configuración del DefaultAzureCredential para evitar el uso de la cuenta del desarrollador y obligar la lectura del service principal.
 
 ```csharp
@@ -125,7 +125,7 @@ TokenCredential credential = new DefaultAzureCredential
 #### 2.2.1 System-assigned managed identity
 
 - Se crea como parte de un recurso.
-- Comparte el cliclo de vida del recurso.
+- Comparte el ciclo de vida del recurso.
 - No se puede compartir.
 - No es necesario registrar el AZURE_CLIENT_ID en "Configuration" -> "Application Settings".
 
@@ -134,24 +134,44 @@ A nivel de un application services:
 - Asignar system-assigned identity al application service, que retornar un principalId.
 - Otorgar permisos correspondientes al principalId.
 
+```powershell
+# asignar system-assigned identity a app service
+az webapp identity assign --name "lcs16-as" --resource-group "lcs16-rg"
+```
+
 A nivel de una virtual machine:
 
 - Asignar system-assigned identity a la virtual machine, que retornar un systemAssignedIdentity.
 - Otorgar permisos correspondientes al systemAssignedIdentity.
 
+```powershell
+# asignar system-assigned identity a virtual machine
+az vm identity assign --name "lcs16-vm" --resource-group "lcs16-rg"
+```
+
 #### 2.2.2 User-assigned managed identity
 
 - Se crea como un recurso independiente.
-- Tiene un cliclo de vida independiente.
+- Tiene un ciclo de vida independiente.
 - Se puede compartir, la misma identidad puede ser utilizada en múltiples recursos.
 
 A nivel de un application services:
 
-- Es necesario registrar el AZURE_CLIENT_ID en "Configuration" -> "Application Settings" con el "Client ID" del managed identity.
 - Asignar user-assigned identity al application service.
 - Otorgar permisos correspondientes al user-assigned identity.
+- Es necesario registrar el AZURE_CLIENT_ID en "Configuration" -> "Application Settings" con el "Client ID" del managed identity.
+
+```powershell
+# asignar user-assigned identity a app service
+az webapp identity assign --name "lcs16-as" --resource-group "lcs16-rg" --identities "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourcegroups/lcs16-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/lcs16-managed-identity"
+```
 
 A nivel de una virtual machine:
 
 - Asignar user-assigned identity a la virtual machine.
 - Otorgar permisos correspondientes al user-assigned identity.
+
+```powershell
+# asignar user-assigned identity a virtual machine
+az vm identity assign --name "lcs16-vm" --resource-group "lcs16-rg" --identities "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourcegroups/lcs16-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/lcs16-managed-identity"
+```

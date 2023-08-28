@@ -38,44 +38,36 @@ Comandos generales para la administración de un Application Service.
 
 ```powershell
 # crear app service .Net (dotnet:7 para windows o DOTNETCORE:7.0 para linux)
-az webapp create --name "lcs16-as-net" --resource-group "lcs16-rg" --plan "lcs16-asp" --runtime "dotnet:7"
+az webapp create --name "lcs16-as" --resource-group "lcs16-rg" --plan "lcs16-asp" --runtime "dotnet:7"
 # crear app service .Net Framework
-az webapp create --name "lcs16-as-netfw" --resource-group "lcs16-rg" --plan "lcs16-asp" --runtime "ASPNET:V4.8"
+az webapp create --name "lcs16-as" --resource-group "lcs16-rg" --plan "lcs16-asp" --runtime "ASPNET:V4.8"
 ```
 
 ```powershell
-# eliminar app service .Net
-az webapp delete --name "lcs16-as-net" --resource-group "lcs16-rg" --keep-empty-plan
-# eliminar app service .Net Framework
-az webapp delete --name "lcs16-as-netfw" --resource-group "lcs16-rg" --keep-empty-plan
+# eliminar app service
+az webapp delete --name "lcs16-as" --resource-group "lcs16-rg" --keep-empty-plan
 ```
 
 ```powershell
 # asignar system-assigned identity a app service
-az webapp identity assign --name "lcs16-as-net" --resource-group "lcs16-rg"
-az webapp identity assign --name "lcs16-as-netfw" --resource-group "lcs16-rg"
+az webapp identity assign --name "lcs16-as" --resource-group "lcs16-rg"
 # eliminar system-assigned identity a app service
-az webapp identity remove --name "lcs16-as-net" --resource-group "lcs16-rg"
-az webapp identity remove --name "lcs16-as-netfw" --resource-group "lcs16-rg"
+az webapp identity remove --name "lcs16-as" --resource-group "lcs16-rg"
 ```
 
 ```powershell
 # asignar user-assigned identity a app service
-az webapp identity assign --name "lcs16-as-net" --resource-group "lcs16-rg" --identities "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourcegroups/lcs16-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/lcs16-managed-identity"
-az webapp identity assign --name "lcs16-as-netfw" --resource-group "lcs16-rg" --identities "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourcegroups/lcs16-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/lcs16-managed-identity"
+az webapp identity assign --name "lcs16-as" --resource-group "lcs16-rg" --identities "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourcegroups/lcs16-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/lcs16-managed-identity"
 # eliminar user-assigned identity a app service
-az webapp identity remove --name "lcs16-as-net" --resource-group "lcs16-rg" --identities "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourcegroups/lcs16-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/lcs16-managed-identity"
-az webapp identity remove --name "lcs16-as-netfw" --resource-group "lcs16-rg" --identities "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourcegroups/lcs16-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/lcs16-managed-identity"
+az webapp identity remove --name "lcs16-as" --resource-group "lcs16-rg" --identities "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourcegroups/lcs16-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/lcs16-managed-identity"
 ```
 
 ```powershell
 # establecer appsettings a app service
-az webapp config appsettings set --name "lcs16-as-net" --resource-group "lcs16-rg" --settings 'AZURE_CLIENT_ID=69c220ea-f2f1-4c5a-a324-b7523c94118c'
-az webapp config appsettings set --name "lcs16-as-netfw" --resource-group "lcs16-rg" --settings 'AZURE_CLIENT_ID=69c220ea-f2f1-4c5a-a324-b7523c94118c'
+az webapp config appsettings set --name "lcs16-as" --resource-group "lcs16-rg" --settings 'AZURE_CLIENT_ID=69c220ea-f2f1-4c5a-a324-b7523c94118c'
 ```
 
 ```powershell
 # publicar aplicación en app service
-az webapp deployment source config-zip --name "lcs16-as-net" --resource-group "lcs16-rg" --src ".\_dist\NetApplicationServiceWebMvc.zip"
-az webapp deployment source config-zip --name "lcs16-as-netfw" --resource-group "lcs16-rg" --src ".\_dist\NetFwApplicationServiceWebMvc.zip"
+az webapp deployment source config-zip --name "lcs16-as" --resource-group "lcs16-rg" --src ".\_dist\NetApplicationServiceWebMvc.zip"
 ```
