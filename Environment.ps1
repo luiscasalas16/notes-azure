@@ -26,6 +26,20 @@ az role assignment create --assignee "ed9cbe76-ebcc-4420-817c-425d5d97045e" --ro
 #crear secret en keyvault
 az keyvault secret set --vault-name "lcs16-kv" --name "SecretNameKeyVault" --value "secret value in key vault"
 
-##### application services
+##### application service
 
-
+# crear app service plan
+az appservice plan create --name "lcs16-asp" --resource-group "lcs16-rg" --location "eastus" --sku "F1"
+# crear app service .Net
+az webapp create --name "lcs16-as-net" --resource-group "lcs16-rg" --plan "lcs16-asp" --runtime "dotnet:7"
+# crear app service .Net Framework
+az webapp create --name "lcs16-as-netfw" --resource-group "lcs16-rg" --plan "lcs16-asp" --runtime "ASPNET:V4.8"
+# asignar user-assigned identity a app service
+az webapp identity assign --name "lcs16-as-net" --resource-group "lcs16-rg" --identities "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourcegroups/lcs16-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/lcs16-managed-identity"
+az webapp identity assign --name "lcs16-as-netfw" --resource-group "lcs16-rg" --identities "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourcegroups/lcs16-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/lcs16-managed-identity"
+# establecer user-assigned identity client id en appsettings a app service
+az webapp config appsettings set --name "lcs16-as-net" --resource-group "lcs16-rg" --settings 'AZURE_CLIENT_ID=69c220ea-f2f1-4c5a-a324-b7523c94118c'
+az webapp config appsettings set --name "lcs16-as-netfw" --resource-group "lcs16-rg" --settings 'AZURE_CLIENT_ID=69c220ea-f2f1-4c5a-a324-b7523c94118c'
+# publicar aplicación en app service
+az webapp deployment source config-zip --name "lcs16-as-net" --resource-group "lcs16-rg" --src ".\_dist\NetApplicationServiceWebMvc.zip"
+az webapp deployment source config-zip --name "lcs16-as-netfw" --resource-group "lcs16-rg" --src ".\_dist\NetFwApplicationServiceWebMvc.zip"

@@ -20,16 +20,9 @@ az appservice plan create --name "lcs16-asp" --resource-group "lcs16-rg" --locat
 az webapp create --name "lcs16-as-net" --resource-group "lcs16-rg" `
     --plan "lcs16-asp" --runtime "DOTNETCORE:7.0"
 
-# compilar aplicación demo
-cd .\application-service\NetApplicationServiceWebMvc
-dotnet restore
-dotnet build -c Release
-dotnet publish -c Release -o publish
-Compress-Archive -Force -Path ".\publish\*" -DestinationPath ".\publish.zip"
-
-# publicar aplicación demo en app service
-az webapp deployment source config-zip --src .\publish.zip --name "lcs16-as-net" --resource-group "lcs16-rg"
-cd ..\..\
+# publicar aplicación en app service
+az webapp deployment source config-zip --name "lcs16-as-net" --resource-group "lcs16-rg"
+    --src ".\_dist\NetApplicationServiceWebMvc.zip"
 
 # crear virtual network
 az network vnet create --name "lcs16-vn" --resource-group "lcs16-rg" `

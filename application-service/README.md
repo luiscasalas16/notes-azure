@@ -70,6 +70,12 @@ az webapp identity remove --name "lcs16-as-netfw" --resource-group "lcs16-rg" --
 
 ```powershell
 # establecer appsettings a app service
-az webapp config appsettings set --name "lcs16-as-net" --resource-group "lcs16-rg" --settings 'AZURE_CLIENT_ID=bd8b9733-8e70-499c-9357-8e8bdc2fe22c'
-az webapp config appsettings set --name "lcs16-as-netfw" --resource-group "lcs16-rg" --settings 'AZURE_CLIENT_ID=bd8b9733-8e70-499c-9357-8e8bdc2fe22c'
+az webapp config appsettings set --name "lcs16-as-net" --resource-group "lcs16-rg" --settings 'AZURE_CLIENT_ID=69c220ea-f2f1-4c5a-a324-b7523c94118c'
+az webapp config appsettings set --name "lcs16-as-netfw" --resource-group "lcs16-rg" --settings 'AZURE_CLIENT_ID=69c220ea-f2f1-4c5a-a324-b7523c94118c'
+```
+
+```powershell
+# publicar aplicación en app service
+az webapp deployment source config-zip --name "lcs16-as-net" --resource-group "lcs16-rg" --src ".\_dist\NetApplicationServiceWebMvc.zip"
+az webapp deployment source config-zip --name "lcs16-as-netfw" --resource-group "lcs16-rg" --src ".\_dist\NetFwApplicationServiceWebMvc.zip"
 ```
