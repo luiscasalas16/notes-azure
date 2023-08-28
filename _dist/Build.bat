@@ -1,4 +1,4 @@
-@echo on, '
+@echo on
 
 pwsh.exe -Command "& { . '.\Build.ps1'; BuildNet 'application-service' 'NetApplicationServiceWebMvc'; }"
 pwsh.exe -Command "& { . '.\Build.ps1'; BuildNetFw 'application-service' 'NetFwApplicationServiceWebMvc'; }"
