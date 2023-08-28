@@ -45,6 +45,13 @@ az vm auto-shutdown --name "lcs16-vm" --resource-group "lcs16-rg" --time 0000
 ```
 
 ```powershell
+# detener instancias
+az vm deallocate --name "lcs16-vm" --resource-group "lcs16-rg"
+# iniciar instancia
+az vm start --name "lcs16-vm" --resource-group "lcs16-rg"
+```
+
+```powershell
 # eliminar virtual machine
 az vm delete --name "lcs16-vm" --resource-group "lcs16-rg"
 ```

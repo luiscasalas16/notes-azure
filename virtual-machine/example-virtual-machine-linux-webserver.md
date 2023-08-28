@@ -1,5 +1,3 @@
-# example-azure / virtual-machine
-
 ```powershell
 # crear ssh keys
 "n" | ssh-keygen -t rsa -b 4096 -C "azureadministrator" -f "$ENV:UserProfile/.ssh/lcs16-vm-ubuntu" -P "azureprueba123*"
@@ -16,6 +14,4 @@ az vm open-port --port 80 --name "lcs16-vm-ubuntu" --resource-group "lcs16-rg"
 # instalar aplicación
 $result = Invoke-AzVMRunCommand -ResourceGroupName 'lcs16-rg' -Name 'lcs16-vm-ubuntu' -CommandId 'RunShellScript' -ScriptPath '.\virtual-machine\example-virtual-webserver-webserver-linux-script.sh'
 Write-Output $result.Value
-
-#https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx
 ```

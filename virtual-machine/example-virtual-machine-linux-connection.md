@@ -1,5 +1,3 @@
-# example-azure / virtual-machine
-
 ```powershell
 # conectar virtual machine por ssh
 ssh -i ~/.ssh/lcs16-vm-ubuntu "azureadministrator@lcs16-vm-ubuntu.eastus2.cloudapp.azure.com"
@@ -12,7 +10,7 @@ dotnet restore
 dotnet build -c Release
 dotnet publish -c Release -o publish
 
-# publicar aplicación demo en app service
+# publicar aplicación demo
 & 'C:\Program Files (x86)\WinSCP\WinSCP.com' /keygen "$ENV:UserProfile/.ssh/lcs16-vm-ubuntu" /output="$ENV:UserProfile/.ssh/lcs16-vm-ubuntu.ppk" /passphrase="azureprueba123*"
 
 & 'C:\Program Files (x86)\WinSCP\WinSCP.com' `
