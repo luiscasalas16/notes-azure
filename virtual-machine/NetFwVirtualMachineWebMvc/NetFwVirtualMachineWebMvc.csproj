@@ -161,9 +161,6 @@
   <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
-    <None Include="Properties\PublishProfiles\lcs16-as-netfw - Web Deploy.pubxml" />
-    <Content Include="Properties\ServiceDependencies\lcs16-as-netfw - Web Deploy\profile.arm.json" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
