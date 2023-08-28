@@ -11,6 +11,6 @@ az vm auto-shutdown --name "lcs16-vm-win" --resource-group "lcs16-rg" --time 000
 az vm open-port --port 80 --name "lcs16-vm-win" --resource-group "lcs16-rg"
 
 # instalar aplicación
-$result = Invoke-AzVMRunCommand -ResourceGroupName 'lcs16-rg' -Name 'lcs16-vm-win' -CommandId 'RunPowerShellScript' -ScriptPath '.\virtual-machine\example-virtual-machine-webserver-windows-script.ps1' -ErrorAction "Stop"
+$result = Invoke-AzVMRunCommand -ResourceGroupName 'lcs16-rg' -Name 'lcs16-vm-win' -CommandId 'RunPowerShellScript' -ScriptPath '.\virtual-machine\example-virtual-machine-windows-webserver-script.ps1' -ErrorAction "Stop"
 Write-Output $result.Value
 ```

@@ -14,7 +14,8 @@ az vm auto-shutdown --name "lcs16-vm-ubuntu" --resource-group "lcs16-rg" --time 
 az vm open-port --port 80 --name "lcs16-vm-ubuntu" --resource-group "lcs16-rg"
 
 # instalar aplicación
-Invoke-AzVMRunCommand -ResourceGroupName 'lcs16-rg' -Name 'lcs16-vm-ubuntu' -CommandId 'RunShellScript' -ScriptPath '.\virtual-machine\example-virtual-machine-webserver-linux-script.sh'
+$result = Invoke-AzVMRunCommand -ResourceGroupName 'lcs16-rg' -Name 'lcs16-vm-ubuntu' -CommandId 'RunShellScript' -ScriptPath '.\virtual-machine\example-virtual-webserver-webserver-linux-script.sh'
+Write-Output $result.Value
 
 #https://learn.microsoft.com/en-us/aspnet/core/host-and-deploy/linux-nginx
 ```
