@@ -1,0 +1,16 @@
+# example-azure / virtual-machine
+
+```powershell
+# crear virtual machine windows
+az vm create --name "lcs16-vm-win" --resource-group "lcs16-rg" --location "eastus2" --image "MicrosoftWindowsServer:WindowsServer:2022-datacenter-azure-edition-smalldisk:latest" --size "Standard_B2ms" --admin-username "azureadministrator" --admin-password "azureprueba123*" --os-disk-size-gb 32 --public-ip-sku "Standard" --public-ip-address-dns-name "lcs16-vm-win"
+
+# habilitar auto-shutdown
+az vm auto-shutdown --name "lcs16-vm-win" --resource-group "lcs16-rg" --time 0000
+
+# habilitar puerto 80
+az vm open-port --port 80 --name "lcs16-vm-win" --resource-group "lcs16-rg"
+
+# instalar aplicación
+$result = Invoke-AzVMRunCommand -ResourceGroupName 'lcs16-rg' -Name 'lcs16-vm-win' -CommandId 'RunPowerShellScript' -ScriptPath '.\virtual-machine\example-virtual-machine-webserver-windows-script.ps1' -ErrorAction "Stop"
+Write-Output $result.Value
+```

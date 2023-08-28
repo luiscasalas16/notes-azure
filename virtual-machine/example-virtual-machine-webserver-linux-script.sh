@@ -1,5 +1,21 @@
 #!/bin/sh
 
+# actualizar e instalar nginx y .net
+sudo apt-get update
+sudo apt-get install -y nginx
+sudo apt-get install -y aspnetcore-runtime-7.0
+sudo apt-get install -y zip 
+
+# carpeta aplicación
+sudo mkdir /var/www/app
+sudo chmod 777 /var/www/app
+
+# instalar aplicación
+cd /var/www/app
+wget https://raw.githubusercontent.com/luiscasalas16/notes-azure/main/_dist/NetVirtualMachineWebMvc.zip -O NetVirtualMachineWebMvc.zip
+unzip NetVirtualMachineWebMvc.zip
+rm NetVirtualMachineWebMvc.zip
+
 # configurar nginx
 cd /etc/nginx/sites-available
 sudo rm default
