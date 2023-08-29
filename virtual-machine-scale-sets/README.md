@@ -16,7 +16,7 @@ az vmss create --name "lcs16-vmss" --resource-group "lcs16-rg" --orchestration-m
 
 # crear virtual machine scale set linux
 "n" | ssh-keygen -t rsa -b 4096 -C "azureadministrator" -f "$ENV:UserProfile/.ssh/lcs16-vmss" -P "azureprueba123*"
-az vm create --name "lcs16-vmss" --resource-group "lcs16-rg" --orchestration-mode --image "Canonical:0001-com-ubuntu-server-jammy:22_04-lts-gen2:latest" --vm-sku "Standard_B2ms" --admin-username "azureadministrator" --ssh-key-values "~/.ssh/lcs16-vmss.pub" --os-disk-size-gb 32
+az vmss create --name "lcs16-vmss" --resource-group "lcs16-rg" --orchestration-mode "flexible" --image "Canonical:0001-com-ubuntu-server-jammy:22_04-lts-gen2:latest" --vm-sku "Standard_B2ms" --admin-username "azureadministrator" --ssh-key-values "~/.ssh/lcs16-vmss.pub" --os-disk-size-gb 32 --instance-count 2
 ```
 
 ```powershell

@@ -7,10 +7,10 @@ Ejemplo de configuración de un application gateway con waf cómo puerta de entr
 - Se permite sólo el tráfico desde el application gateway en el application service.
 
 ```powershell
-# crear resource group
-az group create --name "lcs16-rg" --location "eastus"
 
-# crear appservice plan
+##### application service #####
+
+# crear application service plan
 az appservice plan create --name "lcs16-asp" --resource-group "lcs16-rg" --location "eastus" `
     --is-linux --sku "P1V2" --number-of-workers 2
 
@@ -22,12 +22,16 @@ az webapp create --name "lcs16-as" --resource-group "lcs16-rg" `
 az webapp deployment source config-zip --name "lcs16-as" --resource-group "lcs16-rg"
     --src ".\_dist\NetApplicationServiceWebMvc.zip"
 
+##### virtual network #####
+
 # crear virtual network
 az network vnet create --name "lcs16-vn" --resource-group "lcs16-rg" `
     --address-prefix 10.0.0.0/16
 # crear virtual network subnet
 az network vnet subnet create --vnet-name "lcs16-vn" --resource-group "lcs16-rg" `
     --name "agSubnet" --address-prefixes 10.0.1.0/24
+
+##### application-gateway #####
 
 # crear waf policy
 az network application-gateway waf-policy create --name "lcs16-wp" --resource-group "lcs16-rg" `
@@ -58,6 +62,4 @@ az webapp config access-restriction add --name "lcs16-as" --resource-group "lcs1
 # liberar tráfico de application service
 az webapp config access-restriction remove --name "lcs16-as" --resource-group "lcs16-rg" --rule-name "gateway-access"
 
-#limpiar recursos
-az group delete --name "lcs16-rg"
 ```

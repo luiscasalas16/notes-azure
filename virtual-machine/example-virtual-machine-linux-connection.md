@@ -1,11 +1,10 @@
 # example-virtual-machine-linux-connection
 
 ```powershell
+
 # conectar virtual machine por ssh
 ssh -i ~/.ssh/lcs16-vm-ubuntu "azureadministrator@lcs16-vm-ubuntu.eastus.cloudapp.azure.com"
-```
 
-```powershell
 # compilar aplicación demo
 cd .\virtual-machine\NetVirtualMachineWebMvc
 dotnet restore
@@ -24,4 +23,5 @@ dotnet publish -c Release -o publish
     "put *" `
     "exit"
 cd ..\..\
+
 ```

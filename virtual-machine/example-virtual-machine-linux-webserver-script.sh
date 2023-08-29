@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# actualizar e instalar nginx y .net
+# actualizar e instalar nginx, .net, zip
 sudo apt-get update
 sudo apt-get install -y nginx
 sudo apt-get install -y aspnetcore-runtime-7.0
