@@ -1,10 +1,12 @@
-# example-application-gateway-virtual-machine-scale-set-http
+# example-application-gateway-virtual-machine-scale-set-https
 
 Ejemplo de configuración de un application gateway con waf cómo puerta de entrada para un virtual machine scale set con 2 instancias.
 
-- Se publica el application gateway por HTTP.
+- Se publica el application gateway por HTTPS.
 - Se distribuye el tráfico entre las instancias del virtual machine scale set.
 - Se permite sólo el tráfico desde el application gateway en el virtual machine scale set.
+- Se utiliza TLS termination en el application gateway.
+- Se realiza la redirección de HTTP a HTTPS.
 
 ```powershell
 
@@ -37,7 +39,17 @@ az network application-gateway create --name "lcs16-ag" --resource-group "lcs16-
     --sku "WAF_v2" --waf-policy "lcs16-wp" --capacity 1 `
     --vnet-name "lcs16-vn" --subnet "agSubnet" --public-ip-address "lcs16-ip-ag" `
     --priority 1000 --http-settings-port 80 --http-settings-protocol "Http" `
-    --frontend-port 80
+    --frontend-port 443 --cert-file ".\application-gateway\lcs16-application-gateway.pfx" --cert-password "password"
+
+# configurar redirección de http a https
+az network application-gateway frontend-port create --gateway-name "lcs16-ag" --resource-group "lcs16-rg" `
+    --name "httpPort" --port 80
+az network application-gateway http-listener create --gateway-name "lcs16-ag" --resource-group "lcs16-rg" `
+    --name "appGatewayHttpToHttpsListener" --frontend-ip "appGatewayFrontendIP" --frontend-port "httpPort"
+az network application-gateway redirect-config create --gateway-name "lcs16-ag" --resource-group "lcs16-rg" `
+    --name "httpToHttps" --target-listener "appGatewayHttpListener" --type "Permanent" --include-path true --include-query-string true
+az network application-gateway rule create --gateway-name "lcs16-ag" --resource-group "lcs16-rg" `
+    --name "rule2" --http-listener "appGatewayHttpToHttpsListener" --redirect-config httpToHttps --rule-type "Basic" --priority 1001
 
 ##### virtual machine scale set #####
 

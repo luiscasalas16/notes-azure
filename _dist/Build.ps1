@@ -8,13 +8,18 @@ function BuildNet
    
     # restore
     Set-Location "..\$folder\$proyect"
-    Remove-Item ".\publish" -Recurse
+    if (Test-Path $".\publish") {
+        Remove-Item ".\publish" -Recurse
+    } 
     dotnet restore
     # publish
     dotnet build -c Release
     dotnet publish -c Release -o publish
     # compress
     Compress-Archive -Force -Path ".\publish\*" -DestinationPath "..\..\_dist\$proyect.zip"
+    if (Test-Path $".\publish") {
+        Remove-Item ".\publish" -Recurse
+    } 
     Set-Location "..\..\_dist"
 }
 
@@ -39,9 +44,14 @@ function BuildNetFw
     MSBuild.exe /t:Restore /p:RestorePackagesConfig=true
     # publish
     Set-Location ".\$proyect"
-    Remove-Item ".\publish" -Recurse
+    if (Test-Path $".\publish") {
+        Remove-Item ".\publish" -Recurse
+    } 
     MSBuild.exe /t:Rebuild /p:WebProjectOutputDir=".\publish" /p:OutDir=".\publish\bin" /p:Configuration=Release
     # compress
     Compress-Archive -Force -Path ".\publish\*" -DestinationPath "..\..\_dist\$proyect.zip"
+    if (Test-Path $".\publish") {
+        Remove-Item ".\publish" -Recurse
+    } 
     Set-Location "..\..\_dist"
 }

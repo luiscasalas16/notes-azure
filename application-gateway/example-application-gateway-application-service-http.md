@@ -16,7 +16,7 @@ az appservice plan create --name "lcs16-asp" --resource-group "lcs16-rg" --locat
 
 # crear application service
 az webapp create --name "lcs16-as" --resource-group "lcs16-rg" `
-    --plan "lcs16-asp" --runtime "lcs16-vmss:7.0"
+    --plan "lcs16-asp" --runtime "DOTNETCORE:7.0"
 
 # publicar aplicación en application service
 az webapp deployment source config-zip --name "lcs16-as" --resource-group "lcs16-rg"
@@ -42,7 +42,7 @@ az network application-gateway waf-policy policy-setting update --policy-name "l
 
 # crear ip para application-gateway
 az network public-ip create --name "lcs16-ip-ag" --resource-group "lcs16-rg" --location "eastus" `
-    --version "IPv4" --sku "Standard" --allocation-method "Static" --zone 1 2 3 --tier "Regional" --dns-name "lcs16-ag"
+    --version "IPv4" --sku "Standard" --allocation-method "Static" --tier "Regional" --dns-name "lcs16-application-gateway"
 
 # crear application gateway
 az network application-gateway create --name "lcs16-ag" --resource-group "lcs16-rg" --location "eastus" `

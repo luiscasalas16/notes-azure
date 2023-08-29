@@ -44,14 +44,14 @@ az network application-gateway waf-policy policy-setting update --policy-name "l
 
 # crear ip para application-gateway
 az network public-ip create --name "lcs16-ip-ag" --resource-group "lcs16-rg" --location "eastus" `
-    --version "IPv4" --sku "Standard" --allocation-method "Static" --zone 1 2 3 --tier "Regional" --dns-name "lcs16-ag"
+    --version "IPv4" --sku "Standard" --allocation-method "Static" --tier "Regional" --dns-name "lcs16-application-gateway"
 
 # crear application gateway
 az network application-gateway create --name "lcs16-ag" --resource-group "lcs16-rg" --location "eastus" `
     --sku "WAF_v2" --waf-policy "lcs16-wp" --capacity 1 --http2 "Enabled" `
     --vnet-name "lcs16-vn" --subnet "agSubnet" --public-ip-address "lcs16-ip-ag" `
     --servers "lcs16-as.azurewebsites.net" --priority 1000 --http-settings-port 80 --http-settings-protocol "Http" `
-    --frontend-port 443 --cert-file ".\application-gateway\lcs16-ag.pfx" --cert-password "password"
+    --frontend-port 443 --cert-file ".\application-gateway\lcs16-application-gateway.pfx" --cert-password "password"
 
 # configurar backend setting application gateway
 az network application-gateway http-settings update --gateway-name "lcs16-ag" --resource-group "lcs16-rg" `
