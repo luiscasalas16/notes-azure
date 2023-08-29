@@ -52,13 +52,4 @@ $vmssInstances | ConvertFrom-Json | ForEach-Object -Parallel {
   az vmss run-command create --run-command-name "publish" --vmss-name "lcs16-vmss" --resource-group "lcs16-rg" --instance-id $_ --script-uri "https://raw.githubusercontent.com/luiscasalas16/notes-azure/main/virtual-machine/example-virtual-machine-linux-webserver-script.sh"
 }
 
-
-
-az vmss run-command create --run-command-name "publish" --vmss-name "lcs16-vmss" --resource-group "lcs16-rg" --instance-id $_ --script-uri "https://raw.githubusercontent.com/luiscasalas16/notes-azure/main/_dist/install-linux-webapp-script.sh"
-
-
-
-
-
-
 ```
