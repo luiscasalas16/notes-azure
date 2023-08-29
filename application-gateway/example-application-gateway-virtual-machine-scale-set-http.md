@@ -17,7 +17,7 @@ az network vnet subnet create --vnet-name "lcs16-vn" --resource-group "lcs16-rg"
 
 # crear ip para application-gateway
 az network public-ip create --name "lcs16-ip-ag" --resource-group "lcs16-rg" --location "eastus" `
-    --version "IPv4" --sku "Standard" --allocation-method "Static" --zone 1 --tier "Regional" --dns-name "lcs16-ip-ag"
+    --version "IPv4" --sku "Standard" --allocation-method "Static" --tier "Regional" --dns-name "lcs16-ip-ag"
 
 #--sku "WAF_v2" --waf-policy "lcs16-wp"
 
@@ -32,13 +32,13 @@ az network application-gateway create --name "lcs16-ag" --resource-group "lcs16-
 
 # crear virtual machine scale set
 "n" | ssh-keygen -t rsa -b 4096 -C "azureadministrator" -f "$ENV:UserProfile/.ssh/lcs16-vmss" -P "azureprueba123*"
-az vmss create --name "lcs16-vmss" --resource-group "lcs16-rg" --orchestration-mode "flexible" --image "Canonical:0001-com-ubuntu-server-jammy:22_04-lts-gen2:latest" --vm-sku "Standard_B2ms" --admin-username "azureadministrator" --ssh-key-values "~/.ssh/lcs16-vmss.pub" --os-disk-size-gb 32 --instance-count 2 --vnet-name "lcs16-vn" --subnet "backendSubnet" --backend-pool-name "appGatewayBackendPool"
+az vmss create --name "lcs16-vmss" --resource-group "lcs16-rg" --orchestration-mode "Uniform" --image "Canonical:0001-com-ubuntu-server-jammy:22_04-lts-gen2:latest" --vm-sku "Standard_B2ms" --admin-username "azureadministrator" --ssh-key-values "~/.ssh/lcs16-vmss.pub" --os-disk-size-gb 32 --instance-count 2 --vnet-name "lcs16-vn" --subnet "backendSubnet" --app-gateway "lcs16-ag" --backend-pool-name "appGatewayBackendPool"
 
 # publicar aplicación en cada instancia del virtual machine scale set
-$vmssInstances = az vmss list-instances --name "lcs16-vmss" --resource-group "lcs16-rg" --query "[].name"
+$vmssInstances = az vmss list-instances --name "lcs16-vmss" --resource-group "lcs16-rg" --query "[].instanceId"
 $vmssInstances | ConvertFrom-Json | ForEach-Object -Parallel {
   Write-Host  "exec $_"
-  az vm run-command create --name "publish" --vm-name $_ --resource-group "lcs16-rg" --script-uri "https://raw.githubusercontent.com/luiscasalas16/notes-azure/main/virtual-machine/example-virtual-machine-linux-webserver-script.sh"
+  az vmss run-command create --run-command-name "publish" --vmss-name "lcs16-vmss" --resource-group "lcs16-rg" --instance-id $_ --script-uri "https://raw.githubusercontent.com/luiscasalas16/notes-azure/main/virtual-machine/example-virtual-machine-linux-webserver-script.sh"
 }
 
 ```

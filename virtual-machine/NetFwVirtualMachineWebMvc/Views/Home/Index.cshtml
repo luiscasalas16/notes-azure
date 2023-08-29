@@ -2,20 +2,14 @@
     <h1 class="display-4">NetFw Virtual Machine Web Mvc</h1>
     <div class="row">
         <div class="col">
-            MachineName : @(Environment.MachineName ?? "null")
+            MACHINE_NAME : @(Environment.MachineName ?? "null")
         </div>
     </div>
-    @{
-        var t = Environment.GetEnvironmentVariables();
-        foreach (var k in t.Keys)
-        {
-            <div class="row">
-                <div class="col">
-                    @(k) : @(t[k] ?? "null")
-                </div>
-            </div>
-        }
-    }
+    <div class="row">
+        <div class="col">
+            USER  : @(Environment.GetEnvironmentVariable("USER ") ?? "null")
+        </div>
+    </div>
     <div class="row">
         <div class="col">
             <button id="tests" type="button" class="btn btn-primary">tests</button>
