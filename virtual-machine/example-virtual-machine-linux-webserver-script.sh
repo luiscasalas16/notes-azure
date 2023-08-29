@@ -12,9 +12,9 @@ sudo chmod 777 /var/www/app
 
 # instalar aplicación
 cd /var/www/app
-wget https://raw.githubusercontent.com/luiscasalas16/notes-azure/main/_dist/NetVirtualMachineWebMvc.zip -O NetVirtualMachineWebMvc.zip
-unzip NetVirtualMachineWebMvc.zip
-rm NetVirtualMachineWebMvc.zip
+wget https://raw.githubusercontent.com/luiscasalas16/notes-azure/main/_dist/NetWafWebMvc.zip -O NetWafWebMvc.zip
+unzip NetWafWebMvc.zip
+rm NetWafWebMvc.zip
 
 # configurar nginx
 cd /etc/nginx/sites-available
@@ -46,7 +46,7 @@ echo '[Unit]' >> kestrel-app.service
 echo 'Description=ASP.NET Core Web App running on Ubuntu' >> kestrel-app.service
 echo '[Service]' >> kestrel-app.service
 echo 'WorkingDirectory=/var/www/app' >> kestrel-app.service
-echo 'ExecStart=/usr/bin/dotnet /var/www/app/NetVirtualMachineWebMvc.dll' >> kestrel-app.service
+echo 'ExecStart=/usr/bin/dotnet /var/www/app/NetWafWebMvc.dll' >> kestrel-app.service
 echo 'Restart=always' >> kestrel-app.service
 echo 'RestartSec=10' >> kestrel-app.service
 echo 'KillSignal=SIGINT' >> kestrel-app.service
