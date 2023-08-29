@@ -2,9 +2,10 @@
 
 # instalar aplicación
 cd /var/www/app
-wget https://raw.githubusercontent.com/luiscasalas16/notes-azure/main/_dist/$1.zip -O $1.zip
-unzip $1.zip
-rm $1.zip
+rm *
+wget https://raw.githubusercontent.com/luiscasalas16/notes-azure/main/_dist/NetWafWebMvc.zip -O NetWafWebMvc.zip
+unzip NetWafWebMvc.zip
+rm NetWafWebMvc.zip
 
 sudo nginx -s reload
 
@@ -17,7 +18,7 @@ echo '[Unit]' >> kestrel-app.service
 echo 'Description=ASP.NET Core Web App running on Ubuntu' >> kestrel-app.service
 echo '[Service]' >> kestrel-app.service
 echo 'WorkingDirectory=/var/www/app' >> kestrel-app.service
-echo 'ExecStart=/usr/bin/dotnet /var/www/app/$1.dl' >> kestrel-app.service
+echo 'ExecStart=/usr/bin/dotnet /var/www/app/NetWafWebMvc.dl' >> kestrel-app.service
 echo 'Restart=always' >> kestrel-app.service
 echo 'RestartSec=10' >> kestrel-app.service
 echo 'KillSignal=SIGINT' >> kestrel-app.service
