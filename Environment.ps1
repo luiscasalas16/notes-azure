@@ -43,3 +43,18 @@ az webapp config appsettings set --name "lcs16-as-netfw" --resource-group "lcs16
 # publicar aplicación en app service
 az webapp deployment source config-zip --name "lcs16-as-net" --resource-group "lcs16-rg" --src ".\_dist\NetKeyVaultWebMvc.zip"
 az webapp deployment source config-zip --name "lcs16-as-netfw" --resource-group "lcs16-rg" --src ".\_dist\NetFwKeyVaultWebMvc.zip"
+
+
+##### virtual machine linux
+
+# crear ssh keys
+"n" | ssh-keygen -t rsa -b 4096 -C "azureadministrator" -f "$ENV:UserProfile/.ssh/lcs16-vm-ubuntu" -P "azureprueba123*"
+# crear virtual machine ubuntu
+az vm create --name "lcs16-vm-ubuntu" --resource-group "lcs16-rg" --location "eastus" --image "Canonical:0001-com-ubuntu-server-jammy:22_04-lts-gen2:latest" --size "Standard_B2ms" --admin-username "azureadministrator" --ssh-key-values "~/.ssh/lcs16-vm-ubuntu.pub" --os-disk-size-gb 32 --public-ip-sku "Standard" --public-ip-address-dns-name "lcs16-vm-ubuntu" --vnet-address-prefix 10.10.0.0/16 --subnet-address-prefix 10.10.0.0/24
+# habilitar auto-shutdown
+az vm auto-shutdown --name "lcs16-vm-ubuntu" --resource-group "lcs16-rg" --time 0000
+# habilitar puerto 80
+az vm open-port --port 80 --name "lcs16-vm-ubuntu" --resource-group "lcs16-rg"
+# instalar aplicación
+$result = Invoke-AzVMRunCommand -ResourceGroupName 'lcs16-rg' -Name 'lcs16-vm-ubuntu' -CommandId 'RunShellScript' -ScriptPath '.\virtual-machine\example-virtual-machine-linux-webserver-script.sh'
+Write-Output $result.Value

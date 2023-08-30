@@ -48,8 +48,9 @@ az vmss create --name "lcs16-vmss" --resource-group "lcs16-rg" --orchestration-m
 # publicar aplicación en cada instancia del virtual machine scale set
 $vmssInstances = az vmss list-instances --name "lcs16-vmss" --resource-group "lcs16-rg" --query "[].instanceId"
 $vmssInstances | ConvertFrom-Json | ForEach-Object -Parallel {
-  Write-Host  "exec $_"
-  az vmss run-command create --run-command-name "publish" --vmss-name "lcs16-vmss" --resource-group "lcs16-rg" --instance-id $_ --script-uri "https://raw.githubusercontent.com/luiscasalas16/notes-azure/main/virtual-machine/example-virtual-machine-linux-webserver-script.sh"
+    Write-Host  "exec $_"
+    $result = Invoke-AzVmssVMRunCommand -ResourceGroupName 'lcs16-rg' -VMScaleSetName "lcs16-vmss" -InstanceId $_ -CommandId 'RunShellScript' -ScriptPath '.\virtual-machine\example-virtual-machine-linux-webserver-script.sh'
+    Write-Output $result.Value
 }
 
 ```
