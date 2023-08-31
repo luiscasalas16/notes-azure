@@ -161,7 +161,11 @@ A nivel de un application services:
 
 ```powershell
 # asignar user-assigned identity a app service
-az webapp identity assign --name "lcs16-as" --resource-group "lcs16-rg" --identities "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourcegroups/lcs16-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/lcs16-managed-identity"
+az webapp identity assign
+  --name "test-app-service" --resource-group "test-resource-group"
+  --identities "/subscriptions/00000000-0000-0000-0000-000000000000
+                /resourcegroups/test-resource-group
+                /providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-managed-identity"
 ```
 
 A nivel de una virtual machine:
@@ -171,5 +175,9 @@ A nivel de una virtual machine:
 
 ```powershell
 # asignar user-assigned identity a virtual machine
-az vm identity assign --name "lcs16-vm" --resource-group "lcs16-rg" --identities "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourcegroups/lcs16-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/lcs16-managed-identity"
+az vm identity assign
+  --name "test-virtual-machine" --resource-group "test-resource-group"
+  --identities "/subscriptions/00000000-0000-0000-0000-000000000000
+                /resourcegroups/test-resource-group
+                /providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-managed-identity"
 ```
