@@ -104,20 +104,18 @@ TokenCredential credential = new DefaultAzureCredential
 
 - En .Net y .Net Framework se pueden establecer las variables de ambiente a nivel del application pool en el IIS en el archivo C:\Windows\System32\inetsrv\config\applicationHost.config.
 
-```xml
-<add name=".NET v4.5" managedRuntimeVersion="v4.0">
-  <environmentVariables>
-    <add name="AZURE_TENANT_ID" value="00000000-0000-0000-0000-000000000000" />
-    <add name="AZURE_CLIENT_ID" value="00000000-0000-0000-0000-000000000000" />
-    <add name="AZURE_CLIENT_SECRET" value="abcdefghijklmnopqrstuvwxyz" />
-  </environmentVariables>
-</add>
-```
+```powershell
+"%systemroot%\system32\inetsrv\appcmd.exe" set config -section:system.applicationHost/applicationPools
+    /+"[name='.NET v4.5'].environmentVariables.[name='AZURE_TENANT_ID',value='00000000-0000-0000-0000-000000000000']"
+    /commit:apphost
 
-```bash
-"%systemroot%\system32\inetsrv\appcmd.exe" set config -section:system.applicationHost/applicationPools /+"[name='.NET v4.5'].environmentVariables.[name='AZURE_TENANT_ID',value='00000000-0000-0000-0000-000000000000']" /commit:apphost
-"%systemroot%\system32\inetsrv\appcmd.exe" set config -section:system.applicationHost/applicationPools /+"[name='.NET v4.5'].environmentVariables.[name='AZURE_CLIENT_ID',value='00000000-0000-0000-0000-000000000000']" /commit:apphost
-"%systemroot%\system32\inetsrv\appcmd.exe" set config -section:system.applicationHost/applicationPools /+"[name='.NET v4.5'].environmentVariables.[name='AZURE_CLIENT_SECRET',value='abcdefghijklmnopqrstuvwxyz']" /commit:apphost
+"%systemroot%\system32\inetsrv\appcmd.exe" set config -section:system.applicationHost/applicationPools
+    /+"[name='.NET v4.5'].environmentVariables.[name='AZURE_CLIENT_ID',value='00000000-0000-0000-0000-000000000000']"
+    /commit:apphost
+
+"%systemroot%\system32\inetsrv\appcmd.exe" set config -section:system.applicationHost/applicationPools
+    /+"[name='.NET v4.5'].environmentVariables.[name='AZURE_CLIENT_SECRET',value='abcdefghijklmnopqrstuvwxyz']"
+    /commit:apphost
 ```
 
 ### 2.2. En nube por managed identity de azure
