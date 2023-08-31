@@ -134,7 +134,7 @@ A nivel de un application services:
 
 ```powershell
 # asignar system-assigned identity a app service
-az webapp identity assign --name "lcs16-as" --resource-group "lcs16-rg"
+az webapp identity assign --name "test-app-service" --resource-group "test-resource-group"
 ```
 
 A nivel de una virtual machine:
@@ -144,7 +144,7 @@ A nivel de una virtual machine:
 
 ```powershell
 # asignar system-assigned identity a virtual machine
-az vm identity assign --name "lcs16-vm" --resource-group "lcs16-rg"
+az vm identity assign --name "test-virtual-machine" --resource-group "test-resource-group"
 ```
 
 #### 2.2.2 User-assigned managed identity
