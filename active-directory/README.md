@@ -57,7 +57,7 @@ az ad group list --query '[].{ Id:id, DisplayName:displayName }' --out table
 az ad sp list --all --query "[?contains(displayName,'<name>')].{ Id:id, DisplayName:displayName }" --out table
 
 # managed identity ID, <name> = nombre del managed identity
-az identity list --query "[?contains(name,'<name>')].{ Id:id }" --out tsv
+az identity list --query "[?contains(name,'<name>')].{ Name:name, Id:id, ClientId:clientId }" --out table
 
 # rol Name, <name> = nombre del rol
 az role definition list --query "[?contains(roleName,'<name>')].{ Name:name, RoleName:roleName }" --out table

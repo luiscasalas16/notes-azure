@@ -18,33 +18,42 @@ namespace NetStorageAccountWebMvc.Controllers
 
         public IActionResult Index()
         {
-            const string SampleFileContent = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+            string result;
 
-            string containerName = $"{"sample-container"}-{DateTime.UtcNow.AddHours(-6).ToString("yyyy-MM-dd-HH-mm-ss-fffff")}";
-            string blobName = $"{"sample-file"}-{DateTime.UtcNow.AddHours(-6).ToString("yyyy-MM-dd-HH-mm-ss-fffff")}";
-            string filePath1 = Path.ChangeExtension(Path.GetTempFileName(), ".txt");
-            string filePath2 = Path.ChangeExtension(Path.GetTempFileName(), ".txt");
+            try
+            {
+                const string SampleFileContent = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 
-            System.IO.File.WriteAllText(filePath1, SampleFileContent);
+                string containerName = $"{"sample-container"}-{DateTime.UtcNow.AddHours(-6).ToString("yyyy-MM-dd-HH-mm-ss-fffff")}";
+                string blobName = $"{"sample-file"}-{DateTime.UtcNow.AddHours(-6).ToString("yyyy-MM-dd-HH-mm-ss-fffff")}";
+                string filePath1 = Path.ChangeExtension(Path.GetTempFileName(), ".txt");
+                string filePath2 = Path.ChangeExtension(Path.GetTempFileName(), ".txt");
 
-            BlobServiceClient client = new(new Uri($"https://lcs16sa.blob.core.windows.net"), new DefaultAzureCredential());
+                System.IO.File.WriteAllText(filePath1, SampleFileContent);
 
-            BlobContainerClient container = client.CreateBlobContainer(containerName);
+                BlobServiceClient client = new BlobServiceClient(new Uri($"https://lcs16sa.blob.core.windows.net"), new DefaultAzureCredential());
 
-            container.Create();
+                BlobContainerClient container = client.CreateBlobContainer(containerName);
 
-            BlobClient blob = container.GetBlobClient(blobName);
+                BlobClient blob = container.GetBlobClient(blobName);
 
-            blob.Upload(filePath1);
+                blob.Upload(filePath1);
 
-            blob.DownloadTo(filePath2);
+                blob.DownloadTo(filePath2);
 
-            if (System.IO.File.ReadAllText(filePath1) != System.IO.File.ReadAllText(filePath2))
-                throw new Exception("error");
+                if (System.IO.File.ReadAllText(filePath1) != System.IO.File.ReadAllText(filePath2))
+                    throw new Exception("error");
 
-            BlobProperties properties = blob.GetProperties();
+                BlobProperties properties = blob.GetProperties();
 
-            ViewBag.result = $"Container '{containerName}' Blob '{blobName}' MD5 '{Convert.ToBase64String(properties.ContentHash)}'";
+                result = $"Container '{containerName}' Blob '{blobName}' MD5 '{Convert.ToBase64String(properties.ContentHash)}'";
+            }
+            catch (Exception ex)
+            {
+                result = ex.ToString();
+            }
+
+            ViewBag.result = result;
 
             return View();
         }

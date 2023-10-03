@@ -1,4 +1,5 @@
-﻿using Azure.Storage.Blobs;
+﻿using Azure.Identity;
+using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -46,32 +47,44 @@ namespace NetStorageAccountConsole
             {
                 Console.WriteLine(".Net Console");
 
-                const string SampleFileContent = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
+                string result;
 
-                string connectionString = "DefaultEndpointsProtocol=https;AccountName=lcs16sa;AccountKey=m4PFKJ4+mDeGEUu41DPVQua93l5ztpEzXEHcu5L9CQBhqSQGBZZF1nTc5vW1UkGOW2PNl4tkw7qx+ASt+5FKxg==;EndpointSuffix=core.windows.net";
-                string containerName = $"{"sample-container"}-{DateTime.UtcNow.AddHours(-6).ToString("yyyy-MM-dd-HH-mm-ss-fffff")}";
-                string blobName = $"{"sample-file"}-{DateTime.UtcNow.AddHours(-6).ToString("yyyy-MM-dd-HH-mm-ss-fffff")}";
-                string filePath1 = Path.ChangeExtension(Path.GetTempFileName(), ".txt");
-                string filePath2 = Path.ChangeExtension(Path.GetTempFileName(), ".txt");
+                try
+                {
+                    const string SampleFileContent = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
 
-                File.WriteAllText(filePath1, SampleFileContent);
+                    string containerName = $"{"sample-container"}-{DateTime.UtcNow.AddHours(-6).ToString("yyyy-MM-dd-HH-mm-ss-fffff")}";
+                    string blobName = $"{"sample-file"}-{DateTime.UtcNow.AddHours(-6).ToString("yyyy-MM-dd-HH-mm-ss-fffff")}";
+                    string filePath1 = Path.ChangeExtension(Path.GetTempFileName(), ".txt");
+                    string filePath2 = Path.ChangeExtension(Path.GetTempFileName(), ".txt");
 
-                BlobContainerClient container = new BlobContainerClient(connectionString, containerName);
+                    System.IO.File.WriteAllText(filePath1, SampleFileContent);
 
-                container.Create();
+                    BlobServiceClient client = new BlobServiceClient(new Uri($"https://lcs16sa.blob.core.windows.net"), new DefaultAzureCredential());
 
-                BlobClient blob = container.GetBlobClient(blobName);
+                    BlobContainerClient container = client.CreateBlobContainer(containerName);
 
-                blob.Upload(filePath1);
+                    container.CreateIfNotExists();
 
-                blob.DownloadTo(filePath2);
+                    BlobClient blob = container.GetBlobClient(blobName);
 
-                if (File.ReadAllText(filePath1) != File.ReadAllText(filePath2))
-                    throw new Exception("error");
+                    blob.Upload(filePath1);
 
-                BlobProperties properties = blob.GetProperties();
+                    blob.DownloadTo(filePath2);
 
-                Console.WriteLine($"Container '{containerName}' Blob '{blobName}' MD5 '{Convert.ToBase64String(properties.ContentHash)}'");
+                    if (System.IO.File.ReadAllText(filePath1) != System.IO.File.ReadAllText(filePath2))
+                        throw new Exception("error");
+
+                    BlobProperties properties = blob.GetProperties();
+
+                    result = $"Container '{containerName}' Blob '{blobName}' MD5 '{Convert.ToBase64String(properties.ContentHash)}'";
+                }
+                catch (Exception ex)
+                {
+                    result = ex.ToString();
+                }
+
+                Console.WriteLine(result);
             }
         }
     }
