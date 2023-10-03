@@ -18,7 +18,7 @@ az storage account create --name "lcs16sa" --resource-group "lcs16-rg"  --locati
 az storage account list --query "[].{ Name:name, Id:id }" --out table
 
 # establecer a administrador rol Storage Account Contributor" en key vault
-az role assignment create --assignee "10c7f93b-8116-426f-a052-af5d7411e7e0" --role "17d1049b-9a84-46fb-8f53-869881c3d3ab" --scope "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourceGroups/lcs16-rg/providers/Microsoft.KeyVault/vaults/lcs16-kv"
+az role assignment create --assignee "10c7f93b-8116-426f-a052-af5d7411e7e0" --role "17d1049b-9a84-46fb-8f53-869881c3d3ab" --scope "/subscriptions/8e8b8f6d-3e0b-45fd-aa1b-f7aa212317cb/resourceGroups/lcs16-rg/providers/Microsoft.Storage/storageAccounts/lcs16sa"
 
 # (lcs16-application-identity)
 # establecer a identities rol "Storage Blob Data Contributor" en storage account
