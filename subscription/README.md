@@ -13,4 +13,6 @@ Comandos generales para la administración de un Resource Group.
 az account show
 # listar suscripciones
 az account list --query '[].{ Name:name, Id:id,TenantId:tenantId, IsDefault:isDefault }' --out table
+# establecer suscripción actual
+az account set --name "Visual Studio Premium"
 ```
