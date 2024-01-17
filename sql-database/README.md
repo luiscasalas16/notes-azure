@@ -37,3 +37,10 @@ az sql db create --resource-group "lcs16-rg" --server "lcs16-sqs" --name "lcs16-
 # eliminar sql database
 az sql db delete --resource-group "lcs16-rg" --server "lcs16-sqs" --name "lcs16-sq"
 ```
+
+```powershell
+# exportar base de datos en sql local a bacpac
+SqlPackage.exe /a:export /scs:"Server=srv-bd;Database=AdventureWorks;Trusted_Connection=True;Encrypt=False;" /tf:"C:\temporal\AdventureWorks.bacpac"
+# importar base de datos en bacpac a sql database
+SqlPackage.exe /a:import /sf:"C:\temporal\AdventureWorks.bacpac" /tsn:"lcs16-sqs.database.windows.net" /tdn:"AdventureWorks" /tu:"lcs16-sqs-user" /tp:"wExz@Gm,YYU%.0RK?+U6b1FAy"
+```
