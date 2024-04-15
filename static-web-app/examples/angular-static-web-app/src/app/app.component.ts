@@ -15,15 +15,18 @@ export class AppComponent {
   title = 'angular-static-web-app';
 
   //private apiUrl: string = 'http://localhost:5000/api';
-  private apiUrl: string = 'https://lcs16-swa-as.azurewebsites.net/api';
+  //private apiUrl: string = 'https://lcs16-swa-as.azurewebsites.net/api';
+  private apiUrl: string = '/api';
 
   public results: any[] = [];
 
   constructor(private http: HttpClient) {}
 
   getApi() {
-    this.http.get<any>(`${this.apiUrl}/weatherforecast`).subscribe((resp) => {
-      console.log(resp);
+    let endpointUrl = `${this.apiUrl}/weatherforecast`;
+
+    this.http.get<any>(endpointUrl).subscribe((resp) => {
+      console.log(endpointUrl);
       this.results = resp;
     });
   }
