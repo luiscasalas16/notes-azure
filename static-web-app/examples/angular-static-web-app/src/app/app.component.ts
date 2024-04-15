@@ -14,7 +14,8 @@ import { HttpClient } from '@angular/common/http';
 export class AppComponent {
   title = 'angular-static-web-app';
 
-  private apiUrl: string = 'http://localhost:5000/api';
+  //private apiUrl: string = 'http://localhost:5000/api';
+  private apiUrl: string = 'https://lcs16-swa-as.azurewebsites.net/api';
 
   public results: any[] = [];
 
