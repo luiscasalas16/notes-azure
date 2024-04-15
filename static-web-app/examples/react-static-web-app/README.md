@@ -22,3 +22,8 @@ az staticwebapp create --name "lcs16-swa-react" --resource-group "lcs16-rg" --lo
 # 4. obtener url del static web app
 az staticwebapp show --name "lcs16-swa-react" --query "defaultHostname"
 ```
+
+```powershell
+# eliminar static web app
+az staticwebapp delete --name "lcs16-swa-react" --resource-group "lcs16-rg"
+```

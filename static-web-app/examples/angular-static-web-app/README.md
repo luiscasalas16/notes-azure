@@ -21,3 +21,8 @@ az staticwebapp create --name "lcs16-swa-angular" --resource-group "lcs16-rg" --
 # 4. obtener url del static web app
 az staticwebapp show --name "lcs16-swa-angular" --query "defaultHostname"
 ```
+
+```powershell
+# eliminar static web app
+az staticwebapp delete --name "lcs16-swa-angular" --resource-group "lcs16-rg"
+```
