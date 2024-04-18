@@ -12,7 +12,7 @@ Comandos generales para la administración de un Container Registry.
 
 ```powershell
 # crear container registry
-az acr create --name "lcs16cr" --resource-group "lcs16-rg" --sku Basic --admin-enabled true
+az acr create --name "lcs16cr" --resource-group "lcs16-rg" --sku "Basic" --admin-enabled "true"
 ```
 
 ```powershell

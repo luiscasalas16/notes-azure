@@ -2,7 +2,7 @@
 
 ```powershell
 # crear container registry
-az acr create --name "lcs16cr" --resource-group "lcs16-rg" --sku Basic --admin-enabled true
+az acr create --name "lcs16cr" --resource-group "lcs16-rg" --sku "Basic" --admin-enabled "true"
 
 $container_registry_id=$(az acr show --resource-group "lcs16-rg" --name "lcs16cr" --query id --output tsv)
 
