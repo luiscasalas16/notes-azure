@@ -19,9 +19,18 @@ namespace NetContainerAppsWebMvc.Controllers
         }
 
         [HttpPost]
-        public IActionResult Tests()
+        public async Task<IActionResult> Test()
         {
-            return Json(new { result = "ok" });
+            HttpClient client = new HttpClient();
+
+            var response = await client.GetAsync(_configuration.GetValue<string>("Api"));
+
+            if (!response.IsSuccessStatusCode)
+                return Json(new { result = response.StatusCode });
+
+            var content = await response.Content.ReadAsStringAsync();
+
+            return Json(new { result = content });
         }
     }
 }
