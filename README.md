@@ -20,13 +20,18 @@ Proyectos de ejemplo de servicios de Azure.
 - [Subscription](/subscription/README.md)
 - [Resource Group](/resource-group/README.md)
 - [Virtual Network](/virtual-network/README.md)
-- [Application Service](/application-service/README.md)
 - [Virtual Machine](/virtual-machine/README.md)
-- [Key Vault](/key-vault/README.md)
-- [Static Web App](/static-web-app/README.md)
-- [Container Instances](/container-instances/README.md)
+- [Virtual Machine Scale Sets](/virtual-machine-scale-sets/README.md)
 - [Container Registry](/container-registry/README.md)
+- [Container Instances](/container-instances/README.md)
+- [Container Apps](/container-apps/README.md)
+- [Database Sql](/database-sql/README.md)
+- [Database Mysql](/database-mysql/README.md)
 - [Application Gateway](/application-gateway/README.md)
+- [Application Service](/application-service/README.md)
+- [Static Web App](/static-web-app/README.md)
+- [Storage Account](/storage-account/README.md)
+- [Key Vault](/key-vault/README.md)
 
 Guías prácticas.
 

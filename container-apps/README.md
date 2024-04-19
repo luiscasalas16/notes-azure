@@ -50,11 +50,11 @@ az containerapp env workload-profile add --name "lcs16-ca-wp" --resource-group "
 $identity_id=$(az identity show --name "lcs16-ca-mi" --resource-group "lcs16-rg" --query id -o tsv)
 
 # crear contenedores
-az containerapp create --name "lcs16-ca-web-api" --resource-group "lcs16-rg" --environment "lcs16-ca-env" --image "lcs16cr.azurecr.io/net-container-apps-web-api:latest" --user-assigned $identity_id --registry-identity $identity_id --registry-server "lcs16cr.azurecr.io" --ingress 'internal' --target-port 8080 --query properties.configuration.ingress.fqdn
+az containerapp create --name "lcs16-ca-web-api" --resource-group "lcs16-rg" --environment "lcs16-ca-env" --image "lcs16cr.azurecr.io/net-container-apps-web-api:latest" --user-assigned $identity_id --registry-identity $identity_id --registry-server "lcs16cr.azurecr.io" --ingress "internal" --target-port 8080 --query properties.configuration.ingress.fqdn
 
 $fqdn_api=$(az containerapp show --name "lcs16-ca-web-api" --resource-group "lcs16-rg" --query properties.configuration.ingress.fqdn)
 
-az containerapp create --name "lcs16-ca-web-mvc" --resource-group "lcs16-rg" --environment "lcs16-ca-env" --image "lcs16cr.azurecr.io/net-container-apps-web-mvc:latest" --user-assigned $identity_id --registry-identity $identity_id --registry-server "lcs16cr.azurecr.io" --ingress 'external' --target-port 8080 --env-vars Api="http://$fqdn_api" --query properties.configuration.ingress.fqdn
+az containerapp create --name "lcs16-ca-web-mvc" --resource-group "lcs16-rg" --environment "lcs16-ca-env" --image "lcs16cr.azurecr.io/net-container-apps-web-mvc:latest" --user-assigned $identity_id --registry-identity $identity_id --registry-server "lcs16cr.azurecr.io" --ingress "external" --target-port 8080 --env-vars Api="http://$fqdn_api" --query properties.configuration.ingress.fqdn
 ```
 
 ```powershell
