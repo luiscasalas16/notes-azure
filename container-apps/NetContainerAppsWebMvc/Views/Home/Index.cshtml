@@ -7,7 +7,12 @@
     </div>
     <div class="row">
         <div class="col">
-            <button id="tests" type="button" class="btn btn-primary">Tests</button>
+            <button id="Test" type="button" class="btn btn-primary">Test</button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <p id="Result" class="text-start"></p>
         </div>
     </div>
 </div>
@@ -16,21 +21,21 @@
     $(document).ready(function () {
         var baseUrl = "@Url.Content("~/")";
 
-        $("#tests").click(function () {
-            console.log("tests");
+        $("#Test").click(function () {
+            console.log("Test");
 
             $.ajax(
             {
                 type: 'POST',
                 dataType: 'json',
-                url: baseUrl + 'Home/tests',
+                url: baseUrl + 'Home/Test',
                 success: (response) => {
                     console.log(response);
-                    alert(response.result);
+                    $("#Result").jsonViewer(JSON.parse(response.result));
                 },
-                error: () => {
-                    console.error(response);
-                    alert("error");
+                error: (xhr, status, error) => {
+                    console.error(error);
+                    $("#Result").html(xhr.status + " " + xhr.statusText);
                 }
             });
         });
