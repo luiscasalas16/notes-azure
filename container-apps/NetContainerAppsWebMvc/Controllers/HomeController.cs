@@ -21,16 +21,40 @@ namespace NetContainerAppsWebMvc.Controllers
         [HttpPost]
         public async Task<IActionResult> Test()
         {
-            HttpClient client = new HttpClient();
+            Log("Test");
 
-            var response = await client.GetAsync(_configuration.GetValue<string>("Api"));
+            try
+            {
+                HttpClient client = new HttpClient();
 
-            if (!response.IsSuccessStatusCode)
-                return Json(new { result = response.StatusCode });
+                string url = _configuration.GetValue<string>("Api") ?? string.Empty;
 
-            var content = await response.Content.ReadAsStringAsync();
+                Log($"Api : '{url}'");
 
-            return Json(new { result = content });
+                var response = await client.GetAsync($"{url}/api/weatherforecast");
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    Log($"result = {response.StatusCode}");
+                    return Json(new { result = response.StatusCode });
+                }
+
+                var content = await response.Content.ReadAsStringAsync();
+
+                Log($"result = {content}");
+                return Json(new { result = content });
+            }
+            catch (Exception ex)
+            {
+                Log($"result = {ex.ToString()}");
+                return Json(new { result = "Exception" });
+            }
+        }
+
+        private void Log(string message)
+        {
+            _logger.LogInformation(message);
+            Console.WriteLine(message);
         }
     }
 }
