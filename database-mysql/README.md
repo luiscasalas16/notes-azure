@@ -38,9 +38,10 @@ az mysql flexible-server db delete --resource-group "lcs16-rg" --server-name "lc
 
 ## Conexión
 
-- MySQL Shell
-  - [Descarga](https://dev.mysql.com/downloads/shell)
-  - [Documentación](https://dev.mysql.com/doc/mysql-shell/8.0/en/mysqlsh.html)
+### MySQL Shell
+
+- [Descarga](https://dev.mysql.com/downloads/shell)
+- [Documentación](https://dev.mysql.com/doc/mysql-shell/8.0/en/mysqlsh.html)
 
 ```powershell
 # terminal
