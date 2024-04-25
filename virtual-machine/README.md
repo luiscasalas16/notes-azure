@@ -4,9 +4,13 @@
 
 Comandos generales para la administración de una Virtual Machine.
 
-- [Comandos Creación / Eliminación](#)
+- [Comandos Creación / Eliminación](#comandos-creación---eliminación)
+- [Comandos Gestión](#comandos-gestión)
+- [Comandos Identidades](#comandos-identidades)
+- [Comandos Time Zone](#comandos-identidades)
+- [Comandos Docker](#comandos-docker)
 
-## Comandos Creación / Eliminación
+## Comandos Creación - Eliminación
 
 ```powershell
 # listar tamaños de vms
