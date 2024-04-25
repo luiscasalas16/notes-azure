@@ -4,13 +4,9 @@
 
 Comandos generales para la administración de un Container Apps.
 
-- [Comandos](#comandos)
-
----
-
-```powershell
-
-```
+- [Comandos Container Registry](#comandos-container-registry)
+- [Comandos Container App Environment](#comandos-container-app-environment)
+- [Comandos Container App](#comandos-container-app)
 
 ## Comandos Container Registry
 
