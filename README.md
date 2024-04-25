@@ -75,11 +75,6 @@ Remove-Item .\AzureClix64.msi;
 ```
 
 ```powershell
-#autenticación
-az login
-```
-
-```powershell
 #versión
 az version
 ```
@@ -87,6 +82,11 @@ az version
 ```powershell
 #actualización
 az upgrade
+```
+
+```powershell
+#autenticación
+az login
 ```
 
 ```powershell
@@ -135,6 +135,11 @@ Get-Module -ListAvailable -Name Az -Refresh
 ```powershell
 #actualización
 Update-Module -Name Az -Force
+```
+
+```powershell
+#autenticación
+Connect-AzAccount
 ```
 
 ### Azure SDK
