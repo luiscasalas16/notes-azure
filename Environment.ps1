@@ -41,9 +41,8 @@ az webapp identity assign --name "lcs16-as-netfw" --resource-group "lcs16-rg" --
 az webapp config appsettings set --name "lcs16-as-net" --resource-group "lcs16-rg" --settings 'AZURE_CLIENT_ID=69c220ea-f2f1-4c5a-a324-b7523c94118c'
 az webapp config appsettings set --name "lcs16-as-netfw" --resource-group "lcs16-rg" --settings 'AZURE_CLIENT_ID=69c220ea-f2f1-4c5a-a324-b7523c94118c'
 # publicar aplicación en app service
-az webapp deployment source config-zip --name "lcs16-as-net" --resource-group "lcs16-rg" --src ".\_dist\NetKeyVaultWebMvc.zip"
-az webapp deployment source config-zip --name "lcs16-as-netfw" --resource-group "lcs16-rg" --src ".\_dist\NetFwKeyVaultWebMvc.zip"
-
+az webapp deploy --name "lcs16-as-net" --resource-group "lcs16-rg" --src-path ".\_dist\NetKeyVaultWebMvc.zip" --type "zip" --restart
+az webapp deploy --name "lcs16-as-netfw" --resource-group "lcs16-rg" --src-path ".\_dist\NetFwKeyVaultWebMvc.zip" --type "zip" --restart
 
 ##### virtual machine linux
 

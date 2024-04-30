@@ -22,7 +22,7 @@ Comandos generales para la administración de un Application Service Plan.
     # --is-linux = linux operating system
     # --number-of-workers = number of workers instances
     # --zone-redundant = high availability zone
-az appservice plan create --name "lcs16-asp" --resource-group "lcs16-rg" --location "eastus" --sku "F1"
+az appservice plan create --name "lcs16-asp" --resource-group "lcs16-rg" --location "eastus" --sku "B1"
 ```
 
 ```powershell
@@ -69,5 +69,5 @@ az webapp config appsettings set --name "lcs16-as" --resource-group "lcs16-rg" -
 
 ```powershell
 # publicar aplicación en app service
-az webapp deployment source config-zip --name "lcs16-as" --resource-group "lcs16-rg" --src ".\_dist\NetApplicationServiceWebMvc.zip"
+az webapp deploy --name "lcs16-as" --resource-group "lcs16-rg" --src-path ".\_dist\NetApplicationServiceWebMvc.zip" --type "zip" --restart
 ```

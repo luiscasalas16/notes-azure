@@ -21,8 +21,7 @@ az webapp create --name "lcs16-as" --resource-group "lcs16-rg" `
     --plan "lcs16-asp" --runtime "DOTNETCORE:7.0"
 
 # publicar aplicación en application service
-az webapp deployment source config-zip --name "lcs16-as" --resource-group "lcs16-rg"
-    --src ".\_dist\NetApplicationServiceWebMvc.zip"
+az webapp deploy --name "lcs16-as" --resource-group "lcs16-rg" --src-path ".\_dist\NetApplicationServiceWebMvc.zip" --type "zip" --restart
 
 ##### virtual network #####
 

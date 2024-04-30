@@ -8,7 +8,7 @@ function BuildNet
    
     # restore
     Set-Location "..\$folder\$proyect"
-    if (Test-Path $".\publish") {
+    if (Test-Path ".\publish") {
         Remove-Item ".\publish" -Recurse
     } 
     dotnet restore
@@ -17,7 +17,7 @@ function BuildNet
     dotnet publish -c Release -o publish
     # compress
     Compress-Archive -Force -Path ".\publish\*" -DestinationPath "..\..\_dist\$proyect.zip"
-    if (Test-Path $".\publish") {
+    if (Test-Path ".\publish") {
         Remove-Item ".\publish" -Recurse
     } 
     Set-Location "..\..\_dist"
