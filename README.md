@@ -27,11 +27,12 @@ Proyectos de ejemplo de servicios de Azure.
 - [Container Apps](/container-apps/README.md)
 - [Database Sql](/database-sql/README.md)
 - [Database Mysql](/database-mysql/README.md)
-- [Application Gateway](/application-gateway/README.md)
 - [Application Service](/application-service/README.md)
 - [Static Web App](/static-web-app/README.md)
 - [Storage Account](/storage-account/README.md)
 - [Key Vault](/key-vault/README.md)
+- [Nat Gateway](/nat-gateway/README.md)
+- [Application Gateway](/application-gateway/README.md)
 
 Guías prácticas.
 
