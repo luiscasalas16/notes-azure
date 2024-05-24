@@ -103,17 +103,12 @@ TokenCredential credential = new DefaultAzureCredential
 
     ```powershell
     # registrar variables de ambiente a nivel del application pool
-    "%systemroot%\system32\inetsrv\appcmd.exe" set config -section:system.applicationHost/applicationPools
-        /+"[name='.NET v4.5'].environmentVariables.[name='AZURE_TENANT_ID',value='00000000-0000-0000-0000-000000000000']"
-        /commit:apphost
-
-    "%systemroot%\system32\inetsrv\appcmd.exe" set config -section:system.applicationHost/applicationPools
-        /+"[name='.NET v4.5'].environmentVariables.[name='AZURE_CLIENT_ID',value='00000000-0000-0000-0000-000000000000']"
-        /commit:apphost
-
-    "%systemroot%\system32\inetsrv\appcmd.exe" set config -section:system.applicationHost/applicationPools
-        /+"[name='.NET v4.5'].environmentVariables.[name='AZURE_CLIENT_SECRET',value='abcdefghijklmnopqrstuvwxyz']"
-        /commit:apphost
+    Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST'  -filter "system.applicationHost/applicationPools/add[@name='DefaultAppPool']/environmentVariables"
+      -name "." -value @{name='AZURE_TENANT_ID';value='0000000-0000-0000-0000-000000000000'}
+    Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST'  -filter "system.applicationHost/applicationPools/add[@name='DefaultAppPool']/environmentVariables"
+      -name "." -value @{name='AZURE_CLIENT_ID';value='0000000-0000-0000-0000-000000000000'}
+    Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST'  -filter "system.applicationHost/applicationPools/add[@name='DefaultAppPool']/environmentVariables"
+      -name "." -value @{name='AZURE_CLIENT_SECRET';value='abcdefghijklmnopqrstuvwxyz'}
     ```
 
 ### 2.2. En nube por managed identity de azure
@@ -164,8 +159,7 @@ az vm identity assign --name "test-virtual-machine" --resource-group "test-resou
 
   ```powershell
   # establecer appsettings
-  az webapp config appsettings set --name "lcs16-as" --resource-group "lcs16-rg"
-    --settings 'AZURE_CLIENT_ID=00000000-0000-0000-0000-000000000000'
+  az webapp config appsettings set --name "lcs16-as" --resource-group "lcs16-rg" --settings 'AZURE_CLIENT_ID=00000000-0000-0000-0000-000000000000'
   ```
 
 ##### 2.2.2.2 En virtual machine
@@ -178,7 +172,7 @@ az vm identity assign --name "test-virtual-machine" --resource-group "test-resou
   az vm identity assign --name "test-virtual-machine" --resource-group "test-resource-group" --identities "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-managed-identity"
   ```
 
-- Se debe establecer elAZURE_CLIENT_ID con el que se va a autenticar en una variable de ambiente.
+- Se debe establecer el AZURE_CLIENT_ID con el que se va a autenticar en una variable de ambiente.
 
   - Se pueden establecer las variables de ambiente a nivel de sistema por PowerShell. Si hay un cambio en las variables de ambiente se deben reiniciar las aplicaciones para que el cambio se aplique.
 
@@ -191,7 +185,6 @@ az vm identity assign --name "test-virtual-machine" --resource-group "test-resou
 
     ```powershell
     # registrar variable de ambiente a nivel del application pool
-    "%systemroot%\system32\inetsrv\appcmd.exe" set config -section:system.applicationHost/applicationPools
-        /+"[name='.NET v4.5'].environmentVariables.[name='AZURE_CLIENT_ID',value='00000000-0000-0000-0000-000000000000']"
-        /commit:apphost
+    Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST'  -filter "system.applicationHost/applicationPools/add[@name='DefaultAppPool']/environmentVariables"
+      -name "." -value @{name='AZURE_CLIENT_ID';value='0000000-0000-0000-0000-000000000000'}
     ```
