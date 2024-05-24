@@ -103,11 +103,14 @@ TokenCredential credential = new DefaultAzureCredential
 
     ```powershell
     # registrar variables de ambiente a nivel del application pool
-    Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST'  -filter "system.applicationHost/applicationPools/add[@name='DefaultAppPool']/environmentVariables"
+    Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST'
+      -filter "system.applicationHost/applicationPools/add[@name='DefaultAppPool']/environmentVariables"
       -name "." -value @{name='AZURE_TENANT_ID';value='0000000-0000-0000-0000-000000000000'}
-    Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST'  -filter "system.applicationHost/applicationPools/add[@name='DefaultAppPool']/environmentVariables"
+    Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST'
+      -filter "system.applicationHost/applicationPools/add[@name='DefaultAppPool']/environmentVariables"
       -name "." -value @{name='AZURE_CLIENT_ID';value='0000000-0000-0000-0000-000000000000'}
-    Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST'  -filter "system.applicationHost/applicationPools/add[@name='DefaultAppPool']/environmentVariables"
+    Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST'
+      -filter "system.applicationHost/applicationPools/add[@name='DefaultAppPool']/environmentVariables"
       -name "." -value @{name='AZURE_CLIENT_SECRET';value='abcdefghijklmnopqrstuvwxyz'}
     ```
 
@@ -185,6 +188,7 @@ az vm identity assign --name "test-virtual-machine" --resource-group "test-resou
 
     ```powershell
     # registrar variable de ambiente a nivel del application pool
-    Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST'  -filter "system.applicationHost/applicationPools/add[@name='DefaultAppPool']/environmentVariables"
+    Add-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST'
+      -filter "system.applicationHost/applicationPools/add[@name='DefaultAppPool']/environmentVariables"
       -name "." -value @{name='AZURE_CLIENT_ID';value='0000000-0000-0000-0000-000000000000'}
     ```
