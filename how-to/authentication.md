@@ -157,16 +157,15 @@ az vm identity assign --name "test-virtual-machine" --resource-group "test-resou
 
   ```powershell
   # asignar user-assigned identity a app service
-  az webapp identity assign
-    --name "test-app-service" --resource-group "test-resource-group"
-    --identities "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-managed-identity"
+  az webapp identity assign --name "test-app-service" --resource-group "test-resource-group" --identities "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-managed-identity"
   ```
 
 - Se debe establecer el AZURE_CLIENT_ID con el que se va a autenticar en "Configuration" -> "Application Settings" con el "Client ID" del managed identity.
 
   ```powershell
   # establecer appsettings
-  az webapp config appsettings set --name "lcs16-as" --resource-group "lcs16-rg" --settings 'AZURE_CLIENT_ID=69c220ea-f2f1-4c5a-a324-b7523c94118c'
+  az webapp config appsettings set --name "lcs16-as" --resource-group "lcs16-rg"
+    --settings 'AZURE_CLIENT_ID=00000000-0000-0000-0000-000000000000'
   ```
 
 ##### 2.2.2.2 En virtual machine
@@ -176,9 +175,7 @@ az vm identity assign --name "test-virtual-machine" --resource-group "test-resou
 
   ```powershell
   # asignar user-assigned identity a virtual machine
-  az vm identity assign
-    --name "test-virtual-machine" --resource-group "test-resource-group"
-    --identities "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-managed-identity"
+  az vm identity assign --name "test-virtual-machine" --resource-group "test-resource-group" --identities "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-resource-group/providers/Microsoft.ManagedIdentity/userAssignedIdentities/test-managed-identity"
   ```
 
 - Se debe establecer elAZURE_CLIENT_ID con el que se va a autenticar en una variable de ambiente.
