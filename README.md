@@ -1,4 +1,4 @@
-# example-azure
+# notes-azure
 
 Este repositorio contiene ejemplos y documentación relacionada con Azure.
 
