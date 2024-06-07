@@ -141,6 +141,7 @@ Update-Module -Name Az -Force
 ```powershell
 #autenticación
 Connect-AzAccount
+Connect-AzAccount -TenantId 00000000-0000-0000-0000-000000000000
 ```
 
 ### Azure SDK
