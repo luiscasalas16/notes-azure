@@ -17,7 +17,6 @@ Este repositorio contiene ejemplos y documentación relacionada con Azure.
 Proyectos de ejemplo de servicios de Azure.
 
 - [Active Directory](/active-directory/README.md)
-- [Subscription](/subscription/README.md)
 - [Resource Group](/resource-group/README.md)
 - [Virtual Network](/virtual-network/README.md)
 - [Virtual Machine](/virtual-machine/README.md)
@@ -73,6 +72,14 @@ Es un conjunto de comandos que se utilizan para la administración de recursos d
 Invoke-WebRequest -Uri 'https://aka.ms/installazurecliwindowsx64' -OutFile '.\AzureClix64.msi';
 Start-Process msiexec.exe -Wait -ArgumentList '/I AzureClix64.msi /quiet';
 Remove-Item .\AzureClix64.msi;
+
+#configuración actualización automática
+az config set auto-upgrade.enable=yes
+az config set auto-upgrade.prompt=no
+#configuración instalación automática de dependencias
+az config set extension.use_dynamic_install=yes_without_prompt
+#configuración formato de salida por defecto
+az config set core.output=jsonc
 ```
 
 ```powershell
@@ -86,23 +93,20 @@ az upgrade
 ```
 
 ```powershell
-#autenticación
+#autenticación conectar
 az login
+az login --tenant "00000000-0000-0000-0000-000000000000"
+#autenticación desconectar
+az logout
 ```
 
 ```powershell
-#obtener configuración
-az config get
-```
-
-```powershell
-#configuración actualización automática
-az config set auto-upgrade.enable=yes
-az config set auto-upgrade.prompt=no
-#configuración instalación automática dependencias
-az config set extension.use_dynamic_install=yes_without_prompt
-#configuración formato de salida por defecto
-az config set core.output=jsonc
+# ver suscripción actual
+az account show
+# listar suscripciones
+az account list --query '[].{ Name:name, Id:id,TenantId:tenantId }' --out table
+# establecer suscripción actual
+az account set --subscription "00000000-0000-0000-0000-000000000000"
 ```
 
 ### Azure PowerShell
@@ -139,9 +143,20 @@ Update-Module -Name Az -Force
 ```
 
 ```powershell
-#autenticación
+#autenticación conectar
 Connect-AzAccount
-Connect-AzAccount -TenantId 00000000-0000-0000-0000-000000000000
+Connect-AzAccount -Tenant "00000000-0000-0000-0000-000000000000"
+#autenticación desconectar
+Disconnect-AzAccount
+```
+
+```powershell
+# ver suscripción actual
+Get-AzContext
+# listar suscripciones
+Get-AzSubscription
+# establecer suscripción actual
+Set-AzContext -SubscriptionId "00000000-0000-0000-0000-000000000000"
 ```
 
 ### Azure SDK
