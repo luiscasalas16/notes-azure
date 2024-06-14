@@ -10,6 +10,10 @@ Comandos generales para la administración de una Virtual Machine.
 - [Comandos Time Zone](#comandos-identidades)
 - [Comandos Docker](#comandos-docker)
 
+Herramientas
+
+- [Azure Virtual Machines Selector](https://azure.microsoft.com/en-us/pricing/vm-selector)
+
 ## Comandos Creación - Eliminación
 
 ```powershell
