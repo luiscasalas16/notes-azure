@@ -19,10 +19,12 @@ Comandos generales para la administración de un Application Service Plan.
 
 ```powershell
 # crear app service plan
-    # --is-linux = linux operating system
     # --number-of-workers = number of workers instances
     # --zone-redundant = high availability zone
+    # Windows
 az appservice plan create --name "lcs16-asp" --resource-group "lcs16-rg" --location "eastus" --sku "B1"
+    # Linux
+az appservice plan create --name "lcs16-asp" --resource-group "lcs16-rg" --location "eastus" --sku "B1" --is-linux
 ```
 
 ```powershell
@@ -37,9 +39,12 @@ az appservice plan delete --name "lcs16-asp" --resource-group "lcs16-rg"
 Comandos generales para la administración de un Application Service.
 
 ```powershell
-# crear app service .Net (dotnet:7 para windows o DOTNETCORE:7.0 para linux)
+# crear app service
+    # .Net Windows
 az webapp create --name "lcs16-as" --resource-group "lcs16-rg" --plan "lcs16-asp" --runtime "dotnet:7"
-# crear app service .Net Framework
+    # .Net Linux
+az webapp create --name "lcs16-as" --resource-group "lcs16-rg" --plan "lcs16-asp" --runtime "DOTNETCORE:7.0"
+    # .Net Framework
 az webapp create --name "lcs16-as" --resource-group "lcs16-rg" --plan "lcs16-asp" --runtime "ASPNET:V4.8"
 ```
 

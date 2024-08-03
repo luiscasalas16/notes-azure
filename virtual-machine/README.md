@@ -59,7 +59,7 @@ az vm auto-shutdown --name "lcs16-vm" --resource-group "lcs16-rg" --time 0000
 
 ```powershell
 # habilitar puerto
-az vm open-port --name "lcs16-vm" --resource-group "col-rg" --port 80 --priority 100
+az vm open-port --name "lcs16-vm" --resource-group "lcs16-rg" --port 80 --priority 100
 ```
 
 ```powershell
