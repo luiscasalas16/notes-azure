@@ -8,7 +8,8 @@ Comandos generales para la administración de una Virtual Machine.
 - [Comandos Gestión](#comandos-gestión)
 - [Comandos Identidades](#comandos-identidades)
 - [Comandos Time Zone](#comandos-identidades)
-- [Comandos Docker](#comandos-docker)
+- [Comandos Docker Linux](#comandos-docker-linux)
+- [Comandos Docker Windows](#comandos-docker-windows)
 
 Herramientas
 
@@ -60,6 +61,7 @@ az vm auto-shutdown --name "lcs16-vm" --resource-group "lcs16-rg" --time 0000
 ```powershell
 # habilitar puerto
 az vm open-port --name "lcs16-vm" --resource-group "lcs16-rg" --port 80 --priority 100
+az vm open-port --name "lcs16-vm" --resource-group "lcs16-rg" --port 433 --priority 101
 ```
 
 ```powershell

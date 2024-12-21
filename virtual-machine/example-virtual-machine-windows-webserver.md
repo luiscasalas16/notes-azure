@@ -9,7 +9,8 @@ az vm create --name "lcs16-vm-win" --resource-group "lcs16-rg" --location "eastu
 az vm auto-shutdown --name "lcs16-vm-win" --resource-group "lcs16-rg" --time 0000
 
 # habilitar puerto 80
-az vm open-port --port 80 --name "lcs16-vm-win" --resource-group "lcs16-rg"
+az vm open-port --name "lcs16-vm" --resource-group "lcs16-rg" --port 80 --priority 100
+az vm open-port --name "lcs16-vm" --resource-group "lcs16-rg" --port 433 --priority 101
 
 # instalar aplicación
 $result = Invoke-AzVMRunCommand -ResourceGroupName 'lcs16-rg' -Name 'lcs16-vm-win' -CommandId 'RunPowerShellScript' -ScriptPath '.\virtual-machine\example-virtual-machine-windows-webserver-script.ps1' -ErrorAction "Stop"
