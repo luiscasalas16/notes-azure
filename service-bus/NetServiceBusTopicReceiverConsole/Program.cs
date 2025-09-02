@@ -55,7 +55,7 @@ namespace NetBaseConsole
                 // set the transport type to AmqpWebSockets so that the ServiceBusClient uses port 443.
                 var clientOptions = new ServiceBusClientOptions()
                 {
-                    TransportType = ServiceBusTransportType.AmqpWebSockets,
+                    //TransportType = ServiceBusTransportType.AmqpWebSockets, // comment for local emulator
                 };
                 client = new ServiceBusClient(
                     _configuration.GetValue<string>("ServiceBusKey"),
