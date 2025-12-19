@@ -119,17 +119,8 @@ Es un conjunto de comandos nativos de PowerShell que se utilizan para la adminis
 
 ```powershell
 #instalación
-cmd (administrator)
-powershell.exe -NoProfile
-cd $env:temp
-Invoke-WebRequest -Uri 'https://gist.githubusercontent.com/luiscasalas16/aaf1edbeb8d331384ad503c454a2e8e4/raw' -OutFile '.\CleanAzPs.ps1'
-powershell.exe -ExecutionPolicy bypass -File '.\CleanAzPs.ps1'
-exit
-
-pwsh.exe
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 Install-Module -Name Az -Repository PSGallery -Force
-exit
 ```
 
 ```powershell
