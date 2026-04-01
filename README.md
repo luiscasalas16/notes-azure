@@ -9,6 +9,10 @@ Este repositorio contiene ejemplos y documentación relacionada con Azure.
   - [Azure CLI](#azure-cli)
   - [Azure SDK](#azure-sdk)
   - [Azure Identity](#azure-identity)
+- [Enlaces]
+  - [Azure Cheat Sheet Milanm](https://github.com/milanm/azure-cheat-sheet)
+  - [Azure Icons 1](https://learn.microsoft.com/en-us/azure/architecture/icons/)
+  - [Azure Icons 2](https://az-icons.com/)
 
 ---
 
