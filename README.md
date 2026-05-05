@@ -123,7 +123,6 @@ Es un conjunto de comandos nativos de PowerShell que se utilizan para la adminis
 
 ```powershell
 #instalación
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 Install-Module -Name Az -Repository PSGallery -Force
 ```
 
